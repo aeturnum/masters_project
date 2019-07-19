@@ -4,19 +4,69 @@ Introduction
 
 Ideally, the goal of Science, Technology and Society is to do work that is fully engaged with the practical details of human experience and effort and uses that engagement to develop theoretical understandings that reveal new points of contact and analyses. Simondo (2008) describes this ideal as an “engaged program” that seeks to use pertinent topics in theoretically interesting ways. This project attempts to realize these qualities by simultaneously applying theoretical critiques to a situated and particular software tool and modifying that tool in conversation with those critiques. The end goal is a process-object that exists both as a fully functional piece of software and a record of the progress towards analyzing and creating that software from an existing base. I chose this particular form because it draws from both the traditions of software development and Science, Technology and Society scholarship but sets neither above the other. An engaged product must strive to be fully available to more than just the scholars of the social sciences.
 
-Masters Committee
+Committee
 
 Faculty Advisor: Vincent Duclos
 Committee Members: Alison Kenner, TBD
 
+Object of Analysis
+
+The EDEN software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response, appears to be an excellent fit for this project. It is designed with a purpose and with the intent to save lives. It has good reason to simplify and focus perspectives of those using the tool and to problematize particular aspects of the situation while allowing others to remain innocuous. Its lack of commercial motivation will also likely simply the process of decomposing whom its perspectives benefit.
+
+The software's homepage can be found here: https://sahanafoundation.org/. A demo version of it running on the Sahana foundation can be found here: http://demo.sahanafoundation.org/eden/. Its source code can be found here: https://github.com/sahana/eden
+
 Research Questions
 
 
+Possible Literature
+
+This list is composed of papers and books from prominent STS scholars, media studies on datafication and papers from Data & Society
+
+Ananny, M., & Crawford, K. (2018). Seeing without knowing: Limitations of the transparency ideal and its application to algorithmic accountability. New Media & Society, 20(3), 973–989.
+
+Barocas, S., & Boyd, D. (2017). Engaging the Ethics of Data Science in Practice. Communications of the ACM, 60(11), 23–25.
+
+Bowker, G. C., & Star, S. L. (2000). Sorting Things Out: Classification and Its Consequences. MIT Press.
+
+Cheney-Lippold, J. (2018). We Are Data: Algorithms and the Making of Our Digital Selves. NYU Press.
+
+Crawford, K., & Finn, M. (2015). The limits of crisis data: analytical and ethical challenges of using social and mobile data to understand disasters. GeoJournal, 80(4), 491–502.
+
+Deleuze, G. (1992). Postscript on the Societies of Control. October, 59, 3–7.
+
+Eckhouse, L., Lum, K., Conti-Cook, C., & Ciccolini, J. (2019). Layers of Bias: A Unified Approach for Understanding Problems With Risk Assessment. Criminal Justice and Behavior, 46(2), 185–209.
+
+Elish, M. C., & Boyd, D. (2018). Situating methods in the magic of Big Data and AI. Communication Monographs, Vol. 85, pp. 57–80. https://doi.org/10.1080/03637751.2017.1375130
+
+Eubanks, V. (2018). Automating Inequality: How High-Tech Tools Profile, Police, and Punish the Poor. St. Martin’s Press.
+
+Gabriella Coleman, E. (2012). Coding Freedom: The Ethics and Aesthetics of Hacking (pp. 69–70). Princeton University Press.
+
+Gangadharan, S. P. (2017). The downside of digital inclusion: Expectations and experiences of privacy and surveillance among marginal Internet users. New Media & Society, 19(4), 597–615.
+
+Haraway, D. (1988). Situated Knowledges: The Science Question in Feminism and the Privilege of Partial Perspective. Feminist Studies: FS, 14(3), 575–599.
+
+Haraway, D. J. (2016). Staying with the Trouble: Making Kin in the Chthulucene. Duke University Press.
+
+Harding, S. (1992). Rethinking standpoint epistemology: What is“ strong objectivity?” The Centennial Review, 36(3), 437–470.
+
+Harraway, D. (1997). Modest_Witness@Second_Millennium.FemaleMan©Meets_OncoMouseTM. Routledge New York.
+
+Kelty, C. M. (2008). Two Bits: The Cultural Significance of Free Software. Duke University Press.
+
+Knowles, S. G. (2014). Learning from Disaster?: The History of Technology and the Future of Disaster Research. Technology and Culture, 55(4), 773–784.
+
+Latonero, M., & Kift, P. (2018). On Digital Passages and Borders: Refugees and the New Infrastructure for Movement and Control. Social Media + Society, 4(1), 2056305118764432.
+
+Ponte, A. (2014). The House of Light and Entropy. Architectural Association.
+
+Star, S. L. (ed ). (1995). The cultures of computing. Retrieved from http://agris.fao.org/agris-search/search.do?recordID=XF2015029404
+
 Output
 
-Specifically, the project will produce three artifacts: a paper, a piece of software and a git source-tracking repository. The paper will provide formal analysis of the original form of the software being considered. It will engage with social science literatures from traditions such as feminist critiques of technologies, critiques of algorithmic technologies, critiques of (often but not exclusively scientific) epistemelogical processes and software studies. Its discussion and conclusion will describe the particular view the software renders of the world and also argue how alterations to that piece of software might change its purpose, its views or its impact. The software artifact will be a modified version of the selected software whose modifications will be driven by the suggested alterations in the paper. These two software products (modified and unmodified) can serve to contextualize the paper and bound its theoretical claims to what is pragmatically possible for a software developer. Finally, all of these things and all other project artifacts (including this proposal) will be archived in a git repository and hosted online. Git will allow the process to be recorded and observed both in real time and in hindsight, giving the project a shape and an arc and a character outside of its final results.
+The project will produce three artifacts: a paper, a piece of software and a git source-tracking repository. The paper will provide formal analysis of the original form of the software being considered. It will engage with social science literatures from traditions such as feminist critiques of technologies, critiques of algorithmic technologies, critiques of (often but not exclusively scientific) epistemelogical processes and software studies. Its discussion and conclusion will describe the particular view the software renders of the world and also argue how alterations to that piece of software might change its purpose, its views or its impact. The software artifact will be a modified version of the selected software whose modifications will be driven by the suggested alterations in the paper. These two software products (modified and unmodified) can serve to contextualize the paper and bound its theoretical claims to what is pragmatically possible for a software developer. Finally, all of these things and all other project artifacts (including this proposal) will be archived in a git repository and hosted online. Git will allow the process to be recorded and observed both in real time and in hindsight, giving the project a shape and an arc and a character outside of its final results. 
 
-Tenative selection of software for analysis: https://sahanafoundation.org/. It's written in a language I'm very familiar with and is also exactly the kind of logistics software I was envisioning. Here is their demo instance up and running: http://demo.sahanafoundation.org/eden/. I also think that analyzing an open source piece of "humanitarian" software has the potential to be more interesting & useful because their influence is ostensively non-commercial. 
+The git repository, hosting a plain text version of this document, can be found here: https://github.com/aeturnum/masters_project
 
 Bibliography
 
