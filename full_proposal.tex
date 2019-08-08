@@ -23,7 +23,11 @@
 
 
 % Use APA module
+% Based on template from https://www.overleaf.com/latex/templates/your-apa6-style-manuscript/kngbbqpypjcq
 \documentclass[a4paper,man,natbib]{apa6}
+% Imports natbib
+% Ref Sheet: https://gking.harvard.edu/files/natnotes2.pdf
+
 % Packages
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
@@ -31,7 +35,9 @@
 \usepackage{graphicx}
 % For formatting of potential bibliography
 \usepackage{enumitem}
-\usepackage[colorinlistoftodos]{todonotes}
+% html links
+\usepackage{hyperref}
+%\usepackage[colorinlistoftodos]{todonotes}
 
 \title{Mapping EDEN Proposal}
 \shorttitle{Final Masters Project Proposal}
@@ -41,6 +47,9 @@
 \begin{document}
    \maketitle
    \clearpage
+   % This document outline based on the suggested outline in the Center for STS Student Handbook:
+   % https://drexel.edu/~/media/Files/sts/2015-graduate-student-handbook.ashx?la=en
+
    \section*{Overview}
    % Overview (0.5-1 page)
    % A summary of other sections of the proposal
@@ -52,7 +61,7 @@
    Ideally, the goal of Science, Technology and Society is to do work that is fully engaged with the practical details of human experience and effort and uses that engagement to develop theoretical understandings that reveal new points of contact and analyses. \citet{Sismondo2008-xz} describes this ideal as an “engaged program” that seeks to use pertinent topics in theoretically interesting ways. This project attempts to realize these qualities by simultaneously applying theoretical critiques to a situated and particular software tool and modifying that tool in conversation with those critiques. The end goal is a process-object that exists both as a fully functional piece of software and a record of the progress towards analyzing and creating that software from an existing base. I chose this particular form because it draws from both the traditions of software development and Science, Technology and Society scholarship but sets neither above the other. An engaged product must strive to be fully available to more than just the scholars of the social sciences.
    \subsection*{Merits}
    % 2-3 intellectual merits (informs research questions)
-   Primarily, this project grew out of a sense of the disconnect between the making and doing of Science, Technology and Society and the making and doing of engineering. This approach was inspired the approaches of \citet{Roy2018-ma} and \citet{Subramaniam2014-wg} in working to learn more through their combination of the scientific method with feminist critique. My project is not one centered on feminist critique, but within my own background of craft Computer Science \citep[see]{Ensmenger2012-kz} and 
+   Primarily, this project grew out of a sense of the disconnect between the making and doing of Science, Technology and Society and the making and doing of engineering. This approach was inspired the approaches of \citet{Roy2018-ma} and \citet{Subramaniam2014-wg} in working to learn more through their combination of the scientific method with feminist critique. My project is not one centered on feminist critique, but within my own background of craft Computer Science \citep[see][]{Ensmenger2012-kz}. 
    \section*{Background}
    % Background	description	of	problem	and	context (1 page)
    \section*{Intellectual Heritage}
@@ -63,13 +72,28 @@
    \section*{Design}
    % Study	Design (1-2 pages)
    \subsection*{Methods}
+   The aim of this project is to put academic work in conversation with practical tools as well as put academic criticism in conversation with work to  transform the same tools. This will draw on Science, Technology and Society's tradition of Making and Doing as well as traditional methods for analysis and critique.
    % Description of methods
+   A PDF of this document can be found at \href{https://github.com/aeturnum/masters_project/blob/master/full_proposal.pdf}.
+
+   The \LaTeX source file can be found at \href{https://github.com/aeturnum/masters_project/blob/master/full_proposal.tex}.
    \subsection*{Fieldsites}
    % Description and justification of data sources or fieldsites
-   \subsection{Schedule}
+
+   The EDEN software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response, appears to be an excellent fit for this project. It is designed with a purpose and with the intent to save lives. It has good reason to simplify and focus perspectives of those using the tool and to problematize particular aspects of the situation while allowing others to remain innocuous. Its lack of commercial motivation will also likely simply the process of decomposing whom its perspectives benefit.
+
+   The software's homepage can be found here: \url{https://sahanafoundation.org/}. A demo version of it running on the Sahana foundation can be found here: \url{http://demo.sahanafoundation.org/eden/}. Its source code can be found here: \url{https://github.com/sahana/eden}
+   \subsection*{Research Questions}
+   What ways of knowing and doing are assisted by the design of EDEN?
+
+   What epistemological traditions are centered in EDEN's methods for storing data? Whose needs are attended to first in this particular product?
+   \subsection*{Schedule}
    % Schedule of work
+   % Much thanks to: 
+   % https://www.tablesgenerator.com/
+   % https://en.wikibooks.org/wiki/LaTeX/Tables#Text_wrapping_in_tables
+   % https://stackoverflow.com/questions/790932/how-to-wrap-text-in-latex-tables
    \begin{center}
-   % p{0.2\linewidth}p{0.6\linewidth}
    \begin{tabular}{|l|p{0.1\linewidth}|p{0.1\linewidth}|p{0.7\linewidth}|}
    \hline
    Quarter & Quality & Time Allocation & Goal                         \\ \hline
@@ -90,10 +114,10 @@
    % Output (e.g., conference presentations, results to informants, white paper, thesis, etc.)
    \subsection*{Goals}
    % How it will help us understand X (and Y)
-
+   \clearpage
    \section{Suggested Bibliography}
 
-   % \setlength{\parindent}{0em}
+   % Much thanks to https://tex.stackexchange.com/questions/99344/indent-text-after-line-1
    \begin{itemize}[label={},itemindent=-2em,leftmargin=2em]
    \item Ananny, M., \& Crawford, K. (2018). Seeing without knowing: Limitations of the transparency ideal and its application to algorithmic accountability. New Media \& Society, 20(3), 973–989.
 
