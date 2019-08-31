@@ -34,11 +34,17 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
+% for cite title
+% \usepackage{biblatex}
+% fancy quotes
+\usepackage{epigraph}
 % For formatting of potential bibliography
 \usepackage{enumitem}
 % html links
 \usepackage{hyperref}
 %\usepackage[colorinlistoftodos]{todonotes}
+
+% \bibliography{full_proposal}
 
 \title{Mapping EDEN Proposal}
 \shorttitle{Final Masters Project Proposal}
@@ -67,27 +73,46 @@
    Another focus of this project will EDEN's view of the world. In Modest\_Witness@Second\_Millennium.FemaleMan\copyright\_Meets\_OncoMouse\texttrademark Haraway works to describe the world as seen through the advertisements of genetic technologies companies. In the same tradition \citet{Subramaniam2014-wg} shows how the eugenic roots of biometric tools influence the kinds of results they can discover. EDEN did not spring from nowhere and the traditions it draws on will bias the views it renders of the world. I will search for the standpoint \citet{Haraway1993-kw} EDEN views the world from within.
    \section*{Background}
    % Background	description	of	problem	and	context (1 page)
-   Sociology, Media Studies and Science, Technology and Society have a long history of critiquing the arifacts and processes produced by technology companies \citep{Cheney-Lippold2018-lw,Dean2010-lk,Harraway1997-va}.  
+   Sociology, Media Studies and Science, Technology and Society have a long history of critiquing the artifacts and processes produced by technology companies \citep{Cheney-Lippold2018-lw,Dean2010-lk,Harraway1997-va}. 
+
    \section*{Intellectual Heritage}
    % Intellectual	Merits (1-2 pages)
    % 2 to 3 scholarly conversations your research contributes to
-   \subsection*{Software Studies}
-   Software Studies is, broadly, attempting to connect the abstract virtual constructs that exist in code to experiences of humans in the actual world. Works in the field have focused on a wide range of modes of engagement. Some describe the types of social spaces that grow up around communities whose focus is code \citep{Kelty2008-jm}. Others work to describe how software creates new types of physical places whose qualities emerge out of the interaction between software and the physical demands of the actual world \citep{Bridle2018-nd,Kitchin2011-af}. The field is broad enough to also include scholars approaching the question from a Media Studies background and describing how code fits into the history of personal expression and speech and whether its differences are real or only superficial \citep{Cox2013-zo}.
    \subsection*{Situated Knowledges}
+
+   \epigraph{A model is worked, and it does work}{\textit{Donna Haraway \\ Staying with the Trouble: Making Kin in the Chthulucene p. 63}}
+
+   Our judgments are influenced by our experiences. This basic human quality is at the center how we understand others and how we learn, among other things. Within the social sciences, scholars have been working to demonstrate that this quality exists both within people and within processes and tools. This project is most directly inspired by the vein of work descended from critical feminism in the eighties around scientific epistemologies. Specifically \citet{Haraway1988-nh} introduces the term "Situated Knowledges" to talk about the power of speaking 'from' a location, which allows others to speak on the same topic from another location without needing to directly contradict the first speaker. It is a practice that strives to go beyond the flaws of scientific epistemologies and speak about a better system. Haraway was responding to work from Sandra Harding, who later returned to the topic to outline what \citet{Harding1992-od} calls "Strong Objectivity." In conversation with the idea of situated knowledges, Harding critiques the traditional scientific practice of excising the background of the producers of scientific knowledge by pointing out that retaining how knowledge-finders are situated in the world adds to our understanding of their work. Out of the conversation between these two feminist thinkers has emerged a productive lineage of feminist thinkers who take the question of identifying how a 'knower' (either themselves or a third party) is situated in the world and how that situation has impacted the knowledge they produce. A modern vision of this analysis can be seen in \citet{Harraway1997-va}'s Modest\_Witness@Second\_Millennium.FemaleMan\copyright\_Meets\_OncoMouse\texttrademark, which breaks down the rhetoric and framing around genetics research fetishizes the particular element of the gene because it is useful to the industry and particular narratives. Haraway advocates a view of the gene that centers it in a wide web of biological mechanisms that interact and combine to create living creatures. Beyond individuals and rhetoric, the design and function of tools also encode a perspective and a view of the world. Some tools, like telescopes, do this in obvious ways. Others, like the tools used to analyze populations, contain intents that are less obvious. \citet{Subramaniam2014-wg} describes how the eugenic legacy of population level analysis makes some findings easier to see than others. How tools developed with the assumption that they would reveal differences between races are disappointingly easy to misuse, purposefully or accidentally, and create results that suggest racial difference. That much of the bias in a standpoint comes from what is hard to see or invisible with a particular tool and that this is only a flaw (for tools are meant to make select things more visible) when that tendency goes unacknowledged. That a tool contains a bias is desirable (what use is a telescope that does not magnify one area of the world?) and only becomes problematic when that bias is mistaken for the nature of the world.
+
+   \subsection*{Software Studies}
+
+   \epigraph{[S]haring produces its own kind of moral and technical order”}{\textit{Christopher Kelty \\ Two Bits: The Cultural Significance of Free Software p. 118}}
+
+   Software is a tool that emerges out of a sea of tools. The methods of its construction, verification, distribution and maintenance are varied. This variance of practice arises at least in part from the lack of universally agreed upon standards for the goals of software or the appropriate metrics for success \citep{Ensmenger2012-kz}. A diversity of practice does not create a homologous blend of cultures and practices. Instead, each software community has its own set of values and goals in addition to wider ethics that other projects and cultures share. Software Studies, broadly, attempts to connect the these hyper-local values that emerge from culture and circumstance to the technical and deterministic qualities of a particular piece of software or a particular piece of code. Works in the field often focus on a particular software community or a set of communities with shared interests. \citet{Kelty2008-jm}'s work focuses on highlighting common social structures among particular software communities that both enable and emerge from the environment of open source software. There is also work that describes "code/space": places where the fixed rules of code and the fuzzy rules of social understanding combine to create hybrid spaces \citep{Bridle2018-nd,Kitchin2011-af}. \citet{Bivens2017-tc} represents our final influence as she compares how social qualities emerge with underlying technical qualities. Are social limitations matched by technical limitations? How do these two qualities co-create one another? 
+
    \section*{Design}
    % Study	Design (1-2 pages)
+   This project will use sociological analysis to explore and highlight the standpoint of a piece of software. While I break down the particular qualities of the software package -  its goals, blind spots and distortions, I will also be looking at its source code to compare the technical system to the external interface. What aspects seem constrained by the technical tools used to structure the system? What qualities are unrelated to the technical details?
+
+   \subsection*{Fieldsite}
+   % Description and justification of data sources or fieldsites
+   \epigraph{That virtual worlds are places means they can be fieldsites;}{\textit{Tom Boellstorff \\ Two Bits: The Cultural Significance of Free Software p. 107}}
+
+   The EDEN software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response is the focus of this project. It is designed with a purpose and with the intent to save lives. It has good reason to simplify and focus perspectives of those using the tool and to problematize particular aspects of the situation while allowing others to remain innocuous. Its lack of commercial motivation will also likely simply the process of decomposing whom its perspectives benefit.
+
+   The software's homepage can be found here: \url{https://sahanafoundation.org/}. A demo version of it running on the Sahana foundation can be found here: \url{http://demo.sahanafoundation.org/eden/}. Its source code can be found here: \url{https://github.com/sahana/eden}
+
    \subsection*{Methods}
+   \subsubsection*{Phase One}
+   The first phase of this project will be a wide survey of literature. Focusing on Science, Technology and Society works that analyze the standpoint and biases of other technical tools and moving into analysis of disaster 
    The aim of this project is to put academic work in conversation with practical tools as well as put academic criticism in conversation with work to  transform the same tools. This will draw on Science, Technology and Society's tradition of Making and Doing as well as traditional methods for analysis and critique.
    % Description of methods
    A PDF of this document can be found at \url{https://github.com/aeturnum/masters_project/blob/master/full_proposal.pdf}.
 
    The \LaTeX source file can be found at \url{https://github.com/aeturnum/masters_project/blob/master/full_proposal.tex}.
-   \subsection*{Fieldsites}
-   % Description and justification of data sources or fieldsites
+   
+   \subsection*{Inspiration}
 
-   The EDEN software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response, appears to be an excellent fit for this project. It is designed with a purpose and with the intent to save lives. It has good reason to simplify and focus perspectives of those using the tool and to problematize particular aspects of the situation while allowing others to remain innocuous. Its lack of commercial motivation will also likely simply the process of decomposing whom its perspectives benefit.
-
-   The software's homepage can be found here: \url{https://sahanafoundation.org/}. A demo version of it running on the Sahana foundation can be found here: \url{http://demo.sahanafoundation.org/eden/}. Its source code can be found here: \url{https://github.com/sahana/eden}
    \subsection*{Research Questions}
    What ways of knowing and doing are assisted by the design of EDEN?
 
