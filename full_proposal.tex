@@ -34,8 +34,9 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
-% for cite title
-% \usepackage{biblatex}
+% glossary
+\usepackage[acronym]{glossaries}
+
 % fancy quotes
 \usepackage{epigraph}
 % For formatting of potential bibliography
@@ -44,7 +45,9 @@
 \usepackage{hyperref}
 %\usepackage[colorinlistoftodos]{todonotes}
 
-% \bibliography{full_proposal}
+\makenoidxglossaries
+
+\loadglsentries{glossary}
 
 \title{Mapping EDEN Proposal}
 \shorttitle{Final Masters Project Proposal}
@@ -64,16 +67,17 @@
    % A one line description of the project
    \subsection*{Background}
    % Background / context for project / articulation of contemporary problem being addressed
-   Much of the groundbreaking work in the social sciences can appear banal. When they articulated strong objectivity and situated knowledges \citet{Harding1992-od} and \citet{Haraway1993-kw} respectively were working to undo myths of scientific objectivity with the deeply mundane but somehow elusive truth that our human experience impacts human judgment and that scientists are also human.
+   % Much of the groundbreaking work in the social sciences can appear banal. When they articulated strong objectivity and situated knowledges \citet{Harding1992-od} and \citet{Haraway1993-kw} respectively were working to undo myths of scientific objectivity with the deeply mundane but somehow elusive truth that our human experience impacts human judgment and that scientists are also human.
 
-   Ideally, the goal of Science, Technology and Society is to do work that is fully engaged with the practical details of human experience and effort and uses that engagement to develop theoretical understandings that reveal new points of contact and analyses. \citet{Sismondo2008-xz} describes this ideal as an “engaged program” that seeks to use pertinent topics in theoretically interesting ways. This project attempts to realize these qualities by simultaneously applying theoretical critiques to a situated and particular software tool and modifying that tool in conversation with those critiques. The end goal is a process-object that exists both as a fully functional piece of software and a record of the progress towards analyzing and creating that software from an existing base. I chose this particular form because it draws from both the traditions of software development and Science, Technology and Society scholarship but sets neither above the other. An engaged product must strive to be fully available to more than just the scholars of the social sciences.
+   % Ideally, the goal of Science, Technology and Society is to do work that is fully engaged with the practical details of human experience and effort and uses that engagement to develop theoretical understandings that reveal new points of contact and analyses. \citet{Sismondo2008-xz} describes this ideal as an “engaged program” that seeks to use pertinent topics in theoretically interesting ways. This project attempts to realize these qualities by simultaneously applying theoretical critiques to a situated and particular software tool and modifying that tool in conversation with those critiques. The end goal is a process-object that exists both as a fully functional piece of software and a record of the progress towards analyzing and creating that software from an existing base. I chose this particular form because it draws from both the traditions of software development and Science, Technology and Society scholarship but sets neither above the other. An engaged product must strive to be fully available to more than just the scholars of the social sciences.
    \subsection*{Merits}
    % 2-3 intellectual merits (informs research questions)
-   Primarily, this project grew out of a sense of the disconnect between the making and doing of Science, Technology and Society and the making and doing of engineering. I was inspired by the work of feminist scientists (primarily but not exclusively \citet{Roy2018-ma} and \citet{Subramaniam2014-wg}) in working to learn more through their combination of the scientific method with feminist critique. My project is not one centered on feminist critique, but within my professional background of craft Computer Science \citep[see][]{Ensmenger2012-kz}. In \citet[p. 63]{Haraway2016-nc} Haraway says "a model is worked, and it does work." I want to work the models of critical analsis and software development and see what work I can do through working them.
-   Another focus of this project will EDEN's view of the world. In Modest\_Witness@Second\_Millennium.FemaleMan\copyright\_Meets\_OncoMouse\texttrademark Haraway works to describe the world as seen through the advertisements of genetic technologies companies. In the same tradition \citet{Subramaniam2014-wg} shows how the eugenic roots of biometric tools influence the kinds of results they can discover. EDEN did not spring from nowhere and the traditions it draws on will bias the views it renders of the world. I will search for the standpoint \citet{Haraway1993-kw} EDEN views the world from within.
+   % Primarily, this project grew out of a sense of the disconnect between the making and doing of Science, Technology and Society and the making and doing of engineering. I was inspired by the work of feminist scientists (primarily but not exclusively \citet{Roy2018-ma} and \citet{Subramaniam2014-wg}) in working to learn more through their combination of the scientific method with feminist critique. My project is not one centered on feminist critique, but within my professional background of craft Computer Science \citep[see][]{Ensmenger2012-kz}. In \citet[p. 63]{Haraway2016-nc} Haraway says "a model is worked, and it does work." I want to work the models of critical analsis and software development and see what work I can do through working them.
+   % Another focus of this project will EDEN's view of the world. In Modest\_Witness@Second\_Millennium.FemaleMan\copyright\_Meets\_OncoMouse\texttrademark Haraway works to describe the world as seen through the advertisements of genetic technologies companies. In the same tradition \citet{Subramaniam2014-wg} shows how the eugenic roots of biometric tools influence the kinds of results they can discover. EDEN did not spring from nowhere and the traditions it draws on will bias the views it renders of the world. I will search for the standpoint \citet{Haraway1993-kw} EDEN views the world from within.
+   \pagebreak
    \section*{Background}
    % Background	description	of	problem	and	context (1 page)
-   Sociology, Media Studies and Science, Technology and Society have a long history of critiquing the artifacts and processes produced by technology companies \citep{Cheney-Lippold2018-lw,Dean2010-lk,Harraway1997-va}. 
+   % Sociology, Media Studies and Science, Technology and Society have a long history of critiquing the artifacts and processes produced by technology companies \citep{Cheney-Lippold2018-lw,Dean2010-lk,Harraway1997-va}. 
 
    \section*{Intellectual Heritage}
    % Intellectual	Merits (1-2 pages)
@@ -98,9 +102,13 @@
    % Description and justification of data sources or fieldsites
    \epigraph{That virtual worlds are places means they can be fieldsites;}{\textit{Tom Boellstorff \\ Two Bits: The Cultural Significance of Free Software p. 107}}
 
-   The EDEN software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response is the focus of this project. It is designed with a purpose and with the intent to save lives. It has good reason to simplify and focus perspectives of those using the tool and to problematize particular aspects of the situation while allowing others to remain innocuous. Its lack of commercial motivation will also likely simply the process of decomposing whom its perspectives benefit.
+   The EDEN software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response is the focus of this project. It was initially developed and deployed by an alliance of companies in the Sri Lankan \acrfull{ict} sector in response to the Indian Ocean Earthquake \& Tsunami. In 2009 development was transferred to the Sahana Foundation, an American non-profit. The Foundation lists its mission as "Saving lives through information management solutions." They describe their software as part of a wave of change in how humanitarian responses can use \acrshort{ict} to improve the quality of their response. They situate themselves in the middle of other \acrfull{foss} \acrshort{ict} projects such as \Gls{OpenStreetMap} which focus on community engagement and incorporating user data into digital platforms. EDEN has been used in response to a number of disasters in the developing world as well as ongoing supply management programs in the developed world \citep{Sahana_Foundation_undated-hl}.
 
-   The software's homepage can be found here: \url{https://sahanafoundation.org/}. A demo version of it running on the Sahana foundation can be found here: \url{http://demo.sahanafoundation.org/eden/}. Its source code can be found here: \url{https://github.com/sahana/eden}
+   The software's homepage can be found here: \url{https://sahanafoundation.org/}. \linebreak 
+   A demo version of it running on the Sahana Foundation can be found here: \url{http://demo.sahanafoundation.org/eden/}. \linebreak 
+   EDEN's source code can be found here: \url{https://github.com/sahana/eden} \linebreak 
+
+   EDEN's identity as a piece of software is enmeshed in an \acrshort{foss} ecosystem. It is written in \Gls{python}, an open source language and uses the \Gls{python} \gls{web framework} web2py as the foundation its functionality is built on. Its functionality is broken up into many different web modules, which are organized around nodes of shared functionality that allow the individual modules to communicate and avoid duplicating functionality. EDEN generally uses other \acrshort{foss} tools wherever possible: both of its database options (\Gls{MySQL} and \Gls{PostgreSQL}) are \acrshort{foss} databases that are also available for free. This use of \arclong{foss} technologies helps ensure that users pay minimal fees to use EDEN, as it and all of its resources are available free of charge. However, because \arcshort{foss} products are developed with many audiences in mind, their approach to problems is general and those projects will make governance decisions that may force you to leave them.
 
    \subsection*{Methods}
    \subsubsection*{Phase One}
@@ -153,77 +161,11 @@
    % Output (e.g., conference presentations, results to informants, white paper, thesis, etc.)
    \subsection*{Goals}
    % How it will help us understand X (and Y)
-   \clearpage
-   \section{Suggested Bibliography}
 
-   % Much thanks to https://tex.stackexchange.com/questions/99344/indent-text-after-line-1
-   \begin{itemize}[label={},itemindent=-2em,leftmargin=2em]
-   \item Ananny, M., \& Crawford, K. (2018). Seeing without knowing: Limitations of the transparency ideal and its application to algorithmic accountability. New Media \& Society, 20(3), 973–989.
+   \newpage
+   \printnoidxglossaries
 
-   \item Barocas, S., \& Boyd, D. (2017). Engaging the Ethics of Data Science in Practice. Communications of the ACM, 60(11), 23–25.
-
-   \item Benjamin, R. (2014). Race for cures: Rethinking the racial logics of “trust”in biomedicine. Sociology Compass, 8(6), 755–769.
-
-   \item Boellstorff, T. (2016). For Whom the Ontology Turns: Theorizing the Digital Real. Current Anthropology, 57(4), 387–407.
-
-   \item Bowker, G. C., \& Star, S. L. (2000). Sorting Things Out: Classification and Its Consequences. MIT Press.
-
-   \item Cheney-Lippold, J. (2018). We Are Data: Algorithms and the Making of Our Digital Selves. NYU Press.
-
-   \item Cooke, N. A., Sweeney, M. E., \& Noble, S. U. (2016). Social Justice as Topic and Tool: An Attempt to Transform an LIS Curriculum and Culture. The Library Quarterly, 86(1), 107–124.
-
-   \item Crawford, K., \& Finn, M. (2015). The limits of crisis data: analytical and ethical challenges of using social and mobile data to understand disasters. GeoJournal, 80(4), 491–502.
-
-   \item Deleuze, G. (1992). Postscript on the Societies of Control. October, 59, 3–7.
-
-   \item Dourish, P., Anderson, K., \& Nafus, D. (2007). Cultural mobilities: Diversity and agency in urban computing. IFIP Conference on Human-Computer. Retrieved from https://link.springer.com/chapter/10.1007/978-3-540-74800-7\_8
-
-   \item Eckhouse, L., Lum, K., Conti-Cook, C., \& Ciccolini, J. (2019). Layers of Bias: A Unified Approach for Understanding Problems With Risk Assessment. Criminal Justice and Behavior, 46(2), 185–209.
-
-   \item Elish, M. C., \& Boyd, D. (2018). Situating methods in the magic of Big Data and AI. Communication Monographs, Vol. 85, pp. 57–80. https://doi.org/10.1080/03637751.2017.1375130
-
-   \item Eubanks, V. (2018). Automating Inequality: How High-Tech Tools Profile, Police, and Punish the Poor. St. Martin’s Press.
-
-   \item Gabriella Coleman, E. (2012). Coding Freedom: The Ethics and Aesthetics of Hacking (pp. 69–70). Princeton University Press.
-
-   \item Gangadharan, S. P. (2017). The downside of digital inclusion: Expectations and experiences of privacy and surveillance among marginal Internet users. New Media \& Society, 19(4), 597–615.
-
-   \item Gillespie, T. (2018). Custodians of the Internet: Platforms, Content Moderation, and the Hidden Decisions That Shape Social Media. Yale University Press.
-
-   \item Haraway, D. (1988). Situated Knowledges: The Science Question in Feminism and the Privilege of Partial Perspective. Feminist Studies: FS, 14(3), 575–599.
-
-   \item Haraway, D. J. (2016). Staying with the Trouble: Making Kin in the Chthulucene. Duke University Press.
-
-   \item Harding, S. (1992). Rethinking standpoint epistemology: What is“ strong objectivity?” The Centennial Review, 36(3), 437–470.
-
-   \item Harraway, D. (1997). Modest\_Witness@Second\_Millennium.FemaleMan\copyright\_Meets\_OncoMouse\texttrademark. Routledge New York.
-
-   \item Howard, P. N., Anderson, K., \& Busch, L. (2009). Sizing up information societies: Toward a better metric for the cultures of ICT adoption. Information. An International Interdisciplinary Journal. Retrieved from https://www.tandfonline.com/doi/abs/10.1080/01972240902848948
-
-   \item Kelty, C. M. (2008). Two Bits: The Cultural Significance of Free Software. Duke University Press.
-
-   \item Kitchin, R., \& Dodge, M. (2011). Code/space: Software and Everyday Life. MIT Press.
-
-   \item Knowles, S. G. (2014). Learning from Disaster?: The History of Technology and the Future of Disaster Research. Technology and Culture, 55(4), 773–784.
-
-   \item Latonero, M., \& Kift, P. (2018). On Digital Passages and Borders: Refugees and the New Infrastructure for Movement and Control. Social Media + Society, 4(1), 2056305118764432.
-
-   \item Mackenzie, A. (2010). Wirelessness: Radical Empiricism in Network Cultures. MIT Press.
-
-   \item Nafus, D. (2014). Stuck data, dead data, and disloyal data: the stops and starts in making numbers into social practices. Distinktion: Scandinavian Journal of Social Theory. Retrieved from https://www.tandfonline.com/doi/abs/10.1080/1600910X.2014.920266
-
-   \item Noble, S. U. (2017). Google and the misinformed public. The Chronicle of Higher Education.
-
-   \item Ponte, A. (2014). The House of Light and Entropy. Architectural Association.
-
-   \item Roy, D. (2018). Molecular Feminisms: Biology, Becomings, and Life in the Lab. University of Washington Press.
-
-   \item Star, S. L. (ed ). (1995). The cultures of computing. Retrieved from http://agris.fao.org/agris-search/search.do?recordID=XF2015029404
-
-   \item Wolske, M., Williams, N. S., Noble, S., Johnson, E. O., \& Duple, R. Y. (2010). Effective ICT use for Social Inclusion. Retrieved from http://www.ideals.illinois.edu/handle/2142/14952
-
-   \end{itemize}
-
+   \newpage
    \setlength{\parindent}{4em}
    \bibliography{full_proposal}
 
