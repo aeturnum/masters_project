@@ -34,6 +34,8 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
+% set single spacing
+\usepackage{setspace}
 % glossary
 \usepackage[acronym]{glossaries}
 % fancy quotes
@@ -46,17 +48,38 @@
 
 \makenoidxglossaries
 
+\singlespacing
+
 \loadglsentries{glossary}
 
 \title{Mapping EDEN: Revealing the territory created by society and software}
 \shorttitle{Mapping EDEN}
 \author{Daniel "Drex" Drexler}
 \affiliation{Center for Science, Technology and Society at Drexel University}
-\date{August 2019}
+\date{October 2019}
 \begin{document}
    \maketitle
    % This document outline based on the suggested outline in the Center for STS Student Handbook:
    % https://drexel.edu/~/media/Files/sts/2015-graduate-student-handbook.ashx?la=en
+   %
+   % The October revision to this document is based on a Thesis proposal that my Graduate Advisor
+   % Vincent Duclos suggested as a good example: The one written by Jim Gall. Though his thesis 
+   % porposal is not included here, an outline is reproduced below:
+   % 
+   % Overview: sucscinct, opinionated description of the project and the problem it is looking to 
+   %    address. Ending with a few sentances on literatures engaged and research questions
+   %
+   % Conceptual Framework: Citation-heavy section citing the specific theories you expect to be 
+   %    using in your work, continue to describe the situation as it is useful 
+   %
+   % Methods & Timeline: How you will do the work and the time in which you suggest to do it.
+   %
+   % Perparation of Researcher: Brief explanation about why you would be good at this and any previous
+   %    experiences that are relevant to this work
+   %
+   % Preliminary List of Sources: Sources that are expected to be used in the project including all 
+   %    sources cited in the proposal.
+   % 
    \section*{Overview}
    % Overview (0.5-1 page)
    % A summary of other sections of the proposal
@@ -70,7 +93,7 @@
    % 2-3 intellectual merits (informs research questions)
    This project begins from a place inspired by feminist thinkings' Situated Knowledges and proceeds from there. It hopes to highlight the perspectives contained within a particular technical tool, the qualities of those perspectives, who those perspectives are helpful and hurtful to. It also hopes to closely examine the quality of the tool and what things emerge particularly easily from that tool as well as what is unusually well hidden.
 
-   It will show how the particular source code of the \acrshort{EDEN} project co-creates its shadow in social space. How the concerns of the technical and the constraints of the tools that are used to create the tool drive the qualities that emerge from the techne ecosystem. 
+   It will show how the particular source code of the \acrshort{eden} project co-creates its shadow in social space. How the concerns of the technical and the constraints of the tools that are used to create the tool drive the qualities that emerge from the techne ecosystem. 
    \pagebreak
    \section*{Conceptual Framework}
    % Background	description	of	problem	and	context (1 page)
@@ -96,22 +119,22 @@
    % Description and justification of data sources or fieldsites
    \epigraph{That virtual worlds are places means they can be fieldsites;}{\textit{Tom Boellstorff \\ Two Bits: The Cultural Significance of Free Software p. 107}}
 
-   The \acrfull{EDEN} software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response is the focus of this project. It was initially developed and deployed by an alliance of companies in the Sri Lankan \acrfull{ict} sector in response to the Indian Ocean Earthquake \& Tsunami. In 2009 development was transferred to the Sahana Foundation, an American non-profit. The Foundation lists its mission as "Saving lives through information management solutions." They describe their software as part of a wave of change in how humanitarian responses can use \acrshort{ict} to improve the quality of their response. They situate themselves in the middle of other \acrfull{foss} \acrshort{ict} projects such as \Gls{OpenStreetMap} which focus on community engagement and incorporating user data into digital platforms. \acrshort{EDEN} has been used in response to a number of disasters in the developing world as well as ongoing supply management programs in the developed world \citep{Sahana_Foundation_undated-hl}.
+   The \acrfull{EDEN} software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response is the focus of this project. It was initially developed and deployed by an alliance of companies in the Sri Lankan \acrfull{ict} sector in response to the Indian Ocean Earthquake \& Tsunami. In 2009 development was transferred to the Sahana Foundation, an American non-profit. The Foundation lists its mission as "Saving lives through information management solutions." They describe their software as part of a wave of change in how humanitarian responses can use \acrshort{ict} to improve the quality of their response. They situate themselves in the middle of other \acrfull{foss} \acrshort{ict} projects such as \Gls{OpenStreetMap} which focus on community engagement and incorporating user data into digital platforms. \acrshort{eden} has been used in response to a number of disasters in the developing world as well as ongoing supply management programs in the developed world \citep{Sahana_Foundation_undated-hl}.
 
    The software's homepage can be found here: \url{https://sahanafoundation.org/}. \linebreak 
-   A demo version of it running on the Sahana Foundation can be found here: \url{http://demo.sahanafoundation.org/\acrshort{EDEN}/}. \linebreak 
-   \acrshort{EDEN}'s source code can be found here: \url{https://github.com/sahana/\acrshort{EDEN}} \linebreak 
+   A demo version of it running on the Sahana Foundation can be found here: \url{http://demo.sahanafoundation.org/\acrshort{eden}/}. \linebreak 
+   \acrshort{eden}'s source code can be found here: \url{https://github.com/sahana/\acrshort{eden}} \linebreak 
 
-   EDEN's identity as a piece of software is enmeshed in an \acrshort{foss} ecosystem. It is written in \Gls{python}, an open source language and uses the \Gls{python} \gls{web framework} web2py as the foundation its functionality is built on. Its functionality is broken up into many different web modules, which are organized around nodes of shared functionality that allow the individual modules to communicate and avoid duplicating functionality. \acrshort{EDEN} generally uses other \acrshort{foss} tools wherever possible: both of its database options (\Gls{MySQL} and \Gls{PostgreSQL}) are \acrshort{foss} databases that are also available for free. This use of \acrlong{foss} technologies helps ensure that users pay minimal fees to use \acrshort{EDEN}, as it and all of its resources are available free of charge. However, because \acrshort{foss} products are developed with many audiences in mind, their approach to problems is general and those projects will make governance decisions that may force you to leave them.
+   EDEN's identity as a piece of software is enmeshed in an \acrshort{foss} ecosystem. It is written in \Gls{python}, an open source language and uses the \Gls{python} \gls{web framework} web2py as the foundation its functionality is built on. Its functionality is broken up into many different web modules, which are organized around nodes of shared functionality that allow the individual modules to communicate and avoid duplicating functionality. \acrshort{eden} generally uses other \acrshort{foss} tools wherever possible: both of its database options (\Gls{MySQL} and \Gls{PostgreSQL}) are \acrshort{foss} databases that are also available for free. This use of \acrlong{foss} technologies helps ensure that users pay minimal fees to use \acrshort{eden}, as it and all of its resources are available free of charge. However, because \acrshort{foss} products are developed with many audiences in mind, their approach to problems is general and those projects will make governance decisions that may force you to leave them.
 
    \subsection*{The Project}
    \subsubsection*{Phase One}
    The first phase of this project will be a wide survey of literature. Focusing on Science, Technology and Society works that analyze the standpoint and biases of other technical tools and moving into analysis of disaster 
    The aim of this project is to put academic work in conversation with practical tools as well as put academic criticism in conversation with work to transform the same tools. This will build a set of analytical frames that will be essential for the second phase of the project.  
    \subsubsection*{Phase Two}
-   The second phase will be be a co-constitutive process between social critique and technical analysis. I'll begin by examining a standpoint that \acrshort{EDEN} adopts, writing about what that standpoint intends to do and what side effects it might have. Those outcomes will be compared to and put in conversation with, the technical systems used to realize the standpoint. Over time, a paper that holds the technical choices, social goals and impacts, blind spots and clarifying qualities of \acrshort{EDEN} will emerge from this work. Some standpoints will prove uninteresting and some will be difficult to match with sociological analysis. 
+   The second phase will be be a co-constitutive process between social critique and technical analysis. I'll begin by examining a standpoint that \acrshort{eden} adopts, writing about what that standpoint intends to do and what side effects it might have. Those outcomes will be compared to and put in conversation with, the technical systems used to realize the standpoint. Over time, a paper that holds the technical choices, social goals and impacts, blind spots and clarifying qualities of \acrshort{eden} will emerge from this work. Some standpoints will prove uninteresting and some will be difficult to match with sociological analysis. 
 
-   As I find and characterize these points of social-technical tension, they will guide modifications to the \acrshort{EDEN} software package itself. These modifications might attempt to address weaknesses in the particular standpoint the software addresses. They might be used to 'queer' the original intent of the \acrshort{EDEN} module being modified. Such 'queered' modules might highlight how narrowly \acrshort{EDEN} sees the world, how much about lived experience is irrelevant to \acrshort{EDEN}, or highlight conditions that would make it impossible to continue to use \acrshort{EDEN} and how unrelated they are to the circumstances that would lead people to use \acrshort{EDEN}. Some number of these modifications will be made to the \acrshort{EDEN} source code, but some more may highlight the technically unavailable resources that might enable software and society to interact differently.
+   As I find and characterize these points of social-technical tension, they will guide modifications to the \acrshort{eden} software package itself. These modifications might attempt to address weaknesses in the particular standpoint the software addresses. They might be used to 'queer' the original intent of the \acrshort{eden} module being modified. Such 'queered' modules might highlight how narrowly \acrshort{eden} sees the world, how much about lived experience is irrelevant to \acrshort{eden}, or highlight conditions that would make it impossible to continue to use \acrshort{eden} and how unrelated they are to the circumstances that would lead people to use \acrshort{eden}. Some number of these modifications will be made to the \acrshort{eden} source code, but some more may highlight the technically unavailable resources that might enable software and society to interact differently.
 
    % Description of methods
    \subsection*{Inspiration}
@@ -120,13 +143,13 @@
    The praxis of this project is heavily inspired by Rena Bivens' stellar work that smashes together the technical realities of a product with the social understanding of it to problematize it. Its perspective is strongly influenced by Donna Haraway's attention to the specific qualities  that structure spaces where sociological work happens. It is hoping to recall Banu Subramaniam's powerful tools for thinking through how and why a particular thing impacts the world in a particular way.
 
    \subsection*{Research Questions}
-   What ways of knowing and doing are assisted with the design of \acrshort{EDEN}?
+   What ways of knowing and doing are assisted with the design of \acrshort{eden}?
 
-   What epistemological traditions are attended to by \acrshort{EDEN}'s methods for storing data? 
+   What epistemological traditions are attended to by \acrshort{eden}'s methods for storing data? 
 
-   How do the social qualities of the social spaces within \acrshort{EDEN} emerge from within its data technologies?
+   How do the social qualities of the social spaces within \acrshort{eden} emerge from within its data technologies?
 
-   What qualities of \acrshort{EDEN} are co-creations between social space and the technical tools used to constitute the software?
+   What qualities of \acrshort{eden} are co-creations between social space and the technical tools used to constitute the software?
    \subsection*{Schedule}
    % Schedule of work
    % Much thanks to: 
@@ -139,13 +162,13 @@
    Phase & Quarter & Quality & Time Allocation & Goal                         \\ \hline
    One   & Fall    & Reading & 80\%            & 800 pages read with notes    \\ \cline{3-5} 
          &         & Writing & 10\%            & Notes and planning documents \\ \cline{3-5} 
-         &         & Coding  & 10\%            & Notes on \acrshort{EDEN} program structure   \\ \hline 
+         &         & Coding  & 10\%            & Notes on \acrshort{eden} program structure   \\ \hline 
    Two   & Winter  & Reading & 40\%            & Final selection of bibliography with additions based on notes and readings.   \\ \cline{3-5} 
          &         & Writing & 30\%            & Outline for final paper with ~20\% of content finished \\ \cline{3-5} 
          &         & Coding  & 30\%            & Rough modifications completed, but in need of polish  \\ \cline{2-5}
          & Spring  & Reading & 10\%            & Unexpected additions to literature and gathering specific quotes from previously completed elements.   \\ \cline{3-5} 
          &         & Writing & 40\%            & Final paper \\ \cline{3-5}
-         &         & Coding  & 40\%            & Full branch of \acrshort{EDEN} project with documentation and demonstration server. \\ \hline
+         &         & Coding  & 40\%            & Full branch of \acrshort{eden} project with documentation and demonstration server. \\ \hline
    \end{tabular}
    \end{center}
    \newpage
@@ -166,7 +189,7 @@
    The paper will provide formal analysis of the original form of the software being considered. It will engage with social science literatures from traditions such as feminist critiques of technologies, critiques of algorithmic technologies, critiques of (often but not exclusively scientific) epistemological processes and software studies. Its discussion and conclusion will describe the particular view the software renders of the world and also argue how alterations to that piece of software might change its purpose, its views or its impact.
 
    \subsubsection*{New EDEN}
-   The software artifact (with the tongue-in-cheek name of New \acrshort{EDEN}) will be a modified version of the selected software whose modifications will be driven by the suggested alterations in the paper. These two software products (modified and unmodified) can serve to contextualize the paper and bound its theoretical claims to what is pragmatically possible for a software developer.
+   The software artifact (with the tongue-in-cheek name of New \acrshort{eden}) will be a modified version of the selected software whose modifications will be driven by the suggested alterations in the paper. These two software products (modified and unmodified) can serve to contextualize the paper and bound its theoretical claims to what is pragmatically possible for a software developer.
 
    \subsection*{Goals}
    % How it will help us understand X (and Y)
