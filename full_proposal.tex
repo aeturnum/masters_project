@@ -83,33 +83,50 @@
    \section*{Overview}
    % Overview (0.5-1 page)
    % A summary of other sections of the proposal
-   \subsection*{Description}
-   Mapping EDEN is an experiment in wedding sociological critique with a craft-tradition of Computer Science seeking artifacts and ways of making and doing that suggest fresh approaches to multiple disciplines. It comes from a sense that we cannot sufficiently articulate why software has such an substantial impact on our world and why our responses to software are so insufficient in the face of the social footprint of the impact of software. Software is made by people who live and breath in the same world that we live in. We must struggle to find the aspect within software development that makes it so disruptive to our social worlds. Perhaps this project can help.
-   % A one line description of the project
-   \subsection*{Background}
-   % Background / context for project / articulation of contemporary problem being addressed
-   This project is inspired by a personal feeling that there is a wide gap between the practical realities of creating software and the impact of software on our shared social world. 
-   \subsection*{Merits}
-   % 2-3 intellectual merits (informs research questions)
-   This project begins from a place inspired by feminist thinkings' Situated Knowledges and proceeds from there. It hopes to highlight the perspectives contained within a particular technical tool, the qualities of those perspectives, who those perspectives are helpful and hurtful to. It also hopes to closely examine the quality of the tool and what things emerge particularly easily from that tool as well as what is unusually well hidden.
+   \epigraph{[T]he "writing of technology" is by by no means universal; the opaque and stubborn places do not lie simply beneath technology, but are wrapped around and in it}{\textit{Adrian Mackenzie \\ Cutting Code: Software and Sociality p. 181}}
 
-   It will show how the particular source code of the \acrshort{eden} project co-creates its shadow in social space. How the concerns of the technical and the constraints of the tools that are used to create the tool drive the qualities that emerge from the techne ecosystem. 
-   \pagebreak
+   This project will examine the \acrfull{eden} software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response. The Foundation lists its mission as "Saving lives through information management solutions." They see their software as part of a wave of change in how humanitarian responses can use \acrshort{ict} to improve the quality of their response. The Sahana foundation would like to be seen as peers to other \acrfull{foss} \acrshort{ict} projects such as \Gls{OpenStreetMap} which focus on "community engagement" and incorporating user data into digital platforms \citep{Sahana_Foundation_undated-hl}. \acrshort{eden} is also part of the \acrfull{ict4d} movement - seeking to turn technology to humanitarian ends.  
+
+   Both \acrshort{ict4d} and "community engagement" applications run the risk of benefiting users only in ways that also can benefit the makers of the technology. They can also inadvertently foist western ideas about appropriate action and response onto groups that have no other tool to solve their particular problem. Grappling with these pitfalls will be essential to spreading the bounties of development widely.
+
+   This project will look at \acrshort{eden} from both the outside and the inside. It will examine the ways in which \acrshort{eden} relates to its users, its referents and to the digital services it uses. How do those relationships bias or direct interactions? What is easy to see from \acrshort{eden}, what is difficult? In short, from what standpoints does \acrshort{eden} view the world? 
+   \medskip
+   The second phase will move from a critical to a creative form of engagement. Can the standpoints encoded in \acrshort{eden} be changed? How are they driven by the technical constraints of the system? How does working with the code and on the code change how the code can be understood? How can \acrshort{eden} best be changed in response to the standpoints I discover?
+   \medskip
+   This project proceeds from a Haraway-driven understanding of standpoint theory into a software-studies informed engagement with an a particular piece of software made for a particular purpose. It draws inspiration from the making and doing traditions of Science, Technology \& Society and the craft tradition of software engineering.
+   \par
+   \begin{flushleft}
+   I am asking four questions:
+   \end{flushleft}
+   \begin{enumerate}
+     \item What standpoints can be find within \acrshort{eden} by examining how it renders the world?
+
+     \item How are these standpoints influenced by \acrshort{eden}'s constitutive technologies?
+
+     \item Can these standpoints be changed or "queer"d through changing the code of \acrshort{eden}?
+
+     \item Is the cycle of sociological analysis followed by technical modification useful and generative?
+   \end{enumerate}
+
+   % Fragment from the intro that I might use again
+   % This project is an attempt to bring out into the light the unseen and unacknowledged structuring elements of technological systems. Michael de Certeau called these the "opaque and stubborn places" and that lie "underneath" technology. Adrian Mackenzie, in the effort to describe how software is made, found them not just underneath, but also in and around software \citep[p. 181]{Mackenzie2006-hb}. Mackenzie writes about how software less of a thing and more of a process-product that constantly mediates relationships and agency between people and other process-products. These relationships often pass through unacknowledged shifts in agency, power and/or perspective.
+
+   
+   % \pagebreak
    \section*{Conceptual Framework}
    % Background	description	of	problem	and	context (1 page)
    % Intellectual	Merits (1-2 pages)
    % 2 to 3 scholarly conversations your research contributes to
-   \subsection*{Situated Knowledges}
-
    \epigraph{A model is worked, and it does work}{\textit{Donna Haraway \\ Staying with the Trouble: Making Kin in the Chthulucene p. 63}}
 
-   Our judgments are influenced by our experiences. This basic human quality is at the center how we understand others and how we learn, among other things. Within the social sciences, scholars have been working to demonstrate that this quality exists both within people and within processes and tools. This project is most directly inspired by the vein of work descended from critical feminism in the eighties around scientific epistemologies. Specifically \citet{Haraway1988-nh} introduces the term "Situated Knowledges" to talk about the power of speaking 'from' a location, which allows others to speak on the same topic from another location without needing to directly contradict the first speaker. It is a practice that strives to go beyond the flaws of scientific epistemologies and speak about a better system. Haraway was responding to work from Sandra Harding, who later returned to the topic to outline what \citet{Harding1992-od} calls "Strong Objectivity." In conversation with the idea of situated knowledges, Harding critiques the traditional scientific practice of excising the background of the producers of scientific knowledge by pointing out that retaining how knowledge-finders are situated in the world adds to our understanding of their work. Out of the conversation between these two feminist thinkers has emerged a productive lineage of feminist thinkers who take the question of identifying how a 'knower' (either themselves or a third party) is situated in the world and how that situation has impacted the knowledge they produce. A modern vision of this analysis can be seen in \citet{Harraway1997-va}'s Modest\_Witness@Second\_Millennium.FemaleMan\copyright\_Meets\_OncoMouse\texttrademark, which breaks down the rhetoric and framing around genetics research fetishizes the particular element of the gene because it is useful to the industry and particular narratives. Haraway advocates a view of the gene that centers it in a wide web of biological mechanisms that interact and combine to create living creatures. Beyond individuals and rhetoric, the design and function of tools also encode a perspective and a view of the world. Some tools, like telescopes, do this in obvious ways. Others, like the tools used to analyze populations, contain intents that are less obvious. \citet{Subramaniam2014-wg} describes how the eugenic legacy of population level analysis makes some findings easier to see than others. How tools developed with the assumption that they would reveal differences between races are disappointingly easy to misuse, purposefully or accidentally, and create results that suggest racial difference. That much of the bias in a standpoint comes from what is hard to see or invisible with a particular tool and that this is only a flaw (for tools are meant to make select things more visible) when that tendency goes unacknowledged. That a tool contains a bias is desirable (what use is a telescope that does not magnify one area of the world?) and only becomes problematic when that bias is mistaken for the nature of the world.
+   In his famous work on Pasteur, \citet{Latour1983-bs} describes how Pasteur's work was as much about changing the world to be more lab-like as it was about the products of the lab. Science appears magic because it distracts us from the work we do to make it possible to use its products. This focus on the perspective of engagement and knowing is what \citet{Haraway1988-nh} calls "Situated Knowledges." The term evokes the idea of speaking 'from' a location, with a particular view of the world. Others may speak about the same thing from other places and everyone may correctly describe their view. Sandra \citet{Harding1992-od}, another feminist epistemological thinker, later returned scientific epistemology to define "Strong Objectivity." Harding critiques returns to the traditional scientific epistemological practice Latour described of deemphasizing the social changes needed to use science. She points out that hiding this information leaves us knowing less. That a stronger practice would be to engage directly with the social changes we need to use science.
+   \medskip
+   Further works have expanded how knowing can be situated or encoded into social-material constructs. \citet{Harraway1997-va} returns to the subject to illustrate how the construct of "the gene" is encodes views from the biotech industry. Like Pasteur, the industry has constructed "the gene," as something that can only be seen through their expensive methods. Where Haraway was writing about an emerging technology, \citet{Subramaniam2014-wg} writes about the forgotten perspectives of tools. She describes how the eugenic legacy of population level analysis tools makes those tools better at seeing certain kinds of differences. The danger in a tool whose biases are hidden are that we miss its finger on the scale. We build tools to show us the world from a particular perspective, but we must interrogate for what purposes that perspective was shaped.
 
-   \subsection*{Software Studies}
 
-   \epigraph{[S]haring produces its own kind of moral and technical order”}{\textit{Christopher Kelty \\ Two Bits: The Cultural Significance of Free Software p. 118}}
+   % \epigraph{[S]haring produces its own kind of moral and technical order”}{\textit{Christopher Kelty \\ Two Bits: The Cultural Significance of Free Software p. 118}}
 
-   Software is a tool that emerges out of a sea of tools. The methods of its construction, verification, distribution and maintenance are varied. This variance of practice arises at least in part from the lack of universally agreed upon standards for the goals of software or the appropriate metrics for success \citep{Ensmenger2012-kz}. A diversity of practice does not create a homologous blend of cultures and practices. Instead, each software community has its own set of values and goals in addition to wider ethics that other projects and cultures share. Software Studies, broadly, attempts to connect the these hyper-local values that emerge from culture and circumstance to the technical and deterministic qualities of a particular piece of software or a particular piece of code. Works in the field often focus on a particular software community or a set of communities with shared interests. \citet{Kelty2008-jm}'s work focuses on highlighting common social structures among particular software communities that both enable and emerge from the environment of open source software. There is also work that describes "code/space": places where the fixed rules of code and the fuzzy rules of social understanding combine to create hybrid spaces \citep{Bridle2018-nd,Kitchin2011-af}. \citet{Bivens2017-tc} represents our final influence as she compares how social qualities emerge with underlying technical qualities. Are social limitations matched by technical limitations? How do these two qualities co-create one another? 
+   \citet{Mackenzie2006-hb} describes software not as a tool, but as a process-tool, whose current state is always inescapably intertwined with socially understood future expectations about its purposes and needs. The sociality of software, as Mackenzie calls it, reflects that software makers are unusually aware of the encoding of opinions in tools. The field has always been home to a huge diversities of practices all of which are justified as being, in some way, the 'right' way to make software \citep{Ensmenger2012-kz}. A diversity of practice does not create a homologous blend of cultures and practices. Instead, each software community has its own set of values and goals in addition to wider ethics that other projects and cultures share. Scholars have engaged at different levels of scale to understand the impacts of software. \citet{Kelty2008-jm} looks at the qualities of the communities around open source projects. \citet{Bivens2017-tc} describes how the demands of Facebook's tools and the changing social understanding around gender have constrained how they represent gender in their system. \citep{Kitchin2011-af} describe how software and social convention have begun to co-determine the rules of how places work, an idea they call "code/space." Software is not a thing that is ever actually finished. It is a continuing process which, through its periodic production of artifacts, is co-constitutive of the space(s) it manifests within. To understand how it changes the things it interacts with requires both examining the representational choices made by the software and the technical constraints of the systems it relies on.
 
    \section*{Design}
    % Study	Design (1-2 pages)
@@ -119,7 +136,10 @@
    % Description and justification of data sources or fieldsites
    \epigraph{That virtual worlds are places means they can be fieldsites;}{\textit{Tom Boellstorff \\ Two Bits: The Cultural Significance of Free Software p. 107}}
 
-   The \acrfull{EDEN} software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response is the focus of this project. It was initially developed and deployed by an alliance of companies in the Sri Lankan \acrfull{ict} sector in response to the Indian Ocean Earthquake \& Tsunami. In 2009 development was transferred to the Sahana Foundation, an American non-profit. The Foundation lists its mission as "Saving lives through information management solutions." They describe their software as part of a wave of change in how humanitarian responses can use \acrshort{ict} to improve the quality of their response. They situate themselves in the middle of other \acrfull{foss} \acrshort{ict} projects such as \Gls{OpenStreetMap} which focus on community engagement and incorporating user data into digital platforms. \acrshort{eden} has been used in response to a number of disasters in the developing world as well as ongoing supply management programs in the developed world \citep{Sahana_Foundation_undated-hl}.
+   % left over
+   Initially developed and deployed by an alliance of companies in the Sri Lankan \acrfull{ict} sector in response to the Indian Ocean Earthquake \& Tsunami, it is now developed by the Sahana Foundation, an American non-profit. \acrshort{eden} has been used in response to a number of disasters in the developing world as well as ongoing supply management programs in the developed world \citep{Sahana_Foundation_undated-hl}. 
+
+   The \acrfull{eden} software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response is the focus of this project. It was initially developed and deployed by an alliance of companies in the Sri Lankan \acrfull{ict} sector in response to the Indian Ocean Earthquake \& Tsunami. In 2009 development was transferred to the Sahana Foundation, an American non-profit. The Foundation lists its mission as "Saving lives through information management solutions." They describe their software as part of a wave of change in how humanitarian responses can use \acrshort{ict} to improve the quality of their response. They situate themselves in the middle of other \acrfull{foss} \acrshort{ict} projects such as \Gls{OpenStreetMap} which focus on community engagement and incorporating user data into digital platforms. \acrshort{eden} has been used in response to a number of disasters in the developing world as well as ongoing supply management programs in the developed world \citep{Sahana_Foundation_undated-hl}.
 
    The software's homepage can be found here: \url{https://sahanafoundation.org/}. \linebreak 
    A demo version of it running on the Sahana Foundation can be found here: \url{http://demo.sahanafoundation.org/\acrshort{eden}/}. \linebreak 
@@ -141,15 +161,7 @@
    I don't know of anything else quite like this project.
 
    The praxis of this project is heavily inspired by Rena Bivens' stellar work that smashes together the technical realities of a product with the social understanding of it to problematize it. Its perspective is strongly influenced by Donna Haraway's attention to the specific qualities  that structure spaces where sociological work happens. It is hoping to recall Banu Subramaniam's powerful tools for thinking through how and why a particular thing impacts the world in a particular way.
-
-   \subsection*{Research Questions}
-   What ways of knowing and doing are assisted with the design of \acrshort{eden}?
-
-   What epistemological traditions are attended to by \acrshort{eden}'s methods for storing data? 
-
-   How do the social qualities of the social spaces within \acrshort{eden} emerge from within its data technologies?
-
-   What qualities of \acrshort{eden} are co-creations between social space and the technical tools used to constitute the software?
+   
    \subsection*{Schedule}
    % Schedule of work
    % Much thanks to: 
