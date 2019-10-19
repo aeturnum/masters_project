@@ -39,12 +39,53 @@
 % glossary
 \usepackage[acronym]{glossaries}
 % fancy quotes
-\usepackage{epigraph}
+\usepackage{epigraph, varwidth}
 % For formatting of potential bibliography
 \usepackage{enumitem}
 % html links
 \usepackage{hyperref}
 %\usepackage[colorinlistoftodos]{todonotes}
+
+\renewcommand{\epigraphsize}{\small}
+\setlength{\epigraphwidth}{0.6\textwidth}
+\renewcommand{\textflush}{flushright}
+\renewcommand{\sourceflush}{flushright}
+% A useful addition
+\newcommand{\epitextfont}{\itshape}
+\newcommand{\episourcefont}{\scshape}
+
+\makeatletter
+\newsavebox{\epi@textbox}
+\newsavebox{\epi@sourcebox}
+\newlength\epi@finalwidth
+\renewcommand{\epigraph}[2]{%
+  \vspace{\beforeepigraphskip}
+  {\epigraphsize\begin{\epigraphflush}
+   \epi@finalwidth=\z@
+   \sbox\epi@textbox{%
+     \varwidth{\epigraphwidth}
+     \begin{\textflush}\epitextfont#1\end{\textflush}
+     \endvarwidth
+   }%
+   \epi@finalwidth=\wd\epi@textbox
+   \sbox\epi@sourcebox{%
+     \varwidth{\epigraphwidth}
+     \begin{\sourceflush}\episourcefont#2\end{\sourceflush}%
+     \endvarwidth
+   }%
+   \ifdim\wd\epi@sourcebox>\epi@finalwidth 
+     \epi@finalwidth=\wd\epi@sourcebox
+   \fi
+   \leavevmode\vbox{
+     \hb@xt@\epi@finalwidth{\hfil\box\epi@textbox}
+     \vskip1.75ex
+     \hrule height \epigraphrule
+     \vskip.75ex
+     \hb@xt@\epi@finalwidth{\hfil\box\epi@sourcebox}
+   }%
+   \end{\epigraphflush}
+   \vspace{\afterepigraphskip}}}
+\makeatother
 
 \makenoidxglossaries
 
@@ -85,13 +126,14 @@
    % A summary of other sections of the proposal
    \epigraph{[T]he "writing of technology" is by by no means universal; the opaque and stubborn places do not lie simply beneath technology, but are wrapped around and in it}{\textit{Adrian Mackenzie \\ Cutting Code: Software and Sociality p. 181}}
 
-   This project will examine the \acrfull{eden} software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response. The Foundation lists its mission as "Saving lives through information management solutions." They see their software as part of a wave of change in how humanitarian responses can use \acrshort{ict} to improve the quality of their response. The Sahana foundation would like to be seen as peers to other \acrfull{foss} \acrshort{ict} projects such as \Gls{OpenStreetMap} which focus on "community engagement" and incorporating user data into digital platforms \citep{Sahana_Foundation_undated-hl}. \acrshort{eden} is also part of the \acrfull{ict4d} movement - seeking to turn technology to humanitarian ends.  
+   This project will examine the \acrfull{eden} software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response. The Foundation lists its mission as "Saving lives through information management solutions." They see their software as part of a wave of change in how humanitarian responses can use \acrshort{ict} to improve the quality of their response. The Sahana foundation would like to be seen as peers to other \acrfull{foss} \acrshort{ict} projects such as \Gls{OpenStreetMap} which focus on "community engagement" and incorporating user data into digital platforms \citep{Sahana_Foundation_undated-hl}. \acrshort{eden} is also part of the \acrfull{ict4d} movement - seeking to turn technology to humanitarian ends. 
 
-   Both \acrshort{ict4d} and "community engagement" applications run the risk of benefiting users only in ways that also can benefit the makers of the technology. They can also inadvertently foist western ideas about appropriate action and response onto groups that have no other tool to solve their particular problem. Grappling with these pitfalls will be essential to spreading the bounties of development widely.
+   Both \acrshort{ict4d} and "community engagement" applications run the risk of benefiting users only in ways that also can benefit the makers of the technology. Grappling with these pitfalls will be essential to spreading the bounties of technology widely.
+   % They can also inadvertently foist western ideas about appropriate action and response onto groups that have no other tool to solve their particular problem.
 
-   This project will look at \acrshort{eden} from both the outside and the inside. It will examine the ways in which \acrshort{eden} relates to its users, its referents and to the digital services it uses. How do those relationships bias or direct interactions? What is easy to see from \acrshort{eden}, what is difficult? In short, from what standpoints does \acrshort{eden} view the world? 
+   This project will look at \acrshort{eden} from both the outside and the inside. It will examine the ways in which \acrshort{eden} relates to its users, its referents and to the digital services it uses. What is easy to see from \acrshort{eden}, what is difficult? What perspectives does it contain?
    \medskip
-   The second phase will move from a critical to a creative form of engagement. Can the standpoints encoded in \acrshort{eden} be changed? How are they driven by the technical constraints of the system? How does working with the code and on the code change how the code can be understood? How can \acrshort{eden} best be changed in response to the standpoints I discover?
+   Generative encounters are as important as critical analysis. Can the standpoints encoded in \acrshort{eden} be changed? How are they driven by the technical constraints of the system? How does working with the code and on the code change how the code can be understood? I'll investigate by engaging with the perspectives I've discovered and trying to modify \acrshort{eden} with them in mind.
    \medskip
    This project proceeds from a Haraway-driven understanding of standpoint theory into a software-studies informed engagement with an a particular piece of software made for a particular purpose. It draws inspiration from the making and doing traditions of Science, Technology \& Society and the craft tradition of software engineering.
    \par
@@ -108,9 +150,6 @@
      \item Is the cycle of sociological analysis followed by technical modification useful and generative?
    \end{enumerate}
 
-   % Fragment from the intro that I might use again
-   % This project is an attempt to bring out into the light the unseen and unacknowledged structuring elements of technological systems. Michael de Certeau called these the "opaque and stubborn places" and that lie "underneath" technology. Adrian Mackenzie, in the effort to describe how software is made, found them not just underneath, but also in and around software \citep[p. 181]{Mackenzie2006-hb}. Mackenzie writes about how software less of a thing and more of a process-product that constantly mediates relationships and agency between people and other process-products. These relationships often pass through unacknowledged shifts in agency, power and/or perspective.
-
    
    % \pagebreak
    \section*{Conceptual Framework}
@@ -122,46 +161,45 @@
    In his famous work on Pasteur, \citet{Latour1983-bs} describes how Pasteur's work was as much about changing the world to be more lab-like as it was about the products of the lab. Science appears magic because it distracts us from the work we do to make it possible to use its products. This focus on the perspective of engagement and knowing is what \citet{Haraway1988-nh} calls "Situated Knowledges." The term evokes the idea of speaking 'from' a location, with a particular view of the world. Others may speak about the same thing from other places and everyone may correctly describe their view. Sandra \citet{Harding1992-od}, another feminist epistemological thinker, later returned scientific epistemology to define "Strong Objectivity." Harding critiques returns to the traditional scientific epistemological practice Latour described of deemphasizing the social changes needed to use science. She points out that hiding this information leaves us knowing less. That a stronger practice would be to engage directly with the social changes we need to use science.
    \medskip
    Further works have expanded how knowing can be situated or encoded into social-material constructs. \citet{Harraway1997-va} returns to the subject to illustrate how the construct of "the gene" is encodes views from the biotech industry. Like Pasteur, the industry has constructed "the gene," as something that can only be seen through their expensive methods. Where Haraway was writing about an emerging technology, \citet{Subramaniam2014-wg} writes about the forgotten perspectives of tools. She describes how the eugenic legacy of population level analysis tools makes those tools better at seeing certain kinds of differences. The danger in a tool whose biases are hidden are that we miss its finger on the scale. We build tools to show us the world from a particular perspective, but we must interrogate for what purposes that perspective was shaped.
-
+   \bigskip
 
    % \epigraph{[S]haring produces its own kind of moral and technical order”}{\textit{Christopher Kelty \\ Two Bits: The Cultural Significance of Free Software p. 118}}
 
    \citet{Mackenzie2006-hb} describes software not as a tool, but as a process-tool, whose current state is always inescapably intertwined with socially understood future expectations about its purposes and needs. The sociality of software, as Mackenzie calls it, reflects that software makers are unusually aware of the encoding of opinions in tools. The field has always been home to a huge diversities of practices all of which are justified as being, in some way, the 'right' way to make software \citep{Ensmenger2012-kz}. A diversity of practice does not create a homologous blend of cultures and practices. Instead, each software community has its own set of values and goals in addition to wider ethics that other projects and cultures share. Scholars have engaged at different levels of scale to understand the impacts of software. \citet{Kelty2008-jm} looks at the qualities of the communities around open source projects. \citet{Bivens2017-tc} describes how the demands of Facebook's tools and the changing social understanding around gender have constrained how they represent gender in their system. \citep{Kitchin2011-af} describe how software and social convention have begun to co-determine the rules of how places work, an idea they call "code/space." Software is not a thing that is ever actually finished. It is a continuing process which, through its periodic production of artifacts, is co-constitutive of the space(s) it manifests within. To understand how it changes the things it interacts with requires both examining the representational choices made by the software and the technical constraints of the systems it relies on.
 
-   \section*{Design}
-   % Study	Design (1-2 pages)
-   This project will use sociological analysis to explore and highlight the standpoint of a piece of software. While I break down the particular qualities of the software package -  its goals, blind spots and distortions, I will also be looking at its source code to compare the technical system to the external interface. What aspects seem constrained by the technical tools used to structure the system? What qualities are unrelated to the technical details?
+   The design of the project is heavily inspired by Science, Technology \& Society practices of making \& doing. It also draws on \citet{Bivens2017-tc} work on the material qualities of software, \citet{Mackenzie2006-hb}'s Sociality and the womens studies concept of feminist epistemologies.
 
-   \subsection*{Fieldsite}
+   \section*{Project Structure}
+   % Study	Design (1-2 pages)
+   
    % Description and justification of data sources or fieldsites
    \epigraph{That virtual worlds are places means they can be fieldsites;}{\textit{Tom Boellstorff \\ Two Bits: The Cultural Significance of Free Software p. 107}}
 
-   % left over
-   Initially developed and deployed by an alliance of companies in the Sri Lankan \acrfull{ict} sector in response to the Indian Ocean Earthquake \& Tsunami, it is now developed by the Sahana Foundation, an American non-profit. \acrshort{eden} has been used in response to a number of disasters in the developing world as well as ongoing supply management programs in the developed world \citep{Sahana_Foundation_undated-hl}. 
+   \subsection*{Outcomes}
+   The project will produce three artifacts: a paper detailing some perspectives within \acrshort{eden} and reflecting on the attempt to engage them, New \acrshort{eden} (a modified version of \acrshort{eden}) and a git repository that will have a history of the project..
+   % Broader   Impacts (.5-.75 page)
+   % Output (e.g., conference presentations, results to informants, white paper, thesis, etc.)
+   \subsubsection*{The Git Repository}
+   The two primary artifacts and all the other ephemera (including this proposal) involved in producing them will be publicly available in a git repository.
 
-   The \acrfull{eden} software package, developed by the Sahana Foundation (a non-profit) and deployed to manage disaster response is the focus of this project. It was initially developed and deployed by an alliance of companies in the Sri Lankan \acrfull{ict} sector in response to the Indian Ocean Earthquake \& Tsunami. In 2009 development was transferred to the Sahana Foundation, an American non-profit. The Foundation lists its mission as "Saving lives through information management solutions." They describe their software as part of a wave of change in how humanitarian responses can use \acrshort{ict} to improve the quality of their response. They situate themselves in the middle of other \acrfull{foss} \acrshort{ict} projects such as \Gls{OpenStreetMap} which focus on community engagement and incorporating user data into digital platforms. \acrshort{eden} has been used in response to a number of disasters in the developing world as well as ongoing supply management programs in the developed world \citep{Sahana_Foundation_undated-hl}.
+   The Git repository for this project is available at \url{https://github.com/aeturnum/masters_project}.
 
-   The software's homepage can be found here: \url{https://sahanafoundation.org/}. \linebreak 
-   A demo version of it running on the Sahana Foundation can be found here: \url{http://demo.sahanafoundation.org/\acrshort{eden}/}. \linebreak 
-   \acrshort{eden}'s source code can be found here: \url{https://github.com/sahana/\acrshort{eden}} \linebreak 
-
-   EDEN's identity as a piece of software is enmeshed in an \acrshort{foss} ecosystem. It is written in \Gls{python}, an open source language and uses the \Gls{python} \gls{web framework} web2py as the foundation its functionality is built on. Its functionality is broken up into many different web modules, which are organized around nodes of shared functionality that allow the individual modules to communicate and avoid duplicating functionality. \acrshort{eden} generally uses other \acrshort{foss} tools wherever possible: both of its database options (\Gls{MySQL} and \Gls{PostgreSQL}) are \acrshort{foss} databases that are also available for free. This use of \acrlong{foss} technologies helps ensure that users pay minimal fees to use \acrshort{eden}, as it and all of its resources are available free of charge. However, because \acrshort{foss} products are developed with many audiences in mind, their approach to problems is general and those projects will make governance decisions that may force you to leave them.
-
-   \subsection*{The Project}
-   \subsubsection*{Phase One}
-   The first phase of this project will be a wide survey of literature. Focusing on Science, Technology and Society works that analyze the standpoint and biases of other technical tools and moving into analysis of disaster 
-   The aim of this project is to put academic work in conversation with practical tools as well as put academic criticism in conversation with work to transform the same tools. This will build a set of analytical frames that will be essential for the second phase of the project.  
-   \subsubsection*{Phase Two}
-   The second phase will be be a co-constitutive process between social critique and technical analysis. I'll begin by examining a standpoint that \acrshort{eden} adopts, writing about what that standpoint intends to do and what side effects it might have. Those outcomes will be compared to and put in conversation with, the technical systems used to realize the standpoint. Over time, a paper that holds the technical choices, social goals and impacts, blind spots and clarifying qualities of \acrshort{eden} will emerge from this work. Some standpoints will prove uninteresting and some will be difficult to match with sociological analysis. 
-
-   As I find and characterize these points of social-technical tension, they will guide modifications to the \acrshort{eden} software package itself. These modifications might attempt to address weaknesses in the particular standpoint the software addresses. They might be used to 'queer' the original intent of the \acrshort{eden} module being modified. Such 'queered' modules might highlight how narrowly \acrshort{eden} sees the world, how much about lived experience is irrelevant to \acrshort{eden}, or highlight conditions that would make it impossible to continue to use \acrshort{eden} and how unrelated they are to the circumstances that would lead people to use \acrshort{eden}. Some number of these modifications will be made to the \acrshort{eden} source code, but some more may highlight the technically unavailable resources that might enable software and society to interact differently.
-
-   % Description of methods
-   \subsection*{Inspiration}
-   I don't know of anything else quite like this project.
-
-   The praxis of this project is heavily inspired by Rena Bivens' stellar work that smashes together the technical realities of a product with the social understanding of it to problematize it. Its perspective is strongly influenced by Donna Haraway's attention to the specific qualities  that structure spaces where sociological work happens. It is hoping to recall Banu Subramaniam's powerful tools for thinking through how and why a particular thing impacts the world in a particular way.
-   
+   \subsection*{Phases}
+   \subsubsection*{One}
+   The first phase of this project will be a survey of literature. Focusing on Science, Technology and Society works that analyze the standpoint and biases of other technical tools and relevant work on digital humanitarianism and disaster recovery. I will also be familiarizing myself with the implementation and operation of EDEN itself. These theoretical tools are what I will engage the "text" of EDEN with in the second phase. 
+   \begin{flushleft}
+   The git repository will begin having content added to it immediately.
+   \end{flushleft}
+   \subsubsection*{Two}
+   The second phase will be be a co-constitutive process between social critique and technical analysis. I'll search for perspectives within \acrshort{eden}, analyzing how that perspective emerges from \acrshort{eden} and impacts the world around \acrshort{eden}. My focus will be perspectives that seem driven by the material technical realities of \acrshort{eden}. These findings will be the center of the project. This will be a filtering process - some number of perspectives will need to be investigated and found uninteresting. 
+   \begin{flushleft}
+   This phase will produce the first half of the paper.
+   \end{flushleft}
+   \subsubsection*{Three}
+   The perspectives found in phase two will guide modifications to the \acrshort{eden} software package itself. These modifications will be made with the goal of engaging with \acrshort{eden} on a material level and understanding the practicalities of trying to address encoded perspectives. The modified software, called "New \acrshort{eden}", will be the second product of this project.
+   \begin{flushleft}
+   This phase will produce the second half of the paper and New \acrshort{eden}.
+   \end{flushleft}
    \subsection*{Schedule}
    % Schedule of work
    % Much thanks to: 
@@ -171,37 +209,33 @@
    \begin{center}
    \begin{tabular}{|l|l|p{0.1\linewidth}|p{0.1\linewidth}|p{0.6\linewidth}|}
    \hline
-   Phase & Quarter & Quality & Time Allocation & Goal                         \\ \hline
+   Phase & Quarter & Activity& Time Allocation & Goal                         \\ \hline
    One   & Fall    & Reading & 80\%            & 800 pages read with notes    \\ \cline{3-5} 
          &         & Writing & 10\%            & Notes and planning documents \\ \cline{3-5} 
          &         & Coding  & 10\%            & Notes on \acrshort{eden} program structure   \\ \hline 
    Two   & Winter  & Reading & 40\%            & Final selection of bibliography with additions based on notes and readings.   \\ \cline{3-5} 
          &         & Writing & 30\%            & Outline for final paper with ~20\% of content finished \\ \cline{3-5} 
-         &         & Coding  & 30\%            & Rough modifications completed, but in need of polish  \\ \cline{2-5}
-         & Spring  & Reading & 10\%            & Unexpected additions to literature and gathering specific quotes from previously completed elements.   \\ \cline{3-5} 
+         &         & Coding  & 30\%            & Rough modifications completed, but in need of polish  \\ \hline
+   Three & Spring  & Reading & 10\%            & Unexpected additions to literature and gathering specific quotes from previously completed elements.   \\ \cline{3-5} 
          &         & Writing & 40\%            & Final paper \\ \cline{3-5}
          &         & Coding  & 40\%            & Full branch of \acrshort{eden} project with documentation and demonstration server. \\ \hline
    \end{tabular}
    \end{center}
-   \newpage
-   \section*{Outcomes}
-   The project will produce three artifacts: a paper, a piece of software and a git source-tracking repository.
+   % \newpage
 
-   The reference Git repository for this project is available at \url{https://github.com/aeturnum/masters_project}.
-   % Broader	Impacts (.5-.75 page)
-   % Output (e.g., conference presentations, results to informants, white paper, thesis, etc.)
-   \subsubsection*{The Git Repository}
-   The two primary artifacts and all the other ephemera (including this proposal) involved in producing them will be archived in a git repository. Git will allow the process to be recorded and observed both in real time and in hindsight, giving the project a shape and an arc and a character outside of its final results. 
+   \subsection*{Fieldsite Details}
+   % left over
+   \acrshort{eden} was initially developed and deployed by an alliance of companies in the Sri Lankan \acrfull{ict} sector in response to the Indian Ocean Earthquake \& Tsunami. \acrshort{eden} has been used in response to a number of disasters in the developing world as well as ongoing supply management programs in the developed world \citep{Sahana_Foundation_undated-hl}. It is written in the \acrshort{foss} language \Gls{python} and uses the \acrshort{foss} \gls{web framework} web2py to build its components. Its functionality is broken up into many different modules which group common functionality within a layer of access conventions. \acrshort{eden} also uses \acrshort{foss} tools wherever possible: its databases of choice (\Gls{MySQL} and \Gls{PostgreSQL}) are \acrshort{foss} databases. The focus on \acrlong{foss} technologies is an obvious structuring perspective for the \acrshort{eden} project and ones whose impacts are worth investigating.
 
-   A PDF of this document can be found at \url{https://github.com/aeturnum/masters_project/blob/master/full_proposal.pdf}.
+   The software's homepage can be found here: \url{https://sahanafoundation.org/}. \linebreak 
+   % A demo version of it running on the Sahana Foundation can be found here: \url{http://demo.sahanafoundation.org/\acrshort{eden}/}. \linebreak 
+   \acrshort{eden}'s source code can be found here: \url{https://github.com/sahana/eden} \linebreak 
 
-   The \LaTeX source file can be found at \url{https://github.com/aeturnum/masters_project/blob/master/full_proposal.tex}.
+   % Description of methods
+   \subsection*{Preparation of Researcher}
+   As a Science, Technology \& Society graduate student I've been engaging with analytical questions around the impact of tools and their power to structure space. A previous project of mine used a energy pricing tool as a jumping off point for a critique of approaching the question of energy supply financially and suggested an alternative or additive perspective and gave me experience engaging with the social implication of a technical system.
 
-   \subsubsection*{The Paper}
-   The paper will provide formal analysis of the original form of the software being considered. It will engage with social science literatures from traditions such as feminist critiques of technologies, critiques of algorithmic technologies, critiques of (often but not exclusively scientific) epistemological processes and software studies. Its discussion and conclusion will describe the particular view the software renders of the world and also argue how alterations to that piece of software might change its purpose, its views or its impact.
-
-   \subsubsection*{New EDEN}
-   The software artifact (with the tongue-in-cheek name of New \acrshort{eden}) will be a modified version of the selected software whose modifications will be driven by the suggested alterations in the paper. These two software products (modified and unmodified) can serve to contextualize the paper and bound its theoretical claims to what is pragmatically possible for a software developer.
+   Previous to being a graduate student I obtained an undergraduate degree in computer science and worked professionally as a programmer for about eight years. I did most of my work writing and designing web services and generally used python for this purpose (like \acrshort{eden} in both cases). I have experience using most of the tools and environments that \acrshort{eden} utilizes and expect that this background will be an asset in smoothly 
 
    \subsection*{Goals}
    % How it will help us understand X (and Y)
