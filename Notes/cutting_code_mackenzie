@@ -1,0 +1,111 @@
+# Cutting Code
+
+Mackenzie, A. (2006). Cutting code: Software and sociality (S. Jones, ed.). Peter Lang Publishing.
+
+## Intro
+
+1: Software as social object
+2. more like a social convention than a machine
+3: code as practice
+3: human needs crossing over into code are hopelessly convoluted
+4: technical practices overlap with visions of society
+5: code can never stay pure 
+5: ontology to allow response to in a changing world
+6: use code to understand mix of stasis and mutability in software
+7: Gell framework of art objects as people and art-like situations
+9: many forms of agency in software & the situation of dividing agency between human and thing is well stablished
+10: agency is widely distributed through software but that doesn't make it special
+11: Entities related to software: code, originators, recipiants, prototypes
+12 bitrot and backgrounding
+13 hardware makes this all more difficult because its relationship to code is unclear
+15: readability is not readability qua reading, but the ability to correctly modify in a timely manner
+18 code rarely the primary agent in software
+
+## Ch 2
+
+21: open code a political project
+22: is code an expression or an operation?
+24: multiplicity of codes makes it seem impossible for outsiders to understand
+30: Code is not free speech in the sense that it contains functional aspects
+31 code law
+32: how does code gain authority?
+36: code exists as an utterance and as an executable, but you can't experience both at the same time
+41: attend to implicit politics of software arrangements
+
+Chapter 2 compares algorithms to speech and problematizes the consideration of code around the question of reading and executing it. Mackenzie connects this to the history of people commenting on our inability to know what we are saying while we say it, only, perhaps, what we intend to say. Uses this to talk about how code comes to be in positions of authority and where can find that authority in the nature of code, ultimately concluding that code is not in-it-self authoritative, but can be connected to exercises of authority. The question of agency in code is raised and will be explored further in ch2.
+
+
+## Ch 3
+
+47: Biotech at the center of the body becoming a nexus of political and capital interests
+50 sequence data cannot be stored on its own because it has nothing that ties it to a particular creature or location in the base pairs
+51 sequences exist in  a context of investigation and measurement, hard to say if they exist in isolation
+56 algorithms organize informational time
+57 algorithms reoder movement and time, always in a way that takes account of social value and socially understood demands
+58 at some point sequences must re-emerge back into living bodies
+
+A dense chapter. Mackenzie focuses on algorithms' nature of moving things around, of manipulating the position of things and of expressing agency in this way. He turns to the modern genetics industry and talks about the proliferation of alogirthims within it. The way in which algorithms do their work creates a socio-temporal space where how things advance over time are controlled by the algorithm. Relatedly, each algorithm carries with it opinions about and models of the world it is interacting with, which comes to matter as algorithms are imported from other areas and applied to new areas. Finally, this movement and opinion has the effect of normalizing things and making other things seem extraordinary - though in fact we have simple shuffled inputs around. Alogrithms can point out patterns that we did not see, but they fundimentally don't add or subtract anything. 
+
+## ch 4
+
+69 nice linux as a distrubted code object
+71 linux enacts a performative constitution of agency thorough its code
+73 OSes become cultural objects as culture and mediations run through them
+74 speaking supported by non-verbal actions that "redouble" the speeches affect
+75 open source arguments about linux are more of a pretext than actually motive - the performance of it is motive
+78 emergence of linux source code as freedom symbol
+80 socio-cultural objects like linux slip out of control of power as they become key to the translation of social relationships
+
+Linux is a disruptive movement that has changed some power relations and stabilized otherS (gender, os conventions). It's an example of how technology is performative and how those working on it gain power and influence and money through their performance of open sources (which doesn't need to be distinct from actually doing The Work). 
+
+## Ch 5
+
+93 virtuality as something that continually creates divergences from itself
+95 JVM as boundary object
+97 Java forever remaking itself
+99 java as metaplatform above hardware platforms
+101 jvm / java language are connected, but circulate in different social circles
+
+Java is emblematic of a shift away from coding on specific hardware and the trend of code taking on a life of its own and a path of its own. It can be considered a virtual object in the sociological sense, as it draws around it a constant series of related entities that are not exactly part of it. Its social nature can also be seen in how its components (the jvm and the java language) have had their boundaries blurred over time as has been practically useful to the langauge and those who associate themselves with it. Peformativity is also important here.
+
+## Ch 6
+
+115 When does code become material? Become blocked like material things?
+124 pretty uncritical example of figuration
+127 software only exists as part of an ongoing process
+128 process erases why paths are chosen
+130 localization of software complicated by remote management
+132 We hardly know what we have built (bowker and star)
+134 flexibility of deployment and conception, arrangement of pieces emerge from the imagined demands of configurations of technology
+137 Imagining as central to the process of creating this system; software development as orientations towards the various material components (code, hardware, etc)
+138 final artifact constructed of finely patterned contextualizations and decontextualizations
+
+This chapter looks at RAMOSS, a system for using the telephone infrastructure to carry digital information. Like Java, RAMOSS is best understood as a dual-product-project that exists both as discrete artifacts that are extant at any one time and as a continual process that has no fixed end point. The imagination of those making this project is key to the process and how it is seen, as much of the effort and "structure" of RAMOSS is to prepare for foreseen but unrealized futures. Makenzie makes the case that this is 
+
+## Ch 7
+
+141 XP as focusing on programmer agency; creating a code prototype seems redundant but its used to assert the programmer as the primary agentic force in this program-process
+142 hybridization of local knowledge and infra
+157 pair programming as relational work
+159 discussions as contestations of agency within the program
+167 XP as a coordinated effort against formalism; software development isn't really about technical challenges 
+
+This chapter probably isn't super useful for my project. It goes into detail about a particular practice (XP) and how that practice plays out at a particular developer. That said, the idea that agency plays out within development and that the development process is much more about maintaining a social order within the team than in overcoming social challenges will be an important idea to keep in mind. If we view a program as mediating the allocation of agency, we can also view the development process as setting up that arrangement and look for signs of the mediation of agency within development. Maybe I should look at git messages as well?
+
+## Conclusion
+
+169 Software is relationships
+171 Invocation of social networks of relationships as a more evolved idea of how power plays out in socioal arrangements
+173 Points out that what counts as mattering and what counts as material is socially contested; from this point of view a primary concern of software is shaping what does matter and what does count and highlighting those things; "Sociality" - defining/making social groups
+174 General notes about how the...demands of interpersonal cooperation in the creation of code mean that code itself encodes the social relations that were required to create it
+176 XP explicitly brings code *into* the development process where it is both the goal and the model of how to accomplish the goal
+176 Idea of software as "a program" is problematic because so many other elements feed into and control the program. Not just config but also opinion and context and other elements so it's very hard to justify considering "the program" in isolation. It is also everything else.
+177 Return to the observation that code does what it says but that what it does is never totally based on what it says - also that many other things in the context matter
+180 Platform seems inescapable - much work of creating "generic" platforms is paving over the specificity of hardware
+181 Software is particular succeptible to being heterogenious- has involuted agency
+182 Also convolutes agency 
+183 Communication also structures and organizes; structure of communication plays out in how things work
+
+The general theme of software mediating and constructing agency through relationships will probably a really important framing device and way of thinking through the work, though I don't know how often I'll use it exactly. I think this book is exactly right and speaks about it clearly. There are aspects that I'm not sure what to do with. What do I do with XP and the idea of using code in coding? Does that matter? Same question about the idea of the impossibility of escaping platform - probably useful when talking about OSS and databases. 
+
+
