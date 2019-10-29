@@ -46,6 +46,7 @@
 \usepackage{hyperref}
 %\usepackage[colorinlistoftodos]{todonotes}
 
+% This section was found in a stack overflow comment about making the epigraph length different and I include it here as an incantation against bad formatting
 \renewcommand{\epigraphsize}{\small}
 \setlength{\epigraphwidth}{0.6\textwidth}
 \renewcommand{\textflush}{flushright}
@@ -86,12 +87,15 @@
    \end{\epigraphflush}
    \vspace{\afterepigraphskip}}}
 \makeatother
+% End epigraph modifications
 
 \makenoidxglossaries
 
 \singlespacing
 
 \loadglsentries{glossary}
+
+\renewcommand{\bibsection}{\section*}
 
 \title{Mapping EDEN: Revealing the territory created by society and software}
 \shorttitle{Mapping EDEN}
@@ -100,9 +104,6 @@
 \date{October 2019}
 \begin{document}
    \maketitle
-   % This document outline based on the suggested outline in the Center for STS Student Handbook:
-   % https://drexel.edu/~/media/Files/sts/2015-graduate-student-handbook.ashx?la=en
-   %
    % The October revision to this document is based on a Thesis proposal that my Graduate Advisor
    % Vincent Duclos suggested as a good example: The one written by Jim Gall. Though his thesis 
    % porposal is not included here, an outline is reproduced below:
@@ -136,7 +137,7 @@
    Critical engagement with technoscience must have a second act. Does understanding standpoints within something help us change it? This project is a \textit{situated intervention} into the code and design of \acrshort{eden} \citep{Zuiderent-Jerak2015-go}. What can we learn by trying to change \acrshort{eden} guided by the standpoints that we discover? What lessons can we draw about how to critique better by engaging with material realities?
 
    % \medskip
-   This project hopes to realize the goals of \citet{Sismondo2008-xz}'s \textit{engaged program} by bringing feminist epistemological critiques into conversation with the material/process we call "software." The goal is to produce new knowledge about \textit{how software can} change and \textit{how critique can guide that change}.
+   This project hopes to realize the goals of \citet{Sismondo2008-xz}'s \textit{engaged program} by bringing feminist epistemological critiques into conversation with the process-tool we call "software." The goal is to produce new knowledge about \textit{how software can} change and \textit{how critique can guide that change}.
    \par
    \begin{flushleft}
    I focus on three questions:
@@ -156,23 +157,20 @@
    % Intellectual	Merits (1-2 pages)
    % 2 to 3 scholarly conversations your research contributes to
    \epigraph{A model is worked, and it does work}{\textit{Donna Haraway \\ Staying with the Trouble: Making Kin in the Chthulucene p. 63}}
+   
+   Building software is as much about imagining the future and accounting for the past as it is about creating a particular product for a particular time. Though software projects produce executables (discrete tools that can be moved and sold), it is better understood as a process-tool which exists and develops within a social and commercial context whose concerns and constraints extend far beyond a given executable. Much of the work in software involves managing the relationships between the other process-tools on which it relies (databases, programming languages and so on), as well as the relationships the software has with its users, its makers, and its imagined future \citep{Mackenzie2006-hb}. These relationships are necessarily managed from a perspective within the project. Software developers exist in a heterogeneous world of software creation and formation cultures which also drive decisions around the nature and form of the project \citep{Ensmenger2012-kz,Gabriella_Coleman2012-lq, Kelty2008-jm}. The experience from outside is difficult to predict, especially as the same executable in different environments will create different code/spaces that are specific and unpredictable \citep{Kitchin2011-af}. The ways in which software can shape how people see the world \textit{through} it and how things are represented \textit{within} its vision of the world can depart dramatically from the designers' intent.
 
-   In his famous work on Pasteur, \citet{Latour1983-bs} describes how Pasteur's work was as much about changing the world to be more lab-like as it was about the products of the lab. Science appears magic because it distracts us from the work we do to make it possible to use its products. This focus on the perspective of engagement and knowing is what \citet{Haraway1988-nh} calls "Situated Knowledges." The term evokes the idea of speaking 'from' a location, with a particular view of the world. Others may speak about the same thing from other places and everyone may correctly describe their view. Sandra \citet{Harding1992-od}, another feminist epistemological thinker, later returned scientific epistemology to define "Strong Objectivity." Harding critiques returns to the traditional scientific epistemological practice Latour described of deemphasizing the social changes needed to use science. She points out that hiding this information leaves us knowing less. That a stronger practice would be to engage directly with the social changes we need to use science.
-   \medskip
-   Further works have expanded how knowing can be situated or encoded into social-material constructs. \citet{Harraway1997-va} returns to the subject to illustrate how the construct of "the gene" is encodes views from the biotech industry. Like Pasteur, the industry has constructed "the gene," as something that can only be seen through their expensive methods. Where Haraway was writing about an emerging technology, \citet{Subramaniam2014-wg} writes about the forgotten perspectives of tools. She describes how the eugenic legacy of population level analysis tools makes those tools better at seeing certain kinds of differences. The danger in a tool whose biases are hidden are that we miss its finger on the scale. We build tools to show us the world from a particular perspective, but we must interrogate for what purposes that perspective was shaped.
-   \bigskip
+   Software strives to show a "view from nowhere" when guiding its users. The reduction of the complexities of life into a manageable series of \gls{capta} is why we use tools to make intractable situations tractable. These simplifications also represent a concern: what information is being thrown away and how was it chosen? Each time a piece of software shows someone a view of the world, we can understand that view as being from a particular standpoint. As having particular concerns and goals in showing \textit{this} but not \textit{that} \citep{Harding1992-od}. Such perspectives allow tools to fulfill their function, but allow power relationships to operate unobserved. To combat this, we can use on a \textit{situated epistemological} approach which re-contextualizes the view through noting how information is hidden and analyzing the normally invisible structural elements of the view from nowhere \citep{Haraway1988-nh}. To ignore this quality in tools can give rise to inadvertently selecting tools that render natural variation as racial difference or environmental factors as measurements of native purity \citep{Subramaniam2014-wg}.
 
-   % \epigraph{[S]haring produces its own kind of moral and technical order”}{\textit{Christopher Kelty \\ Two Bits: The Cultural Significance of Free Software p. 118}}
+   If standpoint analysis were to give simple, uncomplicated guidance, then the task of improving problematic software would be simple. But software has material qualities that aren't impacted by descriptions of their undesirable consequences. To change the impact of particular software on particular people in particular situations we must grapple with those material qualities \citep{Bivens2017-tc}. \citet{Zuiderent-Jerak2015-go}'s concept of \textit{situated intervention} offers a powerful tool for learning how we can change real programs. Only by trying to apply the judgments from theory to artifacts that emerge out of the the process-tool of software can we learn to shape those judgments to be more useful to those who are building the original software.
 
-   \citet{Mackenzie2006-hb} describes software not as a tool, but as a process-tool, whose current state is always inescapably intertwined with socially understood future expectations about its purposes and needs. The sociality of software, as Mackenzie calls it, reflects that software makers are unusually aware of the encoding of opinions in tools. The field has always been home to a huge diversities of practices all of which are justified as being, in some way, the 'right' way to make software \citep{Ensmenger2012-kz}. A diversity of practice does not create a homologous blend of cultures and practices. Instead, each software community has its own set of values and goals in addition to wider ethics that other projects and cultures share. Scholars have engaged at different levels of scale to understand the impacts of software. \citet{Kelty2008-jm} looks at the qualities of the communities around open source projects. \citet{Bivens2017-tc} describes how the demands of Facebook's tools and the changing social understanding around gender have constrained how they represent gender in their system. \citep{Kitchin2011-af} describe how software and social convention have begun to co-determine the rules of how places work, an idea they call "code/space." Software is not a thing that is ever actually finished. It is a continuing process which, through its periodic production of artifacts, is co-constitutive of the space(s) it manifests within. To understand how it changes the things it interacts with requires both examining the representational choices made by the software and the technical constraints of the systems it relies on.
-
-   The design of the project is heavily inspired by Science, Technology \& Society practices of making \& doing. It also draws on \citet{Bivens2017-tc} work on the material qualities of software, \citet{Mackenzie2006-hb}'s Sociality and the womens studies concept of feminist epistemologies.
+   The design of the project draws on Science, Technology \& Society practices of making \& doing and specifically on \citet{Zuiderent-Jerak2015-go}'s concept of \textit{situated intervention}. It is deeply indebted to \citet{Bivens2017-tc} demonstration of the impact of the material nature of software and \citet{Mackenzie2006-hb}'s work on the Sociality of software.
 
    \section*{Project Structure}
    % Study	Design (1-2 pages)
    
    % Description and justification of data sources or fieldsites
-   \epigraph{That virtual worlds are places means they can be fieldsites;}{\textit{Tom Boellstorff \\ Two Bits: The Cultural Significance of Free Software p. 107}}
+   \epigraph{That virtual worlds are places means they can be fieldsites;}{\textit{Tom Boellstorff \\ Coming of Age in Second Life p. 107}}
 
    \subsection*{Outcomes}
    The project will produce three artifacts: a paper detailing some perspectives within \acrshort{eden} and reflecting on the attempt to engage them, New \acrshort{eden} (a modified version of \acrshort{eden}) and a git repository that will have a history of the project..
@@ -224,26 +222,31 @@
 
    \subsection*{Fieldsite Details}
    % left over
-   \acrshort{eden} was initially developed and deployed by an alliance of companies in the Sri Lankan \acrfull{ict} sector in response to the Indian Ocean Earthquake \& Tsunami. \acrshort{eden} has been used in response to a number of disasters in the developing world as well as ongoing supply management programs in the developed world \citep{Sahana_Foundation_undated-hl}. It is written in the \acrshort{foss} language \Gls{python} and uses the \acrshort{foss} \gls{web framework} web2py to build its components. Its functionality is broken up into many different modules which group common functionality within a layer of access conventions. \acrshort{eden} also uses \acrshort{foss} tools wherever possible: its databases of choice (\Gls{MySQL} and \Gls{PostgreSQL}) are \acrshort{foss} databases. The focus on \acrlong{foss} technologies is an obvious structuring perspective for the \acrshort{eden} project and ones whose impacts are worth investigating.
+   \acrshort{eden} was initially developed and deployed by an alliance of companies in the Sri Lankan \acrfull{ict} sector in response to the Indian Ocean Earthquake \& Tsunami. \acrshort{eden} has been used in response to a number of disasters in the developing world as well as ongoing supply management programs in the developed world \citep{Sahana_Foundation_undated-hl}. It is written in the \acrshort{foss} language \Gls{python} and uses the \acrshort{foss} \gls{web framework} web2py to build its components. Its functionality is broken up into many different modules which group common functionality within a layer of access conventions. \acrshort{eden} also uses \acrshort{foss} tools wherever possible: its databases of choice (\Gls{MySQL} and \Gls{PostgreSQL}) are \acrshort{foss} databases.
 
+   \begin{flushleft}
    The software's homepage can be found here: \url{https://sahanafoundation.org/}. \linebreak 
-   % A demo version of it running on the Sahana Foundation can be found here: \url{http://demo.sahanafoundation.org/\acrshort{eden}/}. \linebreak 
+
    \acrshort{eden}'s source code can be found here: \url{https://github.com/sahana/eden} \linebreak 
+
+   \acrshort{eden} does not have a formal release system so this project will be done on the version represented at git commit 653f76aa574cb2dddb9053eef0f8d815156cb168.
+   \end{flushleft}
+
 
    % Description of methods
    \subsection*{Preparation of Researcher}
    As a Science, Technology \& Society graduate student I've been engaging with analytical questions around the impact of tools and their power to structure space. A previous project of mine used a energy pricing tool as a jumping off point for a critique of approaching the question of energy supply financially and suggested an alternative or additive perspective and gave me experience engaging with the social implication of a technical system.
 
-   Previous to being a graduate student I obtained an undergraduate degree in computer science and worked professionally as a programmer for about eight years. I did most of my work writing and designing web services and generally used python for this purpose (like \acrshort{eden} in both cases). I have experience using most of the tools and environments that \acrshort{eden} utilizes and expect that this background will be an asset in smoothly 
+   Previous to being a graduate student I obtained an undergraduate degree in computer science and worked professionally as a programmer for about eight years. I did most of my work writing and designing web services and generally used python for this purpose (like \acrshort{eden} in both cases). I have experience using most of the tools and environments that \acrshort{eden} utilizes and expect that this background will be an asset in implementing changes in phase three.
+
+   I enter this project with a practiced skepticism about the promises of technoscience from my STS education, which professional software experience supports. However, I believe that software is not magic and that, like \citet{Latour1983-bs}'s expanding laboratory, there is hope for us to reveal the man behind the technoscientific software curtain.
 
    \subsection*{Goals}
+
    % How it will help us understand X (and Y)
-   This project will create a new space where the intersections between technology and society are hyper-visible. It will help to highlight the qualities of technical objects that give rise to their socially visible qualities. It will hopefully inspire others to further explore the power of modifying software as a way of finding and highlighting ways in which that software intrudes into our social lives. It may even provoke more engaged and practical work in software studies that struggle the daily challenges of writing software.
+   This project will try to be an example of \citet{Sismondo2008-xz}'s engaged program - connecting analysis to real world issues and expending our understanding of both. It also hopes to be an example of and a coherent argument for further interventions using STS theories in the real world. I hope to respond to \citet[p.55]{Haraway2016-nc}'s statement that it "matters with which ways of living and dying we cast our lot" by pushing the discipline to become more materially engaged with the world we seek to understand.
 
-   \newpage
    \printnoidxglossaries
-
-   \newpage
    \setlength{\parindent}{4em}
    \bibliography{full_proposal}
 
