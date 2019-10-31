@@ -1,0 +1,31 @@
+# Beamtimes and Lifetimes
+
+Traweek, S. (2009). Beamtimes and Lifetimes. Harvard University Press.
+
+## Prologue
+
+1 How high energy physicists see the world
+2 war generated a lot of prestiege, high prestiege scientests from the war setup funding structure, scale and scope of work adds to grandiosity
+3 small group of actual people, appeal to public good
+6 community is a group with shared past, a planned shared future, a way to get new people and 
+8 ethnography seeks patterns of culture
+12 how have conflicting views survived in close contact?
+15 "to acquire strangeness"
+17 view of unchanging order
+
+## 2
+
+48 detectors are built by their own teams for each experiment, they are individually crafted
+49 Detectors are the center of much emotion, honor is earned by advancing the craft, scientests are expected to be daring; other disciplines rely on tools but find them uninteresting
+50 a mass produced detector is imagined to have too much play in the system to do useful work
+61 Different opinions on if the detector is ambitious enough to match the ambition of the physics being done
+65 Different approaches with similar results seen as having different characters; names of particle based on either a leaders name or accidents of detector design
+67 Dramatically different approach in Japaneses context, detectors take second place to accelerator development
+69 Japanese funding model pays industry to build detectors and physicists are not trained to modify or fix them, leads to strong advocacy for the best possible up front
+71 LASS detector as "resolving a philisophical question" in the discipline; SPEAR was built to be changable
+72 The different detectors are avatars for their builders' positioning in the world of physics
+
+Traweek writes well and vividly about these cultures and I recognize my former colleagues in software engineering in these images of devices that match the personalities of those who wrote them. Much like the quiet, functional, arcane file server written by my relentlessly competent coworker and the patchwork of functional and accessible code that structured our REST api written by a jovial and human-concerned director. The things we build represent how we think about the world. "Critiquing code is like critiquing how someone thinks"
+
+All that said, this has nothing at all, really, to do with my project. I suspect that EDEN is an avatar of the people who wrote it, but because I won't be interacting with them, I'll have no way of deciding if that's true. I also think the EDEN programmers are part of many communities and it'll be hard to know which ones they represent. That said, I think I may end up referencing Traweek in my intro that situates the work because she is clearly doing the *kind* of work that I am doing - examining the material qualities of tools and tying them back to the social (or otherwise) situations of their makers.
+
