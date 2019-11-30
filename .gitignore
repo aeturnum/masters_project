@@ -13,4 +13,36 @@
 *.acn
 *.glo
 *.ist
-non-git
+/non-git
+# From EDEN .gitignore
+/Source/.bzr
+/Source/.bzrignore
+/Source/cache/*
+/Source/compiled/*
+/Source/databases/*
+/Source/errors/*
+/Source/indices/*
+/Source/models/000_config.py
+/Source/models/0000_update_check.py
+/Source/sessions/*
+/Source/uploads/*
+/Source/static/cache/*
+/Source/static/fonts/unifont.ttf
+/Source/static/scripts/tools/compiler.jar
+/Source/static/themes/SHARE/data/*
+/Source/tests/unit/*.pdf
+.DS_Store
+/Source/languages/*.po
+.~lock.*.csv#
+*.log
+*.pyc
+*.~*~
+.directory
+.pythonhistory
+.idea
+.sass-cache
+/Source/yaml/*
+# Ignore plugins
+/Source/modules/plugins/*
+!/Source/modules/plugins/__init__.py
+!/Source/modules/plugins/skeleton.py
