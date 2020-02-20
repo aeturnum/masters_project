@@ -1,0 +1,114 @@
+%  _____    _            
+% | ____|__| | ___ _ __  
+% |  _| / _` |/ _ \ '_ \ 
+% | |__| (_| |  __/ | | |
+% |_____\__,_|\___|_| |_|                       
+% -------------------------------------------------------------------------
+% https://www.kammerl.de/ascii/AsciiSignature.php - standard
+% I've moved beyond justifying latex and am not just living in it.
+
+
+% Use APA module
+% Based on template from https://www.overleaf.com/latex/templates/your-apa6-style-manuscript/kngbbqpypjcq
+\documentclass[a4paper,man,natbib]{apa6}
+% Imports natbib
+% Ref Sheet: https://gking.harvard.edu/files/natnotes2.pdf
+
+% Packages
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+% set single spacing
+\usepackage{setspace}
+% glossary
+\usepackage[acronym]{glossaries}
+% fancy quotes
+\usepackage{epigraph, varwidth}
+% For formatting of potential bibliography
+\usepackage{enumitem}
+% html links
+\usepackage{hyperref}
+%\usepackage[colorinlistoftodos]{todonotes}
+
+% This section was found in a stack overflow comment about making the epigraph length different and I include it here as an incantation against bad formatting
+\renewcommand{\epigraphsize}{\small}
+\setlength{\epigraphwidth}{0.6\textwidth}
+\renewcommand{\textflush}{flushright}
+\renewcommand{\sourceflush}{flushright}
+% A useful addition
+\newcommand{\epitextfont}{\itshape}
+\newcommand{\episourcefont}{\scshape}
+
+\makeatletter
+\newsavebox{\epi@textbox}
+\newsavebox{\epi@sourcebox}
+\newlength\epi@finalwidth
+\renewcommand{\epigraph}[2]{%
+  \vspace{\beforeepigraphskip}
+  {\epigraphsize\begin{\epigraphflush}
+   \epi@finalwidth=\z@
+   \sbox\epi@textbox{%
+     \varwidth{\epigraphwidth}
+     \begin{\textflush}\epitextfont#1\end{\textflush}
+     \endvarwidth
+   }%
+   \epi@finalwidth=\wd\epi@textbox
+   \sbox\epi@sourcebox{%
+     \varwidth{\epigraphwidth}
+     \begin{\sourceflush}\episourcefont#2\end{\sourceflush}%
+     \endvarwidth
+   }%
+   \ifdim\wd\epi@sourcebox>\epi@finalwidth 
+     \epi@finalwidth=\wd\epi@sourcebox
+   \fi
+   \leavevmode\vbox{
+     \hb@xt@\epi@finalwidth{\hfil\box\epi@textbox}
+     \vskip1.75ex
+     \hrule height \epigraphrule
+     \vskip.75ex
+     \hb@xt@\epi@finalwidth{\hfil\box\epi@sourcebox}
+   }%
+   \end{\epigraphflush}
+   \vspace{\afterepigraphskip}}}
+\makeatother
+% End epigraph modifications
+
+\makenoidxglossaries
+
+\singlespacing
+
+\loadglsentries{glossary}
+
+\renewcommand{\bibsection}{\section*}
+
+\title{Software: Gradually and Then Suddenly}
+\shorttitle{Software}
+\author{Daniel "Drex" Drexler}
+\affiliation{Center for Science, Technology and Society at Drexel University}
+\date{January 2020}
+\begin{document}
+   \maketitle
+   % This is a progressive work that's trying to explain my situatedness
+   \section*{Gradually and Then Suddenly}
+   
+   The Greek idea of the atom was that it was the final, indivisible unit of matter. Their mistake is understandable: atoms are only split with great difficulty. Atoms and software are both encountered as singular entities, but their singular qualities emerge from their parts. With atoms those parts are quarks and leptons. Software is built from libraries (themselves also software) and \gls{srcd}. To properly appreciate how software comes to behave, we have to both talk about the "atomic" software (indivisible, assembled, static) and its components. 
+
+   This text, appearing as it does on the screen or page you are reading, is the result of a chain of software assembly processes. Almost every piece of software relies on a long list of chains of assembly processes. A piece of software is assembled\footnote{This is distinct from a computer assembler (see next note).} together from its component parts: \gls{srcd}, already assembled software, data, and the many tools that will actuate the assembly\footnotemark. Each piece of software involved in this assembly process was itself assembled in its own process of gathering together. Each software has its own way of assembling its components. Different softwares use different kinds of tools (and each kind also has a diversity of particular options). The set of tools used by a piece of software and the way those tools are configured is part of the existence of that piece of software. A piece of software has \gls{srcd} that is (before it is assembled) solely used by it, but the other pieces of software (both those responsible for providing functionality and making the assembly) are equal partners in the constituting process. The software cannot be assembled if any part fails. The qualities of the software can be traced back to any of these components and in complex software behavior is often the result of all of them working in concert.
+
+   \footnotetext{Astute readers will have realized that this begs the question a bit. The tools that actuate the assembly are software. Making software involves software. When we go all the way back before the assembly process, we find programs written directly in the language understood by computer processors - machine language. Software must always make its way back to the machine language for the machine it is running on somehow. It's the only thing computers speak. The tools that accomplish this have various important qualities that are unimportant to the work here. They include assemblers, compilers, and interpreters. The important quality remains that they are all \textit{texts}. Instructions for machines written by humans.}  
+
+   The product of an assembly also varies from software to software. Sometimes the assembly produces a single binary file that can be read and executed by one or more kinds of computer. It can also produce a particular arrangement of components that will be interpreted by an already existing binary. The commonality between these approaches is they produce a constellation of resources that, for the user of the software, function as a single "atomic" piece of software. For most people who interact with software, they experience it as this atomic whole: a cohesive thing that acts with one mind. When seeking to understand \textit{why} a particular piece of software does what it does, however, it is important to pull apart this atomic structure. Much of what an app on your phone does is dictated not by the \gls{srcd} files of the app, but by the operating system of the phone itself and the associated world of shared libraries that the app utilizes (either because the phone's operating system requires it or because the library saves the app maker time).
+
+   The nature of software is important to understand before discussing how "software" "works" because that discussion may, at any point, need to break off to explain that the relevant piece of software has suddenly changed. The text messaging app on your phone relies on your phones operating system to send a receive text messages, which in turn relies on the software of the phone's modem to translate texts to radio waves. When a problem arises, it can arise within any of these components, in the interactions between these components, or when the process executes correctly but the user expected a different result. Though it is possible to draw boundaries around all of the \gls{srcd} involved in a single piece of software, it quickly becomes enormously difficult. Facebook's website uses just over sixty million lines of \gls{srcd}, but it also relies on behavior that exists in the operating systems it uses (linux [over ten million lines] or windows [over forty million]) and the \gls{srcd} that runs each component of the computers it uses \citep{McCandless2014-xd}. When a user encounters a problem in "Facebook" the problem is most likely in the \gls{srcd} written by Facebook, but it may not be! Understanding this chain of agency within computers is essential to tracking why software does "what it does."
+
+   \section*{Eden}
+
+   \acrfull{eden} is "an open source software platform which has been built specifically to help in Disaster Management[sic]" \citep{Sahana_Foundation2011-od}. As an atomic piece of software users experience \acrshort{eden} as a series of web pages that focus on managing resources. The resources available to manage are diverse: people, goods, events, goals, processes and locations. The Sahana Foundation, the organization most responsible for \acrshort{eden} presents these capabilities as focusing on managing the sprawling nature of the world and keeping multiple things within the bounds of perception of the users of the system \citep{Sahana_Foundation_undated-wu}. Their pitch focuses on the needs and concerns of the officials selecting the system, but it also takes into account the need for individual members to manage and access the knowledge that the system manages. The the Sahana Foundation sketches an image of \acrshort{eden} organizing and marshaling limited resources in chaotic times. 
+   
+  
+   \printnoidxglossaries
+   \setlength{\parindent}{4em}
+   \bibliography{eden}
+
+\end{document}
