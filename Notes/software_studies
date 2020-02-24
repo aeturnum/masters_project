@@ -57,7 +57,7 @@ Also does not cite any sources when describing how MPEG-2 "works"
 ## ethnocomputing
 
 ## function
-101 programming civic minded, hope to avoid repitition
+101 programming civic minded, hope to avoid repetition
 (also does not)
 104 math functions can't be executed; can be understood as a lookup table
 105 inputs must always map to same outputs if the function is rational
@@ -67,6 +67,100 @@ Also does not cite any sources when describing how MPEG-2 "works"
 
 ## import / export
 119 move data between apps; la does a lot of importing?
-120 importantance of import and export in software & media
+120 importance of import and export in software & media
 
 ## information
+
+## intelligence
+133 another no cite generality
+
+## interaction
+
+## interface
+149 more un-cited general technical descriptions
+150 API and user interface are different in a lot of ways; asymmetry between halves of an interface draws the sides together
+151 user interface (inc. programming languages) mediate machine functions; API as allowing us to ignore hardware to a degree
+152 humans act as interfaces to machines; interface representations (skins, loading icons, etc) join formal grammars of interaction with a library of visual codes
+
+A general essay on the power and function of interfaces, the join heterogeneous spaces. These can exist within machines (such as communication across libraries, networks, processes) and also across machine-human linkages (a computer expert).
+
+## internationalization
+153 Very odd claim about otherness not appearing in software, when actually it is everywhere
+154 Java includes well-to-do locales; software needs to know its location (kind of? It has a local marker); hugely dubious universalizing claim about software
+155 why can't you sort alphabetically in asian writing systems?; Closer you move to the core of Java, the fewer languages it supports; internationalization focuses on use not production; Ubuntu is an alternative approach to localization than Java?
+156 Ubutntu is international because they say that people from multiple countries will be involved?
+157 software always operates on structural relationships; marshaling and enumerating
+158 data structures can be enumerated
+159 Making enumeration really function is a political act; Software work has become more global, but this requires a greater number of humans to work within systems not designed for them
+Mackenzie does not understand that i18n is used by both java and ubuntu and kind of writes a whole essay on it.
+
+## interrupt
+161 Inturrupts are implemented by the chip, not by an external agent (the chip choses to answer an inturrupt, even if it always says yes)
+162 Does the interrupt break the step-by-step process of an algorithm?; interrupt vector as association between members of social assemblage; interruption as mark of agency, social relation
+163 software operates in complex environments; removing the keyboard disables a text editor; roadway as operational space
+164 interrupts as linking vast distances of existence mediated by software 
+165 interrupts make software contingent; software comes to expect acts which don't come from it, but on which its operation depends; software must be understood in terms of where it exists within larger structures
+
+## language
+168 software and language related because software is constructed in and may process language; programming language and software-specific interaction langauge; bad take on natural language; computer language subset of human language
+169 signs in human language arbitrary; computer language a compromise between human desire and machine constraint
+170 that all turing complete languages reduce to each other testifys to cultural importance; language that executes
+171 nonsense about how AI could show computer language to be equal to natural language
+172 only real code in computer language is assembly
+
+Takes on machine language and human language and the relationship between the two
+
+## lists
+
+## loop
+180 LOOP is generally not an assembly level instruction like JMP or BNCH
+181 Recursion not generally understood as a loop; recursion and looping are not equivalent
+
+Loops as computer poetry I guess?
+
+## memory
+Investigating the impact of language about memory on implementation of computer memory. Not useful for me but seems like a cool essay!
+
+## obfuscated code
+194 One line programs highlight multiple audiences of codes
+195 naming obfuscation highlights the connection between code "names" and human language; data / code / comment conflation
+196 this program does not reverser the string, it creates a new string in the output buffer
+197 obfuscation explores play in programming - wrestling with familiarity and the quality of the language its written in
+Gets into obfuscated programming and shows how it highlights the play within programming languages and how it can be used to unsettle the appearance of clarity and simplicity in computer code
+
+## object orientation
+200 computer science processed data; interactions always structured and planned
+More wildly general statements about the CS field without sources
+202 Humans and others can only act if the program is prepared for their action; changes to object data must be defined in object; feminist critique of OO framing; don't confuse OO approach (plan interaction ahead of time) with OO programming techniques
+204 computer professionals afraid of the unpredictable
+205 users experts at escaping the pre-defined; OO approach creates fragile systems that we must fear breaking
+Critique of the framing of OO design, which wraps all the operations for a given piece of data up with the data. This imples and delimits future new operations without the modification of that Object, which creates a brittle and inflexible representation of the logic around the operation. 
+
+## perl
+
+## pixel
+
+## Preferences / settings / options / control panels
+
+## Programmability
+224 programs existed before, but programmability is new
+225 analog computers "compute" though their physical state
+227 programming vs execution
+
+## Sonic Algorithm
+
+## Source Code
+237 programs often include comments
+More general definitions given without citation (omg they cite wikipedia)
+239 How are the politics of open soruce more complex?; You can't say the "open source" community differentiates between open source software and free software
+240 code obfuscation creative; always social science looks at the absolute dumbest stuff
+
+## System Events sounds
+
+## Text Virus *
+
+## Timeline (sonic)
+
+## Variable *
+
+## Wired Languages
