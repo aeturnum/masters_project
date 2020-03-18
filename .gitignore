@@ -46,3 +46,5 @@
 /Source/modules/plugins/*
 !/Source/modules/plugins/__init__.py
 !/Source/modules/plugins/skeleton.py
+# Ignore virtualenv
+masters_venv
