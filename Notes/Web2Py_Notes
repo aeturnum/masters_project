@@ -1,0 +1,202 @@
+# Web2Py Documentation
+
+## http://web2py.com/books/default/chapter/29/00/preface
+python 3 in 2017
+web based ide!
+lots of sane defaults
+"from the user perspective" - like, from the perspective of the developer or the...user of the website built with it?
+
+## http://web2py.com/books/default/chapter/29/01/introduction
+m/v/c
+ticketing system for errors
+LGPL
+So Much Magic
+pro-DRY and one way, but lots of auto-import magic
+single orm layer between a lot of flavors of sql
+
+
+# install notes
+
+python modules from script
+http://eden.sahanafoundation.org/wiki/InstallationGuidelines/Linux/Server/CherokeePostgreSQL
+# Couldn't get
+# apt-get -y install libgeos-c1
+apt-get -y install python-lxml python-setuptools python-dateutil
+
+apt-get -y install python-serial python-reportlab python-matplotlib
+apt-get -y install build-essential
+python -m pip install requests xlwt serial Pillow geopy reportlab shapely xlrd
+python -m pip install python-dateutil lxml
+
+optional:
+had to install gdal, gave me trouble
+install wheel first
+changed gdal to <3.0 to get it to build
+removed pyrtf
+replaced PIL with Pillow
+
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:ubuntugis/ppa
+sudo apt install postgis
+needed for:
+sudo -u postgres psql -q -d sahana -c 'CREATE EXTENSION postgis;'
+
+sudo -u postgres psql -q -d sahana -c 'GRANT ALL ON geometry_columns TO sahana;'
+sudo -u postgres psql -q -d sahana -c 'GRANT ALL ON spatial_ref_sys TO sahana;'
+
+***omg they have different commented lines with the database types
+
+interesting:
+(000_config.py 42)
+# NB Web2Py doesn't like passwords with an @ in them
+
+python web2py.py -S eden -M -R applications/eden/static/scripts/tools/noop.py
+
+python -m pip install psycopg2
+
+# causes errors
+python web2py.py -S eden -M -R applications/eden/static/scripts/tools/compile.py
+
+
+# /install notes
+
+# Cultural notes
+
+This is the kind of project where their install instructions are based on a maximum version of Debian 9, released in 2017. Their base case is focused on systems as they existed around 2012, 8 years ago. Their configuration files are filled with reduntant lines listing different values with the expectation that you'll simply uncomment one of many lines to fix your use case. 
+
+It feels very...PHP-ish, craft development-ish. There's a real code smell to doing things this way. To the idea that the primary users are people who appreciate having all the common options laid out before them. The python modules you need to install are deeply under-documented. The best resources are scripts posted on the wiki, but not included in the repository. I'm pretty sure the docker file included would not function.
+
+# /Cultural
+
+# Validator instance
+
+There's a pattern in verifying data called "validators" - they're objects the represent the act of checking if data conforms to expectations. In this case, I ran into an issue with the validator for country information. The "offending" code is this, but the changes are actually in the inter-connections between code:
+
+/Users/ddrexler/Documents/STS_Projects/2019/Masters Project/Source/modules/s3db/org.py
+#Field("registration", label = T("Registration")),    # Registration Number
+region_id(),
+Field("country", length=2,
+   label = T("Home Country"),
+   represent = self.gis_country_code_represent,
+   requires = IS_EMPTY_OR(IS_IN_SET_LAZY(
+                lambda: gis.get_countries(key_type="code"),
+                zero = messages.SELECT_LOCATION
+                )),
+   readable = use_country,
+   writable = use_country,
+   ),
+
+This references the IS_EMPTY_OR validator (provided by web2py) and the IS_IN_SET_LAZY validator (from EDEN). The problem looked like this:
+
+Traceback (most recent call last):
+  File "/var/www/web2py_env/web2py/gluon/html.py", line 1893, in _validate
+    (value, errors) = validator(value)
+  File "/var/www/web2py_env/web2py/gluon/packages/dal/pydal/validators.py", line 145, in __call__
+    return self.validate(value), None
+  File "/var/www/web2py_env/web2py/gluon/packages/dal/pydal/validators.py", line 2767, in validate
+    return validator_caller(self.other, value)
+  File "/var/www/web2py_env/web2py/gluon/packages/dal/pydal/validators.py", line 152, in validator_caller
+    return func.validate(value)
+  File "/var/www/web2py_env/web2py/gluon/packages/dal/pydal/validators.py", line 141, in validate
+    raise NotImplementedError
+NotImplementedError
+
+For some reason, the validate() function  in IS_IN_SET_LAZY was being called, even though maybe it shouldn't be?
+
+It turns out the problem is that I was using a version of web2py that was _too new_ for EDEN.
+
+In March 2019, web2py had re-factored this functionality to use a validate() function instead of just calling the object. The IS_IN_SET_LAZY used the "old" functionality. This was understood as an issue by the web2py team and there are a series of increasingly successful fixed starting on March 13 and finally ending in April 10th to fix the backwards compatability with old behavior. I was using it in the wrong time period - between the gap of the change but without the fixes. 
+
+old validators: https://github.com/web2py/web2py/blob/285013a64a12d5fcb353c8a8587d9ad4e806cac7/gluon/validators.py
+
+broken fix: https://github.com/web2py/pydal/commit/c748f85ab57ea0eaa9f4fc3af3dfdeeb7d0127b5#diff-f61cb7600f7f1e4b0549d4e83462b1dc
+
+full fix: https://github.com/web2py/pydal/commit/cecd77127c122404c1aee7f6377c6a0150d86d84#diff-f61cb7600f7f1e4b0549d4e83462b1dc
+
+On fixing this bug, it seems like their release 2.17.1 does not include the pydal submodule - effectively making it useless
+
+
+# /Validator
+
+# Creating Orgs
+
+## adding myself to org
+
+Sex field for employees (why sex? Why only male and female?)
+
+### Phone number
+
+Can't enter a valid phone number...
+
+Bug in phone# validation:
+/Users/ddrexler/Documents/STS_Projects/2019/Masters Project/Source/modules/s3/s3validators.py
+LINE 1957 - __call__
+
+- error_message is set in international section, but the logic on line 1998 sets the error again. Probably correct to check if error_message is set...it's actually not that straightforward. I suppose you want to...there's a local error message, then there's the option of setting a global error message. Probably the logic should go: if global message, return that; else, return local message.
+
+- Also how does the user know this should be an international number? It's not displayed in the interface anywhere.
+
+EDEN actually wants to have {what was I going to write here?}
+
+Also you can just omit the phone# and not get an error
+
+### /Phone number
+
+### notion of a person in the system
+
+When I try to add a staff member with my information (actually just email address), it gives an error about having a duplicate email address in the system.
+
+You can add yourself to the organization in your own personal pannel, but there's no UI indications for this.
+
+If you take out the email address part, the user is quite happily added to the organization and is identical in all ways aside from database ID. In fact, if you add the email to the second user account, it is quite happily added. 
+
+### Can't delete the other person
+
+Error happens because a table (hrm_human_resource_shift) hasn't been created. There appears to be code that tries to collect all the referenced tables and make a request against them, but clearly some aspect of this is failing. It could be that I improperly setup the server and it could be that there's a bug in the software, but there's no clear way to descern the "true" answer
+
+sample log: https://eden.comdotnetcom.net/eden/admin/ticket/eden/144.118.77.126.2020-02-03.20-00-00.77f16bac-374b-4c99-b5b5-11f235a4fb7a
+
+Finally solved by:
+- doing a bunch of logging, found that the database entries were being lazy-created, but the mechanism to detect table usage was bad somehow?
+- Eventually solved by using the prepopulate setting to create "all" tables.
+- I think this problem might have been caused because I compiled the files and then changed settings, but the files were still compiled?
+- Eventually solved by overwriting some defaults and removing the compiled files
+
+# /Creating Orgs
+
+# Making the project
+
+Categories (probably nothing here):
+Agriculture	Education	Health	Protection
+Camp Coordination/Management	Emergency Shelter	Logistics	Water Sanitation Hygiene
+Early Recovery	Emergency Telecommunications	Nutrition
+
+# /Making the project
+
+# local install
+
+linux packages:
+# apt-get -y install libgeos-c1
+apt-get -y install python-lxml python-setuptools python-dateutil
+
+
+apt-get -y install python-serial python-reportlab python-matplotlib
+# pip: lxml setuptools python-dateutil pyserial reportlab matplotlib
+apt-get -y install build-essential
+python -m pip install requests xlwt serial Pillow geopy reportlab shapely xlrd
+python -m pip install python-dateutil lxml
+
+python3 -m venv masters_venv
+source masters_venv/bin/activate
+python3 -m pip install lxml setuptools python-dateutil pyserial reportlab matplotlib requests xlwt serial Pillow geopy reportlab shapely xlrd pydriller pytest pydeps
+ln -s /Users/ddrexler/src/python/web2py/gluon/ masters_venv/lib/python3.6/site-packages/gluon
+
+
+# word
+
+How to deal with module-level imports? If I import X.Y then X is also imported, but it's only for the import side effects, the module that is returned to the importing piece of code is X.Y. 
+
+Todo: how to make python 2 & 3 compatible
+
+https://stackoverflow.com/questions/60938966/how-to-tell-the-difference-between-a-missing-module-and-a-non-module-import-when
+

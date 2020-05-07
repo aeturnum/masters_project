@@ -86,6 +86,20 @@
     description={A generic term that describes the entire process that leads to the production of a series (or a single) software artifact. This includes the economic and culutral position of the organizing project, the social organization of those who write the code for the piece of software, the social positions of the software artifacts' users, and the software artifacts themselves. This term is used in opposition to the common "software" because of the potential confusion between a "software project" (the organizing structure of a Software-Object), a "program" (a Software-Artifact), and other linguistically confusing ways of speaking about the multi-layered process that produces "software."}
 }
 
+\newglossaryentry{sa}
+{
+    name=Software-Artifact,
+    description={An entity of uncertain composition that behaves, for common users (as opposed to technical staff) as a single entity. A software-artifact could be a single binary with all its functionality provided by machine code included in that single location in memory. It could also be a binary that makes calls to various libraries. In the case of EDEN, it's an expensive set of Python files - some of which are human readable and some of which have been modified to make them faster to read. In this case a seperate program, the Python binary itself, reads and executes the EDEN program. Even though EDEN is many seperate files and contains no machine code, it is properly considered a software-artifact because users interact with it as a single entity.  Software-artifacts are produced periodically by software projects, but are not themselves entirely "software." The idea of software must be large enough to allow multiple software-artifacts to exist within the same project: the current version of your phone OS and the next version, the Facebook app on your phone and the webserver that tells it what has happened. Nevertheless, when we are using "software" we are always directly interacting with one or more software-artifact(s). They are the material reality of software projects.}
+}
+
+\newglossaryentry{webframework}
+{
+  name=Web Framework,
+  description={A library (or set of libraries) that handles translation from and to the language of HTTP and other web technologies. The library of functionality they provide can range from wrapping basic text in a format a web browser will understand to providing functionality that allows users to log in, recieve realtime messages and interact with the same web site from multiple clients simultaniously (Statz, 2010). Each Web framework also has its own philosophy about what information the developer is expected to provide and how much the developer needs to set. Some frameworks attempt to provide everything that is required to build almost any website, while others focus on providing a core of functionality and may not include support for connecting to a database or managing logins. Generally, any web framework may be used to make any website, but framework selection will dramatically change the experience of the software engineers developing that web site.}
+}
+
+
+
 % \newglossaryentry{}
 % {
 %    name=,
