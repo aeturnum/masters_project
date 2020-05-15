@@ -1,3 +1,6 @@
 [submodule "Source"]
 	path = Source
 	url = git@github.com:aeturnum/new_eden.git
+[submodule "Diagrams/Libraries/C4-PlantUML"]
+	path = Diagrams/Libraries/C4-PlantUML
+	url = git@github.com:aeturnum/C4-PlantUML.git
