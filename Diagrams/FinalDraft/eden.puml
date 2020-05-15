@@ -1,0 +1,33 @@
+@startuml
+!include /Users/ddrexler/Documents/STS_Projects/2019/MastersProject/Diagrams/Libraries/C4-PlantUML/C4_Component.puml
+!include /Users/ddrexler/Documents/STS_Projects/2019/MastersProject/Diagrams/Libraries/C4-PlantUML/C4_Context.puml
+
+'LAYOUT_WITH_LEGEND
+
+title EDEN System Diagram
+
+Container_Boundary(eden, "EDEN software artifact") {
+    Container_Boundary(database, "Database System") {
+        Component(dbhost, "Host", "Computer", "Controls access to the Database and coordinates resoureces.")
+        ContainerDb(dbprogram, "MySQL or PotgreSQL", "Database", "Stores data and relationships.")
+
+        Rel(dbhost, dbprogram, "Connects", "Internal Socket")
+    }
+
+    Container_Boundary(all_python, "Python Code") {
+        Container_Boundary(Web2Py, "Web2Py") {
+        
+        }    
+
+        Component(eden_source, "EDEN Source Code", "Python", "Source code written by the Sahana EDEN team.")
+    }
+
+    Container_Boundary(other_systems, "Non-Python Code") {
+    }
+
+}
+
+Person(user, "EDEN User", "Accesses over the web")
+
+Rel(eden, user, "Uses", "Over Web Interface")
+@enduml
