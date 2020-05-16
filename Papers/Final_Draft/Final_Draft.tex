@@ -1,3 +1,5 @@
+% !TEX options=--shell-escape
+% https://github.com/SublimeText/LaTeXTools/issues/1082
 %  _____ _             _    ______             __ _ __  
 % |  ___(_)_ __   __ _| |  / /  _ \ _ __ __ _ / _| |\ \ 
 % | |_  | | '_ \ / _` | | | || | | | '__/ _` | |_| __| |
@@ -34,6 +36,20 @@
 %\usepackage[colorinlistoftodos]{todonotes}
 % Allow seperate footnotes
 \usepackage{sepfootnotes}
+% Diagrams!
+\usepackage{svg}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+% Trying to include graphics has been a JOURNEY
+% Links used:
+% aborted attempt to use svgs
+% https://tex.stackexchange.com/questions/542766/inkscape-1-0-not-able-to-export-files-needed-for-svg-package
+% https://tex.stackexchange.com/questions/2099/how-to-include-svg-diagrams-in-latex
+% (updated comand line is: inkscape -D --export-latex  "EDEN_diagram.svg" --export-type="pdf" --export-filename="EDEN_diagram_svg-tex.pdf")
+% https://www.overleaf.com/learn/latex/Inserting_Images
+% convert EDEN_diagram.png -resize 50% EDEN_diagram.png
+
 
 % This section was found in a stack overflow comment about making the epigraph length different and I include it here as an incantation against bad formatting
 \renewcommand{\epigraphsize}{\small}
@@ -80,6 +96,16 @@
 
 \makenoidxglossaries
 % These used to be in a seperate file, but I want them in here because it will let me cite things from the bibliography in them
+
+%   _____ _                                
+%  / ____| |                               
+% | |  __| | ___  ___ ___  __ _ _ __ _   _ 
+% | | |_ | |/ _ \/ __/ __|/ _` | '__| | | |
+% | |__| | | (_) \__ \__ \ (_| | |  | |_| |
+%  \_____|_|\___/|___/___/\__,_|_|   \__, |
+%                                     __/ |
+%                                    |___/ 
+
 
 \newacronym{foss}{FOSS}{Free Open Source Software}
 \newacronym{sts}{STS}{Science, Technology \& Society}
@@ -171,7 +197,7 @@
 
 \newglossaryentry{sa}
 {
-    name=Software-Artifact,
+    name=software artifact,
     description={An entity of uncertain composition that behaves, for common users (as opposed to technical staff) as a single entity. A software-artifact could be a single binary with all its functionality provided by machine code included in that single location in memory. It could also be a binary that makes calls to various libraries. In the case of EDEN, it's an expensive set of Python files - some of which are human readable and some of which have been modified to make them faster to read. In this case a separate program, the Python binary itself, reads and executes the EDEN program. Even though EDEN is many separate files and contains no machine code, it is properly considered a software-artifact because users interact with it as a single entity.  Software-artifacts are produced periodically by software projects, but are not themselves entirely "software." The idea of software must be large enough to allow multiple software-artifacts to exist within the same project: the current version of your phone OS and the next version, the Facebook app on your phone and the web server that tells it what has happened. Nevertheless, when we are using "software" we are always directly interacting with one or more software-artifact(s). They are the material reality of software projects.}
 }
 
@@ -212,13 +238,29 @@
 %    description={}
 % }
 
+%      _______ _                                
+%     / / ____| |                               
+%    / / |  __| | ___  ___ ___  __ _ _ __ _   _ 
+%   / /| | |_ | |/ _ \/ __/ __|/ _` | '__| | | |
+%  / / | |__| | | (_) \__ \__ \ (_| | |  | |_| |
+% /_/   \_____|_|\___/|___/___/\__,_|_|   \__, |
+%                                          __/ |
+%                                         |___/ 
+
 \singlespacing
 
 % \loadglsentries{glossary}
 
 \renewcommand{\bibsection}{\section*}
 
-% Footnote section
+%  ______          _               _            
+% |  ____|        | |             | |           
+% | |__ ___   ___ | |_ _ __   ___ | |_ ___  ___ 
+% |  __/ _ \ / _ \| __| '_ \ / _ \| __/ _ \/ __|
+% | | | (_) | (_) | |_| | | | (_) | ||  __/\__ \
+% |_|  \___/ \___/ \__|_| |_|\___/ \__\___||___/
+                                              
+                                              
 
 \sepfootnotecontent{boellactualvirtual}{\citet{Boellstorff2015-al} rejects the idea that events in digital spaces (like games or chat rooms) are any less "real" than things that exist in the physical world and thus rejects the common language of "real" and "virtual." He instead talks about "actual" (physical) spaces and "virtual" (within digital worlds) spaces. I will be describing the physical world as the "actual" world when appropriate and will talk about both virtual space (space that fully exist in computers such as Second Life and World of Warcraft) and digital space (spaces that are displayed though digital mediums, but are constituted of a mix of real and generated media [facebook, instagram]). It is all "real."}
 
@@ -238,7 +280,14 @@
 
 \sepfootnotecontent{problemfix}{Interestingly enough, the problem was fixed by a piece of code written by a member of the \acrshort{eden} team \citep{Konig2019-fw}. The \gls{w2p} team had already noticed the problem and thought they had fixed it, but their fix did not work for for all circumstances and required more work.}
 
-% End footnote section
+\sepfootnotecontent{dslnote}{'General purpose' programming languages are all turing complete, which means they can fully describe the behavior of a 'turing machine' - a theoretical automaton described by Alan Turing in the early 20th century. This means that all general purpose programming languages can be reduced to one another (a series of instructions generated by one language can be generated by another). However, there are also 'domain specific languages' that are designed to solve more specific problems that cannot be reduced to one another (and cannot fully describe the behavior of a turing machine). Ironically, this document was typeset in \LaTeX, which is turing complete.}
+
+%      ________          _               _            
+%     / /  ____|        | |             | |           
+%    / /| |__ ___   ___ | |_ _ __   ___ | |_ ___  ___ 
+%   / / |  __/ _ \ / _ \| __| '_ \ / _ \| __/ _ \/ __|
+%  / /  | | | (_) | (_) | |_| | | | (_) | ||  __/\__ \
+% /_/   |_|  \___/ \___/ \__|_| |_|\___/ \__\___||___/
 
 % \title{Software: Gradually and Then Suddenly}
 \title{Composites: A Maze of Twisty Passages, None Alike}
@@ -253,7 +302,10 @@
    \maketitle
    % This is a progressive work that's trying to explain my situatedness
    \section*{It's Software's World, We Just Live in it}
-   Software is now well represented in every nook and cranny of the world. Though this project directly engages software, software was also used at every stage of its production: conception, composition, distribution and (in the age of covid-19) discussion. In the same moment that our reliance on software reaches ever loftier heights, we are surrounded by stories of important pieces of software being biased against vulnerable groups. Standpoint theory suggests that such biases often come from the hidden and unacknowledged perspectives of the people making software \citep{Harding1992-od,Haraway1988-nh}. In this sense, the problems caused by bias in software are not new problems. But, as \citet{Mackenzie2006-hb} and \citet{Kitchin2011-af} have noted, the management of a software project is filled with the work of managing relationships. Relationships between technical components, the humans doing the work and everyones expectations about the future. Software also exists within ecosystems: code written for a particular \gls{sa} is surrounded and supported by code that many other \glspl{sa} rely upon. The impact of the finals \gls{sa} reflects the intent of both the organization producing that \gls{sa} and the diffuse intent of the surrounding soft/hard/ware ecosystem. Software interventions into existing projects can highlight the paths of agency within software-artifacts. What can we learn about effecting change in software by studying how agency is mediated by the assembly process?
+   \epigraph{[It] matters with which ways of living and dying we cast our lot}{\textit{\citet[p. 55]{Haraway2016-nc}}}
+ 
+
+   Software is now well represented in every nook and cranny of the world. Though this project directly engages software, software was also used at every stage of its production: conception, composition, distribution and (in the age of covid-19) discussion. In the same moment that our reliance on software reaches ever loftier heights, we are surrounded by stories of important software projects being biased against vulnerable groups. Standpoint theory suggests that such biases often come from the hidden and unacknowledged perspectives of the people making software \citep{Harding1992-od,Haraway1988-nh}. In this sense, the problems caused by bias in software are not new problems. But, as \citet{Mackenzie2006-hb} and \citet{Kitchin2011-af} have noted, the management of a software project is filled with the work of managing relationships. Relationships between particular \glspl{sa} (both the current version and older releases), the humans working on the project and expectations about the future. Software also exists within ecosystems: code written for a particular software project is surrounded and supported by code that many other software projects rely upon. How a particular \gls{sa} impacts the world reflects the intent of both the organization that released this \gls{sa} and the diffuse intent of the surrounding software/hardware ecosystem. Software interventions into existing projects can highlight the paths of agency within \glspl{sa}. What can we learn about effecting change in software by studying how agency is mediated by the assembly process?
 
    \glspl{sa} are the result of an assembly process that brings together the source code from many different software projects. Each \gls{sa} is what \citet{Latour1999-ui} called a "blackbox" - a container that hides complexity. But in order to properly describe software, I needed to expand the idea of a blackbox. In Latour's theory, each blackbox contains other blackboxes with clean separations between those layers \citep[p. 183]{Latour1999-ui}. Software blackboxes, however, often interact across blackbox boundaries. A \gls{sa} will use one library as a clean blackbox but interact directly with the inner-workings of another library. Exactly which pieces of code drive particular behaviors in a given software artifact is difficult to predict in advance and working backwards from artifact behavior to code identification is not straightforward. This be because a \gls{sa} is a \gls{cmp} - a heterogeneous mix of elements where the role of each element in any given \gls{sa} is determined by the rules of the particular assembly process used to create it and whose component parts cannot be broken apart. This means that users and developers experience things in fundamentally different ways. Where users are always interacting with \glspl{cmp}, whose various component pieces cannot be differentiated within the \gls{cmp}, developers are always interacting with pre-assembly components. This is because changing composites directly is inefficient, so modern software development process relies on making changes to  components before one or more assembly process(es). These components are where engineers leave imprints of their views. However, understanding how those views coe to the surface of \glspl{cmp} depends on examining the assembly process that creates each given \gls{cmp}.The path of each materialized perspective through various assembly processes is unique.
 
@@ -278,6 +330,8 @@
   % Kelty, Christopher M. Two Bits: The Cultural Significance of Free Software. Duke University Press, 2008.
   %   - rules of FOSS give rise to certain consistent social rules
   \subsection*{The Social World of Software Makers}
+  \epigraph{[T]he "writing of technology" is by by no means universal; the opaque and stubborn places do not lie simply beneath technology, but are wrapped around and in it}{\textit{\citet[p. 181]{Mackenzie2006-hb}}}
+
    A great deal of excellent sociological work has been done on communities that produce various kinds of software. The communities that have been studied often have particular qualities of their social structures connected to their shared work of creating, maintaining and promoting software \citep{Kelty2008-jm}. Other work has focused less on the work of making software per-se and has instead highlighted how ideas of freedom, creativity and openness (of a particular kind) attract people to communities that make software \citep{Gabriella_Coleman2012-lq}. These ethnographic engagements with communities that produce software share a perspective that certain kinds of social structures are better suited for producing software (in general) and \textit{certain kinds of software in particular}. The \acrshort{foss} movement, Kelty claims, has a social structure that flows directly from the ethics of sharing and attribution that unite the software projects under the \acrshort{foss} banner \citep{Kelty2008-jm}. While there are important lacuna in \citet{Kelty2008-jm}'s somewhat utopian descriptions of \acrshort{foss} communities, especially for non-male and culturally heterogeneous people, it seems true that social structure and technical goals co-create and co-evolve with each other \citep{Penny2013-ic, Dean2010-lk}. Similar conclusions are reached by \citet{Boellstorff2015-al} when looking at online cultures and \citet{Ensmenger2012-kz} in his study of the history of the profession of computer programming. \citet{Boellstorff2015-al} vividly shows the validity of considering people spending in time in digital spaces \textit{isolated from} any actual world\sepfootnote{boellactualvirtual} referents. He freely notes relationships between the accounts his interlocutors give of their actual world activities, but understands that it's still valid to engage with those representations directly without trying to prove any truth-claims about them. \citet{Ensmenger2012-kz}'s work is historical rather than ethnographic, but also supports the ways in which the material demands of making software created social structures that have endured until today. There are consistent links between the nature of the virtual and the social structure of the actual people who create digital products, but each of those qualities can be examined independently without needing to fully understand the nature of the links. \citet{Gabriella_Coleman2012-lq}'s focus, in particular, on "hacking" cultures that exist outside of any particular culture of "software" or "code" points to these social structures fitting particularly well with software, but not proceeding directly from software per-se \citep{Drexler2019-ja}. This is in line with \citet{Cox2013-zo}'s examination of the expressive qualities of "coding" (which may or may not be a synonym for "software") and how they relate to the long history of speech as well as how the particular material qualities of computers open up new avenues for expression. For this project, these works suggest that \acrshort{eden} does have a particular culture around it, especially because \acrshort{eden}'s makers (the \gls{sf}) places the project within the \acrshort{foss} world of software development and the \acrfull{ict4d} world. Studying this particular social situation would doubtless be productive work and continue the conversation around the social character of collectives that create software and try to promote \acrshort{foss} ideas in particular historical, economic and legal regimes. However, this work also suggests that while the a particular \gls{so} and the culture around and within that \gls{so} co-create and drive each other's evolution, they also suggest that either can be considered in isolation at a particular moment in time. Indeed, \citet{Kelty2008-jm} and \citet{Gabriella_Coleman2012-lq}'s observations both depend on connecting independently observed qualities of \textit{culture} and \textit{particular \acrshort{foss} projects} in order to draw out the co-constitutive qualities. This project leaves whatever co-constitutive cultural links that exist between \acrshort{eden} and the people and cultures that produce it to others, though I am quite sure interesting work exists there.
 
   % Social footprint of software and digital cultures
@@ -298,42 +352,86 @@
   % Tiidenberg, Katrin, ed. Selfies: Why We Love (and Hate) Them. Emerald Publishing Limited, 2018.
   %   - more on using media to communicate meaning
   %   - new forms of media facing hostility
+  % take aways:
+  % - old wine in new bottles
+  % - different in some important ways 
+  % - machines make unique and new demands on us
+  % todo?
+  % Cheney-Lippold, John. We Are Data: Algorithms and the Making of Our Digital Selves. NYU Press, 2018.
 
   % TODO: move age in second life into this section
   \subsection*{The Social World Software Helps Construct for Us}
-   Even without a direct ethnographic engagement with the team working on \acrshort{eden} (or its users), previous work on software and its effect on the world has been useful for guiding the focus of this project. It goes too far to say that the nature of socializing has been transformed by digital networked communication, but society (and social scientists) are engaged in an ongoing effort to sort out truly new ways of using media and new forms for existing modes of socialization. Much of this work has focused on modern, media-focused ways of keeping socially connected with people \citep{Humphreys2018-ge,Jurgenson2019-tl,Tiidenberg2018-gh}. This work is not about making software, but speaks to the power \textit{of} software to structure and channel social activities. Like the social structures that exist around the act of making software, living with software pushes us to act in particular ways. \citet{Humphreys2018-ge} both highlights how modern practices of using global digital networks to keep in touch with each other proceed directly from more localized historical practices, and how the way we represent ourselves in digital spaces reflect possible social realities that only exist in those spaces. Software places is in new social configurations: a neighbor I have never met could see my vacation photos without asking me, I bring my assumptions developed over a career of software development for US software startups to my review of an internationally focused (but originally Indonesian) system for disaster management. Though each digital connection has a particular character and the field is difficult to tantalize accurately, many of the connections that have become more common bridge greater social distances than previously possible. \citet{Dean2010-lk} highlights this quality of digital spaces when she speaks about the collapse of predictability in how others will see us. The accessibility of digital spaces means that we may be famous "online" but anonymous in person, or visa-versa. 
+   Even without a direct ethnographic engagement with the team working on \acrshort{eden} (or its users), previous work on software and its effect on the world has been useful for guiding the focus of this project. It goes too far to say that the nature of socializing has been transformed by digital networked communication, but society (and social scientists) are engaged in an ongoing effort to sort out truly new ways of using media and new forms for existing modes of socialization. Much of this work has focused on modern, media-focused ways of keeping socially connected with people \citep{Humphreys2018-ge,Jurgenson2019-tl,Tiidenberg2018-gh}. This work is not about making software, but speaks to the power \textit{of} software to structure and channel social activities. Like the social structures that exist around the act of making software, living with software pushes us to act in particular ways. \citet{Humphreys2018-ge} both highlights how modern practices of using global digital networks to keep in touch with each other proceed directly from more localized historical practices, and how the way we represent ourselves in digital spaces reflect possible social realities that only exist in those spaces. Software places is in new social configurations: a neighbor I have never met could see my vacation photos without asking me, I bring my assumptions developed over a career of software development for US software startups to my review of an internationally focused (but originally Indonesian) system for disaster management. Though each digital connection has a particular character and the field is difficult to totalize accurately, many new connections bridge greater social distances than previously possible. \citet{Dean2010-lk} highlights this quality of digital spaces when she speaks about the collapse of predictability in how others will see us. The accessibility of digital spaces means that we may be famous "online" but anonymous in person, or visa-versa. 
 
-  % Culture of making software / tools
+   This project does not try to speak to much of the digital world is truly new and how much reifies old power relationships in new ways. Instead, it focuses on the unarguably new experiences of using digital computers and digital media as a tool of social connection \citep{Humphreys2018-ge, Jurgenson2019-tl, Ullman2012-fq}. Whatever similarities diarists of previous generations might see in the practice of blogging, they would find the computer interface new in many ways. It is these accidents of the digital world, what \citet[p. 3]{Ullman2012-fq} calls "pass[ing] through a membrane" into the world of the computer, that this project is interested in. The interior rules of computers that we can, from time-to-time, see reflected in our computer-mediated social connections. It is in this context that communities that exist within digital spaces should be understood. Often the social structures in these digital spaces and relationships (both those connecting individuals and those between systems) can have surprising and unexpected shapes that are at least partially driven by how computers work \citep{Boellstorff2019-tl}. 
+
+   % Situated knowledges and translation review
+   % Said, Edward W. Orientalism. Vintage Books, 1979.
+   % pre-
+   % Latour, Bruno. “Give Me a Laboratory and I Will Raise the World. En Science Observed: Perspectives on the Social Study of Science (pp. 141-170).” Beverly Hills: Sage Publications, 1983.
+   % skip maybe?
+   % Haraway, Donna. “Situated Knowledges: The Science Question in Feminism and the Privilege of Partial Perspective.” Feminist Studies: FS 14, no. 3 (1988): 575–99.
+   % Harding, Sandra. “Rethinking Standpoint Epistemology: What Is‘ Strong Objectivity?’” The Centennial Review 36, no. 3 (1992): 437–70.
+   % Haraway, Donna. “Situated Knowledges: The Science Question in Feminism and the Privilege of Partial Perspective.” Feminist Studies: FS 14, no. 3 (1988): 575–99.
+   % Harraway, Donna. “Modest_Witness@Second_Millennium.FemaleMan©_Meets_OncoMouseTM.” Routledge New York, 1997.
+   % Fleck, Ludwik. Genesis and Development of a Scientific Fact. University of Chicago Press, 2012.
+   % Subramaniam, Banu. Ghost Stories for Darwin: The Science of Variation and the Politics of Diversity. University of Illinois Press, 2014.
+   % Traweek, Sharon. Beamtimes and Lifetimes. Harvard University Press, 2009.
+  %   - cultural charaters of teams show up in the tools that they build to do their work
+   % Eubanks, Virginia. Automating Inequality: How High-Tech Tools Profile, Police, and Punish the Poor. St. Martin’s Press, 2018.
+  %   - materialization of human perspectives in computer algorithms
+  %   - questioning the projection of agency onto computer code v.s. understanding computer code as "doing the work" of humans
+  %   - more examples of tools containing material standpoints (specifically the eugenical quality of population statistics)
+   \subsection*{Materialized Perspectives}
+   \epigraph{A model is worked, and it does work}{\textit{\citet[p. 63]{Haraway2016-nc}}}
+
+   How does one think about bias? How can we usefully talk about the omni-present cultural contexts that shape how we approach and engage with subjects? This is such a large question that, like \citet[p. 24]{Said1979-jw}, I must partially turn away and focus on a sub-section of it. I will be focused on the perspectives and assumptions that technical thinkers leave in their production of work. Deep studies of this process date back, at least, to \citet{Fleck2012-qr} who explained that neutral scientific description of the disease-state "Syphilis" could not be separated from an aura of moral disrepute. Where Fleck described, modern scholars have described why: the life circumstances of Fleck's medical knowers made it easy for them to judge and hard to disentangle the roles of medical expert and moral judge. Both work from \citet{Harding1992-od} and \citet{Haraway1988-nh} have contributed to the practice of "standpoint theory." It explores the connections between the circumstances of ones life (our "standpoint") and what things we are or aren't prepared to believe. Between the knower and the knowledge they generate. Of central concern is what \citet{Haraway1988-nh} calls the god trick (or knowledge "from nowhere"). Information is severed from the history of its production and made to appear as if it stands alone. God tricks are central to systems which embed unacknowledged standpoints within them. The way that early biometric techniques lead to splitting populations into groups with distinct edges betray the goals of their eugenicist creators \citet{Subramaniam2014-wg}. Automated systems that claim to offer evidence-based guidance reveal their real purpose as systems of control through their statistically invalid population selections \citep{Eubanks2018-hc}. The fetishistic focus on the gene hides our inability to understand or effect change on the complicated network of genetic and biological action that we call life \citet{Harraway1997-va,Reardon2017-bo}. These examples all show ways in which problematic characters of systems have been allowed to remain hidden because the problematic qualities are not problematic for those who are in charge of those systems. 
+
+   It is not necessary for a system to become problematic before it's useful to investigate standpoints encoded into it. Software, like any other tool, exists to help save human effort. In relieving humans from action, tools must trigger outcomes that might otherwise be proceeded by human choice. The number and nature of choices that can be elided within tools have only grown more diverse with time. The real world work of finding and addressing standpoints in problematic software can be assisted by finding and addressing standpoints that are not themselves problematic. When \citet{Traweek2009-uu} studied high energy physicists, her observation that the particle detectors built by different teams had characteristics that flowed from those teams' personalities and preferences did not need to be used to repair a flow to be useful. This project is interested in finding choices that software makes but does not acknowledge. These latter day god tricks escape from documentation or acknowledgment. They can be deeply aligned with their creators' world view and be difficult to describe to insiders. A great deal could be learned by engaging with the engineers who create these materialized standpoints, but we don't need to speak to them in order to point out what is there.
+
+  % Modern Software Production
   % Sources in this section:
   % Mackenzie, A. Cutting Code: Software and Sociality. Edited by Steve Jones. Peter Lang Publishing, 2006.
   %   - relationality of software
   %   - the process of creating software is a process of managing relationships: with the future, with the past, with other software
-  % Traweek, Sharon. Beamtimes and Lifetimes. Harvard University Press, 2009.
-  %   - cultural charaters of teams show up in the tools that they build to do their work
-  % Eubanks, Virginia. Automating Inequality: How High-Tech Tools Profile, Police, and Punish the Poor. St. Martin’s Press, 2018.
-  %   - materialization of human perspectives in computer algorithms
-  %   - questioning the projection of agency onto computer code v.s. understanding computer code as "doing the work" of humans
+  % Kitchin, Rob, and Martin Dodge. Code/space: Software and Everyday Life. MIT Press, 2011.
+  % Bivens, Rena. “The Gender Binary Will Not Be Deprogrammed: Ten Years of Coding Gender on Facebook.” New Media & Society 19, no. 6 (June 1, 2017): 880–98.
+  % Elish, Madeleine Clare. “Moral Crumple Zones: Cautionary Tales in Human-Robot Interaction.” Engaging Science, Technology, and Society 5, no. 0 (March 23, 2019): 40–60.
+  % Cramer, Florian, and Matthew Fuller. “INTERFACE.” In Software Studies: A Lexicon, edited by Matthew Fuller, 149–53. MIT Press, 2008.
+  % Yuill, Simon. “INTERRUPT.” In Software Studies: A Lexicon, edited by Matthew Fuller, 161–68. MIT Press, 2008.
+  % Cramer, Florian. “LANGUAGE.” In Software Studies: A Lexicon, edited by Matthew Fuller, 168–74. MIT Press, 2008.
+  % Crutzen, Cecile, and Erna Kotkamp. “OBJECT ORIENTATION.” In Software Studies: A Lexicon, edited by Matthew Fuller, 200–207. MIT Press, 2008.
   % Schüll, Natasha Dow. Addiction by Design: Machine Gambling in Las Vegas. Princeton University Press, 2012.
   %   - again, material encoding of human intent into technology
   %   - NOT SURE I'LL USE
-  % Subramaniam, Banu. Ghost Stories for Darwin: The Science of Variation and the Politics of Diversity. University of Illinois Press, 2014.
-  %   - more examples of tools containing material standpoints (specifically the eugenical quality of population statistics)
-
-  % current events things
-  % automating inequality
-  % moral crumple zones
-  % addiction by design
+  % Deleuze, Gilles. “Postscript on the Societies of Control.” October 59 (1992): 3–7.
+  
   % ...?
-  \subsection*{Software Today}
+  \subsection*{Software Itself}
+  \epigraph{I have passed through a membrane where the real world and its uses no longer matter. I am a software engineer[.]"}{\textit{\citet[p. 3]{Ullman2012-fq}}}
+  
+  Scholars have pointed out how software carries out existing practices - sometimes in new ways and sometimes in ways that only appear to be new \citep{Schull2012-nc,Humphreys2018-ge,Eubanks2018-hc}. Others have studied movements that involve software, often noting the ways in which the particular qualities software appears to have an impact on that movement \citep{Boellstorff2015-al,Cox2013-zo,Ensmenger2012-kz,Kelty2008-jm}. Studies of software itself are somewhat rarer. \citet{Mackenzie2006-hb}'s description of software focuses on how the term "software" cannot be understood as any particular program, but as a sprawling and diverse process that cannot be summed up in any particular element. Though software projects produce individual \glspl{sa}, our understanding of software must be expansive enough to both include the current version of our phones' operating system, the previous version and the next version. All versions of an operating system are themselves both individual \glspl{sa}, which may have unique qualities and characters, and members of a larger software project. Before the "next" version of a phone's operating system can exist as an actual \gls{sa}, it exists in the minds and plans of the members of the software project. Above all, \citet{Mackenzie2006-hb} notes that making software is a process of relationship management. Managing relationships between the current \gls{sa} and an imagined future one, managing relationships between the software project's internal components and resources they rely on, managing relationships between the humans who do the work to produce the software. Software is fundamentally relational. That is not to say that software is socially determined. Computers have material realities based on currently existing \glspl{sa} and the standards that exist at any given time. \citet{Bivens2017-tc} describes how Facebook has been forced by the material demands of software systems to choose between a system that conforms to a materialized perspective encoded into their existing software or one the conforms to the expectations of their users. The outcome is software that works better for some users than others and where the relationship between materialized perspectives, digital inconsistencies and the uncertain promise of digital perfection are all on display. 
 
-  % latour black box
+  Other work has engaged software from within its own world and looked at the kinds of metaphors that software uses internally (and how to understand those metaphors in a social sense). \citet{Cramer2008-cw} focused on the Janus-like qualities of computer languages - forced to fulfill the needs of humans and machines. While \citet{Cramer2008-cw} notes that the only actual computer language are the machine languages spoken by computer chips, he also points out that the primary concern of general purpose 'computer'\sepfootnote{dslnote} languages (including \gls{python}) is attending to different human priorities. This is especially true because all general purpose languages can be reduced to one another, so any difference in functionality come only from the difference in how well the language suits the preferences of the human writing it. \citet{Yuill2008-by} talks about the character of the ecosystem of programs and the centrality of "interrupts" to modern system design. Most software written today is written with the expectation that it may be interrupted. This is because modern computers remain responsive to people (and other \glspl{sa} running on the computer) by being ready to interrupt any process at any moment. This is important because it prepares software to try to deal with the unexpected.
 
-  \subsection*{How to think about software}  
+  Finally, I find \citet{Latour1999-ui}'s idea of blackboxes ideal for the analysis of software and how it exists in the world. Blackboxes are enclosed units that accomplish a task without exposing outsiders to the interior details of how the blackbox works. This is extremely similar to the concept of abstraction as its applied to computer science (both use the idea of a black box) \citep[p. 33]{Abelson1996-fk}. \citet{Latour1999-ui} points out that blackboxed only come to be seen as having interesting interiors in failure, because it is only in failure that the interiors of blackboxes become socially present. For Latour, when blackboxes they are revealed to contain more blackboxes, each of which might itself fail. Though this mechanism, functionality is transported in a socially invisible way that allows it to move unmarked through society.
+
+  % Intervention
+  % Zuiderent-Jerak, Teun. Situated Intervention: Sociological Experiments in Health Care. MIT Press, 2015.
+  % Sismondo, Sergio. “Science and Technology Studies and an Engaged Program.” The Handbook of Science and Technology Studies 3 (2008): 13–32.
+  
+  \subsection*{Taking Action}
 
   \section*{The object of study}
 
   \subsection*{EDEN}
+  \epigraph{That virtual worlds are places means they can be fieldsites;}{\textit{\citet[p. 107]{Boellstorff2015-al}}}
+
    The particular piece of software this project studies is \acrlong{eden}. \acrshort{eden} was originally created by a coalition of Sri Lankan \acrlong{ict} companies in the wake of the 2004 Indian Ocean Earthquake and Tsunami. The project is now managed by the nonprofit \gls{sf}. It has been used in numerous disaster responses since 2004 and is also used by a number of organizations for managing resources outside of any specific disaster \citep{Sahana_Foundation_undated-hl}. \acrshort{eden}'s functionality can fairly be described as tracking and managing resources. Its power comes from the enormous range and detail of the information it knows how to track. \acrshort{eden} has indexes for organizations, people, projects, events, facilities, supplies, documents, possible scenatios, and events. It also provides on-platform messaging and special tools for the management of emergency shelters \citep{Sahana_Foundation2011-od}. Each resource is meant to be connected to other resources: people work for organizations, projects are run by organizations and are associated with people, facilities are linked with projects and organizations and other resources like supplies and verticals. The flexibility of the software means that it can be used to manage a single organization, multiple organization, or used as a hub for many different groups coordinating around shared goals but without central authority. The system aims to be as comprehensive as possible and to use the same entity for resource and system management. The entries for people can act as a simple rolodex and will also double, if desired, as that person's account within \acrshort{eden}. The interface for managing goods is the same interface for managing access to the management system. To the degree possible, \acrshort{eden} is structured to allow the same people who do the day-to-day work of the organization to administer the system that manages the organizations' resources. It also aims to be an effective tool for people at all levels: administrators can track where people and supplies are allocated and volunteers can access their assignments, documents and information about how to use resources.
+
+   
+   % \includegraphics{images/EDEN_diagram.png}
+   
 
    \subsection*{Why EDEN}
    I selected \acrshort{eden} for this project for two primary reasons: it is a \acrlong{foss} software project in a language I am familiar with and it is not obviously problematic. I will detail its open source pedigree shortly, but first I want to explain my second selection criteria. "Improving" software (whatever improving means) can usefully be separated into at least two questions: what quality should change and how do you bring that change about? This project attempts only to speak about the second (likely easier) question. Partially this is because the project was designed to fit within the confines of a final project for a masters degree. This project represents, roughly, three graduate level classes worth of work. I didn't feel like I had time to find \textit{and} fix flaws. So this project should be understood as neutral on the question of, "is \acrshort{eden} good?" Nothing about \acrshort{eden} seems bad to me. They have received numerous awards, glowing testimonials, and are used by many large organizations that could use other products if \acrshort{eden} were lacking. 

@@ -3,31 +3,71 @@
 !include /Users/ddrexler/Documents/STS_Projects/2019/MastersProject/Diagrams/Libraries/C4-PlantUML/C4_Context.puml
 
 'LAYOUT_WITH_LEGEND
+'scale max 600 height
 
 title EDEN System Diagram
 
-Container_Boundary(eden, "EDEN software artifact") {
-    Container_Boundary(database, "Database System") {
-        Component(dbhost, "Host", "Computer", "Controls access to the Database and coordinates resoureces.")
-        ContainerDb(dbprogram, "MySQL or PotgreSQL", "Database", "Stores data and relationships.")
+Boundary(host, "Computer Hosting EDEN") {
+    Boundary(eden, "EDEN software artifact") {
+        Boundary(database, "Database System") {
+            Component(dbhost, "Host", "Computer", "Controls access to the Database and coordinates resoureces.")
+            ContainerDb(dbprogram, "MySQL or PotgreSQL", "Database", "Stores data and relationships.")
 
-        Rel(dbhost, dbprogram, "Connects", "Internal Socket")
-    }
+            Rel(dbhost, dbprogram, "Connects", "Internal Socket")
+        }
 
-    Container_Boundary(all_python, "Python Code") {
-        Container_Boundary(Web2Py, "Web2Py") {
+        Boundary(all_python, "Python Code") {
+            Component(matpoltlib, "MatPlotLib", "Python", "Python plotting libary.")
+            Component(numpy, "Numpy", "Python", "Python libary for doing complex math.")
+            Component(gdal, "Gdal", "Python", "Python library for geospatial operations.")
+            Component(shapely, "Shapely", "Python", "Python library for generating geometric shapes.")
+            Component(xlrd, "XLRD", "Python", "Python library for exporting excel documents.")
+
+            Boundary(Web2Py, "Web2Py") {
+                Component(w2p_server, "Web2Py Loader", "Python", "Loads and hosts EDEN code.")
+                Component(w2p_helpers, "Web2Py Web Framework", "Python", "Does most of the work translating to and from web technologies.")
+            }
+
+            Component(eden_source, "EDEN Source Code", "Python", "Source code written by the Sahana EDEN team.")
+
+            Rel(eden_source, matpoltlib, "Uses")
+            Rel(eden_source, numpy, "Uses")
+            Rel(eden_source, gdal, "Uses")
+            Rel(eden_source, shapely, "Uses")
+            Rel(eden_source, xlrd, "Uses")
+            Rel(eden_source, w2p_helpers, "Inherits from")
+
+            Rel(w2p_server, eden_source, "Loads and manages")
+        }
         
-        }    
 
-        Component(eden_source, "EDEN Source Code", "Python", "Source code written by the Sahana EDEN team.")
+        Boundary(other_systems, "Non-Python Components") {
+            Component(postgis, "PostGIS", "Machine Code", "Geolocation toolset for PostgreSQL.")
+            Component(ansible, "Ansible", "Machine Code", "Automation toolset.")
+        }
+
+        Component(python_binary, "Python Binary", "Machine Code", "Python interpreter that translates python into machine language.")
+
+        Rel(eden_source, postgis, "Uses")
+        Rel(eden_source, ansible, "Uses for testing")
+
     }
 
-    Container_Boundary(other_systems, "Non-Python Code") {
-    }
+    Boundary(web_interface, "Web Server") {
+            Component(web_server, "Web Server", "Machine Code", "Apache / Nginx / Cherokee")
+            Component(application_server, "Application Server", "Python / Machine Code", "Communicates with Python and web server.")
 
+            Rel(web_server, application_server, "Routes requests to & from")
+    }
+    
+    Rel(python_binary, w2p_server, "Executes")
+    Rel(python_binary, database, "Exchanges messages")
+    Rel(application_server, python_binary, "Starts and managed")
 }
+
+
 
 Person(user, "EDEN User", "Accesses over the web")
 
-Rel(eden, user, "Uses", "Over Web Interface")
+Rel(web_interface, user, "Uses", "Over Web Browser")
 @enduml

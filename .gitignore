@@ -48,3 +48,4 @@
 !/Source/modules/plugins/skeleton.py
 # Ignore virtualenv
 masters_venv
+Diagrams/FinalDraft/eden/*
