@@ -14,13 +14,17 @@
 
 % Use APA module
 % Based on template from https://www.overleaf.com/latex/templates/your-apa6-style-manuscript/kngbbqpypjcq
-\documentclass[a4paper,man,natbib]{apa6}
+\documentclass[a4paper,man,natbib,floatsintext]{apa6}
 % Imports natbib
 % Ref Sheet: https://gking.harvard.edu/files/natnotes2.pdf
 
 % Packages
+% Unicode in latex is a new, previously undiscovered circle of hell
 \usepackage[english]{babel}
+\usepackage[T1]{fontenc}
 \usepackage[utf8x]{inputenc}
+\usepackage{textcomp}
+% /unicode
 \usepackage{amsmath}
 \usepackage{graphicx}
 % set single spacing
@@ -42,6 +46,9 @@
 \usepackage{svg}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
+
+% actually print contributors' name
+
 
 % Trying to include graphics has been a JOURNEY
 % Links used:
@@ -191,10 +198,10 @@
    description={A language understood by a particular kind of computer chip. Can be generally understood as a list of specific instructions to the computer chip to do digital operations. I.e. add two numbers, load a value into memory, write a value to disk or send a value over the internet. Common machine languages would be x86 (most laptops and desktops) and ARM (most phones).}
 }
 
-\newglossaryentry{so}
+\newglossaryentry{sp}
 {
-    name=Software-Object,
-    description={A generic term that describes the entire process that leads to the production of a series (or a single) software artifact. This includes the economic and cultural position of the organizing project, the social organization of those who write the code for the piece of software, the social positions of the software artifacts' users, and the software artifacts themselves. This term is used in opposition to the common "software" because of the potential confusion between a "software project" (the organizing structure of a Software-Object), a "program" (a Software-Artifact), and other linguistically confusing ways of speaking about the multi-layered process that produces "software."}
+    name=software project,
+    description={Drawing from \citet{Mackenzie2006-hb}, this is the total social, material and organizational structure associated with the production, distribtuon and use of a particular piece of software. This includes the people who work directly on the source code of any \gls{sa} associated with the project as well as anyone who is part of the organization that manages, funds and directs the development of the software. It may also involve people who are not employed by the formal owner of the software project (this is especially true for open source developers). Any \glspl{sa} assembled by members of the project who are acting as members (and not on their own) are also part of the project. \glspl{sa} assembled using source code from the project are not part of the project per-se, but the software project bears some measure of responsibility for how those \glspl{sa} function and act in the world.}
 }
 
 \newglossaryentry{sa}
@@ -295,6 +302,22 @@
 \sepfootnotecontent{unofficialbinaries}{It is easy to example how someone might assemble an unofficial version of a piece of open source software like \acrshort{eden}. It may seem harder to imagine how the public gets access to an unofficial closed source piece of software that's distributed as machine code (like, say, the Facebook app). However, this situations are not as rare as you might expect. If you've ever owned a phone that is no longer receiving updates, or used a version of Windows that Microsoft no longer supports, every program in that environment is likely unofficial - because the companies no longer support that environment.}
 
 \sepfootnotecontent{csblackbox}{Computer science draws on the general blackbox concept that Latour drew inspiration from to talk about acting on formal function definitions without knowing about how the function is implemented \citep[p. 33]{Abelson1996-fk}.}
+
+\sepfootnotecontent{longquote}{Emphasis added by me. This quote mentions "regression-testing," which is worth briefly explaining. Regressions are when old, previously fixed problems reappear in new versions of the source code. This style of testing is in contrast to "test driven development," where tests are written as a description of what code should do \citep{Agile_Alliance2015-du}.}
+
+\sepfootnotecontent{ethnographylimits}{It's here where I really miss an ethnographic component. A lot of my logic here is necessarily consequentialist based on my understanding of how software development works, but the logic the team is following could easily be deeper and more complicated than I imagine. Nevertheless I hope to draw conclusions that will be based on the material outcomes of their decisions and don't depend on the \acrshort{eden} project possessing a particular internal understanding.}
+
+\sepfootnotecontent{working}{To be blunt, I find the common ideas of 'working' or 'broken' to not be that useful and suspect that a deeper literature review would have helped me to speak clearly on this question.}
+
+\sepfootnotecontent{interpreted}{There is an important caveat to this claim for interpreted languages: their elements often can be replaced piecemeal. It would be simple to, for example, replace the file which was altered when I fixed my bug with another file. The rest of the \gls{sa} would remain untouched. Still, interpreted code is rarely updated piecemeal. The HTTP protocol, through which most javascript applications are distributed, does not have a way of updating cached (previously distributed) programs \citep{MDN_Contributors2020-bu}. It may be that using replacement instead of change distribution may have once been driven by technical concerns, but in the age of relatively inexpensive data and storage those concerns are gone. The reason to continue using replacement is cultural instead of technical. This is why, even though interpreted languages could distribute changes more easily than compiled languages, they use replacement.}
+
+\sepfootnotecontent{runtimeimports}{It's worth expanding a little how this works. The \gls{python} \gls{sa} executes the python in the initial \gls{python} file provided. This could involve executing statements immediately or it could involve defining programmatic objects that may be invoked later. The 'import' statement is how, in \gls{python}, you note you want to include the result of executing another \gls{python} file. When a \gls{python} \gls{sa} encounters an import statement, it executes the associated file. This means that many \gls{python} programs have an initial import chain of stand-alone import statements. However, import statements can also be located in the programmatic objects that are defined for later use - and those objects will not be executed unless they are invoked elsewhere. So assembly is a somewhat fractured process with \Gls{python} and other interpreted languages.}
+
+\sepfootnotecontent{pythonexeq}{When \Gls{python} import statements are causing new files to be read and executed by the interpreter, we are in a kind of mixed execution / assembly phase. The \Gls{python} is doing a mix of adding symbols to the symbol table (which other languages do during compilation) and executing program statements. If the \Gls{python} \gls{sa} were to fail to find an import or encounter a syntax error, that is an assembly error. If executing a program statement causes an error, it was not in assembly. This means that Python may translate some python statements to machine code, execute them, then fail when it reaches another assembly stage. I do not believe this is problematic for my work.}
+
+\sepfootnotecontent{askingforhumaninput}{A \gls{sa} can be designed to seek input at any point, but this does not change the fact that humans cannot \textit{intercede and change} the actions the \gls{sa} will take. The list of actions the \gls{sa} takes may involve seeking human input, but the possible range of actions is already fixed. As \citet[p. 181-182]{Mackenzie2006-hb} points out, once agency is fixed in software, the software will reflect it in its execution. Any opportunity to "give feedback" to an assembled \gls{sa} will, at best, select another path from the possible paths fixed by assembly.}
+
+\sepfootnotecontent{libversions}{The exact versions of the components may not be the ones stored in the canoical git repostiory. Each repository was at a particular git hash for this project. Eden was at 0718c0681bb58576a613e0edc4d4070ac214be21. web2py was at 93ef108c0b4b1c100622bf0002ec0972dec8be46. pydal was at cecd77127c122404c1aee7f6377c6a0150d86d84. yatl was at 5deb403a9e45f617588f02cd8f7682b3f98571b4. Some of these only exist in my fork of the respective repos. }
 
 %      ________          _               _            
 %     / /  ____|        | |             | |           
@@ -441,7 +464,9 @@
 
   Work on the powerful impact of software on our social world (and the power impact of our social world on software) somewhat elides the central question of my work: what \textit{is} software? What are the qualities of this thing and this practice that has transformed our world, often on accident? \citet{Cramer2008-cw} focused on the Janus-like qualities of computer languages - forced to fulfill the needs of humans and machines. While \citet{Cramer2008-cw} notes that the only actual computer language are the machine languages spoken by computer chips, he also points out that the primary concern of general purpose 'computer'\sepfootnote{dslnote} languages (including \gls{python}) is attending to different human priorities. This is especially true because all general purpose languages can be reduced to one another, so any difference in functionality come only from the difference in how well the language suits the preferences of the human writing it. \citet{Yuill2008-by} talks about the character of the ecosystem of programs and the centrality of "interrupts" to modern system design. Most software written today is written with the expectation that it may be interrupted. This is because modern computers remain responsive to people (and other \glspl{sa} running on the computer) by being ready to interrupt any process at any moment. This is important because it prepares software to try to deal with the unexpected.
 
-  I find \citet{Latour1999-ui}'s blackboxes a perfect fit\sepfootnote{csblackbox} for talking about software and how it functions in the world. Blackboxes are enclosed units that accomplish a task without exposing outsiders to the interior details of how it works. Like software, blackboxes can contain almost anything with any level of complexity, but to those outside the box it appears singular and cohesive. It's only in failure that blackboxes are differentiated from other objects. Latour was interested in how, once a blackbox failed, the fact that it has components becomes socially available and socially unavoidable. Often, blackboxes contain other black boxes, each one waiting for failure to make the fact that it has internal components. Software too, has important internal components that are invisible. However, because the tools and skills needed to disassemble software are so much rarer than the skills and tools to disassemble, in Latour's example, a projector there are important differences in how software is perceived socially. 
+  I find \citet{Latour1999-ui}'s blackboxes a good start\sepfootnote{csblackbox} for talking about software and how it functions in the world. Blackboxes are enclosed units that accomplish a task without exposing outsiders to the interior details of how it works. Like software, blackboxes can contain almost anything with any level of complexity, but to those outside the box it appears singular and cohesive. It's only in failure that blackboxes are differentiated from other objects. Latour was interested in how, once a blackbox failed, the fact that it has components becomes socially available and socially unavoidable. Often, blackboxes contain other black boxes, each one waiting for failure to make the fact that it has internal components. Software too, has important internal components that are invisible. However, because the tools and skills needed to disassemble software are so much rarer than the skills and tools to disassemble, in Latour's example, a projector there are important differences in how software is perceived socially. 
+
+  % todo: software artifacts
 
 
   % Intervention
@@ -457,25 +482,70 @@
   The first step to to try doing real work on real software. \citet{Zuiderent-Jerak2015-go}'s \textit{Situated Intervention} (which also draws from situated knowledges) argues forcefully that social scientists can and must intervene to learn. He describes how medical professionals use interventions (and their outcomes) as tools to generate knowledge and test assumptions. My own pre-academic experience as a software engineer supports the knowledge generating power of careful and measured intervention. This project hopes that it can find materialized perspectives within a wholly unobjectionable software project (and its associated \glspl{sa}) and, though engaging with the source code of that software project, learn something about how we might address materialized bias in more convoluted situations.
 
   \section*{The object of study}
+  \subsection*{Software in General}
+  Before diving in, I should define some language. Some of this langauge will be drawn from existing literature and some of it will simply be me drawing boundaries around the sometimes fuzzy concepts that can be involved with software.
+
+  \textbf{\gls{sa}}:  my most common element of analysis will be the 
 
   \subsection*{EDEN}
   \epigraph{That virtual worlds are places means they can be fieldsites;}{\textit{\citet[p. 107]{Boellstorff2015-al}}}
 
    The particular piece of software this project studies is \acrlong{eden}. \acrshort{eden} was originally created by a coalition of Sri Lankan \acrlong{ict} companies in the wake of the 2004 Indian Ocean Earthquake and Tsunami. The project is now managed by the nonprofit \gls{sf}. It has been used in numerous disaster responses since 2004 and is also used by a number of organizations for managing resources outside of any specific disaster \citep{Sahana_Foundation_undated-hl}. \acrshort{eden}'s functionality can fairly be described as tracking and managing resources. Its power comes from the enormous range and detail of the information it knows how to track. \acrshort{eden} has indexes for organizations, people, projects, events, facilities, supplies, documents, possible scenatios, and events. It also provides on-platform messaging and special tools for the management of emergency shelters \citep{Sahana_Foundation2011-od}. Each resource is meant to be connected to other resources: people work for organizations, projects are run by organizations and are associated with people, facilities are linked with projects and organizations and other resources like supplies and verticals. The flexibility of the software means that it can be used to manage a single organization, multiple organization, or used as a hub for many different groups coordinating around shared goals but without central authority. The system aims to be as comprehensive as possible and to use the same entity for resource and system management. The entries for people can act as a simple rolodex and will also double, if desired, as that person's account within \acrshort{eden}. The interface for managing goods is the same interface for managing access to the management system. To the degree possible, \acrshort{eden} is structured to allow the same people who do the day-to-day work of the organization to administer the system that manages the organizations' resources. It also aims to be an effective tool for people at all levels: administrators can track where people and supplies are allocated and volunteers can access their assignments, documents and information about how to use resources.
-
-   
    % \includegraphics{images/EDEN_diagram.png}
    
 
    \subsection*{Why EDEN}
    I selected \acrshort{eden} for this project for two primary reasons: it is a \acrlong{foss} software project in a language I am familiar with and it is not obviously problematic. I will detail its open source pedigree shortly, but first I want to explain my second selection criteria. "Improving" software (whatever improving means) can usefully be separated into at least two questions: what quality should change and how do you bring that change about? This project attempts only to speak about the second (likely easier) question. Partially this is because the project was designed to fit within the confines of a final project for a masters degree. This project represents, roughly, three graduate level classes worth of work. I didn't feel like I had time to find \textit{and} fix flaws. So this project should be understood as neutral on the question of, "is \acrshort{eden} good?" Nothing about \acrshort{eden} seems bad to me. They have received numerous awards, glowing testimonials, and are used by many large organizations that could use other products if \acrshort{eden} were lacking. 
 
-   I lack the experience and expertise to say that I think \acrshort{eden} is \textit{good}. Assessing if software is "good" or "bad" is not straightforward. Simply examining \glspl{sa} in isolation tell us very little. It's only through engaging with one or more \gls{sa}(s) as they exist in the lived world and contextualizing that with detailed ethnographic work that it's possible to start making value judgments \citep{Eubanks2018-hc,Schull2012-nc}. Those judgments wouldn't be universal, of course, but would be about a particular population. So this paper is done from the perspective that \acrshort{eden} seems fine to me. The project is interested in the technical details of how the \acrshort{eden} \gls{sa} emerges out of its \gls{so} and how agency is modified by that process. 
+   I lack the experience and expertise to say that I think \acrshort{eden} is \textit{good}. Assessing if software is "good" or "bad" is not straightforward. Simply examining \glspl{sa} in isolation tell us very little. It's only through engaging with one or more \gls{sa}(s) as they exist in the lived world and contextualizing that with detailed ethnographic work that it's possible to start making value judgments \citep{Eubanks2018-hc,Schull2012-nc}. Those judgments wouldn't be universal, of course, but would be about a particular population. So this paper is done from the perspective that \acrshort{eden} seems fine to me. The project is interested in the technical details of how the \acrshort{eden} \gls{sa} emerges out of its \gls{sp} and how agency is modified by that process. 
 
    Finally, and briefly, this project does not take the position that the technical qualities it investigates are free from the impact of social structures. \citet{Gabriella_Coleman2012-lq} and \citet{Kelty2008-jm} have both compellingly shown that the social and technical co-produce each other. However, we can still usefully speak about qualities that technical systems have and how those qualities impact our lived experience. That this project has obvious extensions in the social and ethnographic realm is a strength and declining to investigate them should be understood as a concession to time.
 
    \subsection*{Out of Many, One}
    Wherever possible, \acrshort{eden} uses \acrshort{foss} technologies. The language it is written in, the libraries it relies on to provide functionality, the tools it uses to support its functionality, and its main operating system are all both open source and available at no cost. \acrshort{eden} will generally operate on top of non-\acrshort{foss} systems like Microsoft Windows, but the team doesn't prioritize systems outside of the \acrshort{foss} systems they develop and test on \citep{Sahana_Foundation2015-zs}. \citet{Kelty2008-jm} talks about how \acrshort{foss} is both a philosophy and a system of development that has practical impacts. One of the side effects of \acrshort{eden} committing to use the \acrshort{foss} ecosystem is it makes my form of engagement possible. Though it is possible to examine compiled machine code and draw some conclusions about the intent and process that assembled it, such a project would be far outside my capabilities. Instead, the source code of \acrshort{eden}, web2py (the \gls{web framework} \acrshort{eden} uses), Python (the language \acrshort{eden} and web2py are written in) and all of the libraries used by the project are open source. Their preferred databases (MySql or PostgreSQL) are also fully open source projects. Open source projects often don't just publish the current source code, but offer full histories of what change, when it changed, who changed it and how it was changed. These changes often include notes about why \textit{that particular} change was made over any other possible change \citep[p. 13-16]{Chacon2014-im}. Open source projects also commonly have systems for tracking lists of unfixed flaws as well as planned future improvements (both types of \citet{Mackenzie2006-hb} relationships), but those systems operate above the layer of source code so this project does not engage with them.
+
+  \subsection*{Enumerating The Specifics of my Engagement}
+  % much thanks to https://www.tablesgenerator.com/#
+  \Acrshort{eden} has a large number of individual components. Executing a fully assembled \acrshort{eden} \gls{sa} would involve a number of \Gls{python} libraries, a number of other \glspl{sa} (a database, various compiled libraries) and a large amount of non-python code (such as the javascript contained in the \acrshort{eden} repository). Engaging all of this code is certainly possible if given enough time, but did not seem possible given the constraints of a masters project. So, I have chosen to focus on the \Gls{python} portions of a limit set of the libraries used by \acrshort{eden}. These libraries are listed in Table \ref{tab:table-1}\sepfootnote{libversions}. 
+
+  \begin{table}[ht]
+  \caption{Purpose of libraries}
+  \label{tab:table-1}
+  % https://stackoverflow.com/questions/2895780/how-to-code-tables-with-multi-line-cells
+  \begin{tabular}{|l|p{.65\textwidth}|}
+  \hline
+  Component Name & Brief Description of Functionality                                                 \\ \hline
+  Eden           & Implements the logic for managing the various resources Eden manages               \\ \hline
+  web2py         & Provides interfaces to easily provide web services over HTTP and related protocols \\ \hline
+  pydal          & Library for interacting with a database using Python objects instead of raw text   \\ \hline
+  yatl           & Library for generating HTML content through templates                              \\ \hline
+  \end{tabular}
+% This MUST be at the start of the line without spaces before it or it will cause an error
+% https://tex.stackexchange.com/questions/62278/problems-with-endfloat-package
+\end{table}
+  
+  My choice to focus on these components in particular does not come from a considered opinion that these four components are the most important components. That judgement would require a good deal more work than I have done to develop an opinion about how to compare functionality across programming language boundaries. For the same reason, my analysis omits all non-programmatic components (databases, static content, etc). This omission should also be understood as a limitation imposed by time as opposed to a considered opinion that those components contribute less to the behavior of a \gls{sa}. 
+
+  Instead, I chose these components because they were the ones I interacted with most during my investigation of the \acrshort{eden} project. There are also formal links between the projects: the \acrshort{eden} project identifies web2py as its \gls{webframework} and web2py identifies both pdal (as DAL) and yatl components of itself \citep{Di_Pierro2020-wn,Sahana_Foundation_undated-ww}. There are other primary components of the \acrshort{eden} project, but many of them are in other langauges or are themselves \glspl{sa} (such as databases).
+
+  It's forseeable that my conclusions, focused on these four components, might not extend to the entire \gls{sa} / project, but I doubt it. In almost all circumstances, the components that most impacts what the \gls{sa} does would likely be in the \acrshort{eden} source code. That does not mean, as I will show, that most of the code that is associated with a particular element of an \acrshort{eden} \gls{sa} is within the \acrshort{eden} source code. It may be useful to refer to the size (in lines of code) of the various libraries to get a rough sense of the relative size of each one (See Table \ref{tab:table-2}). 
+
+  \begin{table}[ht]
+  \caption{Size of Libraries}
+  \label{tab:table-2}
+  \begin{tabular}{|l|c|c|}
+  \hline
+  Component Name & Lines of Python Code & Lines of Non-python Code \\ \hline
+  Eden           & 469,117              & 793,661                  \\ \hline
+  web2py         & 103,593              & 41,793                   \\ \hline
+  pydal          & 24,518               & 416                      \\ \hline
+  yatl           & 1131                 & 69                       \\ \hline
+  \end{tabular}
+\end{table}
+
+  In general, the number of lines of code in a piece of software will correspond to that programs capabilities. Lines of code can also be used to roughly compare the relative contrabutions of components, especially when all components are written in the same language. It's possible to write lines of code that have no meaningful impact and it's easy to imagine scenarios where single lines of code make thousands meaningless (by turning off a feature, for insatance), but there is no reason to believe these instances would happen more or less often in any partcular component. Similarly -  it is much easier to imagine accomplishing the work done in fifteen lines of code with ten different lines, but it is much harder to imagine doing the work of fifteen hundred lines of code in a thousand. Efficient code is efficient, but there is a limit.
+
+
 
   \section*{Investigating EDEN}
    My work began, as all software work does, with work of assembling the components that transform \acrshort{eden} from a collection of \gls{python} source files into a \gls{sa}. This requires connecting a number of components together: libraries and tools in the gls{python} language and a wider set of heterogeneous tools (databases, non-\gls{python} libraries and tools). Some of these components remain as source code to be interpreted by \gls{python}, some of them are downloaded as source code and go through their own assembly process to generate their own \glspl{sa}. The assembly process that draws the components of \acrshort{eden} together does not happen in a single step, but is a number of loosely ordered heterogeneous processes. Some must be completed before others and there is an officially recommended order in which to prepare the various components, but often these orders are more matters of preference than necessity. What is important is that all of the required components are collected in their expected places by the time \acrshort{eden} itself is run. 
@@ -502,7 +572,7 @@
    \subsection*{Investigating Assembly}
    Assembly is a label I'm using to cover a variety of software processes that source code (and many other things) and produce \glspl{sa}. Almost all software is written in programming languages that have the dual goal of being possible for humans to understand and being suitable for mechanical translation into machine code. Machine code is, after all, the only language a computer can really understand \citep{Cramer2008-cw}. 
 
-   Methods of assembly vary widely, but they can roughly said to lie between compilation and interpretation. The purest compiled language will generate a \gls{sa} that contains all the machine code that will be used by the \gls{sa} into a single contiguous piece of machine code. That machine code will generally only work on a single hardware architecture, but the same source code can be assembled\sepfootnote{compilelanguage} into machine code on other architectures by different assembly toolchains. On the other side of this spectrum are interpreted languages. A purely interpreted language assembly process does not involve the generation of any new machine code. Instead, it uses a standard \gls{sa} (called an "interpreter") that reads the source code of the interpreted program in its human readable form like a recipe: reading the file(s) as the interpreted program executes and using machine code that exists within the artifact of the interpreter to tell the hardware what to do.
+   Methods of assembly vary widely, but they can roughly said to lie between compilation and interpretation. The purest compiled language will generate a \gls{sa} that contains all the machine code that will be used by the \gls{sa} into a single contiguous piece of machine code. That machine code will generally only work on a single hardware architecture, but the same source code can be assembled\sepfootnote{compilelanguage} into machine code on other architectures by different assembly tool-chains. On the other side of this spectrum are interpreted languages. A purely interpreted language assembly process does not involve the generation of any new machine code. Instead, it uses a standard \gls{sa} (called an "interpreter") that reads the source code of the interpreted program in its human readable form like a recipe: reading the file(s) as the interpreted program executes and using machine code that exists within the artifact of the interpreter to tell the hardware what to do.
 
    There are also a variety of methods for \glspl{sa} to share access to centers of functionality. The most common is sending calls "out" to libraries. The pure compilation situation described above really only exists on hardware without a multitasking operating system. For every \gls{sa} on your phone or computer, the \gls{sa} will frequently make a call to a library (which itself sits somewhere between compiled and interpreted) where it specifies which library, which section of the library, and the information it would like to pass off. Then the operating system pauses the execution of the machine code in the \gls{sa} and loads the library (or the library's interpreter) to perform the requested task. When the task is done, the first \gls{sa} is loaded again and told the result. 
 
@@ -534,11 +604,275 @@
    It's useful to draw out these different social experiences of software because it allows us to think in a more informed way about the impact of materialized perspectives. It is not just the source code of a particular software project that adds to its behavior, it is also the various components that source code is combined with. For those who only interact with post-assembly \glspl{sa}, the relationship of the software they are using to the official software is unknowable. Software that has the reputation for being unstable and unreliable can get that reputation because people are, knowingly or unknowingly, using pirated copies that crash because of anti-piracy code \citep{Fitch2008-vq}. The team that makes that piece of software may never know why people think its unstable, because they would need to understand the assembly processes that particular \glspl{sa} went through. The users may want the software to be different, but though the software team is the single entity most responsible for how a particular \gls{sa} functions, they may simultaneously be unable to understand or repair the problem.
 
 
-   
+   \subsection*{Reckoning with Failures}
+   After assembling a functional \gls{sa} I began to explore how my \acrshort{eden} \gls{sa} functions on its own terms. I did this by entering the high level details of this project into \acrshort{eden}'s project tracking feature. This included creating an entry for Drexel University's Center for Science, Technology and Society, an entry for my project within that organization, and an entry for myself as the manager of that project. During this process I encountered both a bug in the source code of \acrshort{eden} and another unacknowledged materialized perspective. 
 
-   
-  
-   \printnoidxglossaries
+   The form that \acrshort{eden} uses to record the details of an individual has a field for a phone number. There's no indication that this number number should be formatted in one particular way over another. I didn't think anything the lack of instruction until my \acrshort{eden} \gls{sa} informed me that I needed to "Enter a valid phone number" \citep{Konig2020-yx}. I didn't understand because my phone number was following the common conventions for phone number formats (I tried the 'xxx.xxx.xxxx' as well as 'xxx-xxx-xxxx' and 'xxxxxxxxxx'). Upon review of the source code of the file responsible for the message I discovered two things: that, based on a setting I was not aware of, the form was expected a phone number in international format (beginning with a '+' and a country code) and that the code was returning the wrong message (complaining that the input was not a phone number instead of complaining it was not an international phone number). After entering my number in the international format, my profile was created.
+
+   % maybe conclusions
+   This felt like an excellent situation to investigate. It appears, on first brush, that there are two layers of unacknowledged materialized perspectives: the first being requiring numbers to be in the international format without informing the user filling out the form, the second appears to be an error in the message returned. My background as a programmer and my access to the source code makes me want to say that the \acrshort{eden} project intends to require international numbers and failed to return the correct message about that requirement. However, I think it is worth considering how these two problems appear without access to the source code.
+
+   First - imagine if the second problem was fixed (the \gls{sa} returned the proper error). When the user enters a number without a country code, the \acrshort{eden} \gls{sa} will reject their number and tell them it must be international. They now know what to do, but had no way to learn about the requirement before they failed to meet it.
+
+   Second - imagine if the \gls{sa} informed the user they needed to enter their number with an international country code. But, when the code was left off, told the user their number wasn't valid. Again, the user would not be sure what to do to advance. It might be easier to find out (because the \gls{sa} has labeled the field with the requirement), but \textit{from the users' point of view} these two situations are very similar. It is only the ability to look into the source code that clearly sets them apart.
+
+   % findings
+   So, after discovering it, I decided to see what I could learn by giving back to the \acrshort{eden} project and fixing this (extremely minor) bug. I wrote and submitted a small patch that intended to fix the problem and check that the proper error message was returned. Unfortunately, much to my embarrassment, my fix was written incorrectly - it incorrectly eliminated another error message that could, in certain circumstances, be displayed to the user. As a result my fix was rejected, though once the \acrshort{eden} project was aware of the bug they immediately wrote their own fix \citep{Konig2020-ey}.
+
+   In the discussion about why my fix was flawed, one of the \acrshort{eden} project developers said several interesting things about how he (and by extension the \acrshort{eden} project) think about software.
+
+   \begin{quote}
+   "And no, there's no test case as to what error message exactly is returned.
+
+   Whilst we could unit-test it routinely, \textbf{regression-testing too much detail can add excessive rigor thus make development harder}. \textbf{A wrong error message is an annoyance, but neither does it break the intended functionality}, nor does it jeopardize the data integrity - so it is low priority and should probably not be CI-tested." \citep{Konig2020-yx}\sepfootnote{longquote}
+   \end{quote}
+
+   There are a couple of interesting ideas in this quote that, I think, can help us understand how software (or at least the \acrshort{eden} project) functions. First, there's the idea that testing too much makes development harder. Since K{\"o}nig is talking about regression testing (testing of fixed bugs) the difficulty would likely come from tests unexpectedly failing after changing related code or would come from work needed to update the test when changing the functionality it is testing\sepfootnote{ethnographylimits}. In any case, the decision to limit testing is also a decision to limit their automated testing to a certain subset of all program functionality. That development would be harder if the full scope of possible functionality was tested and that it is better to be ignorant about ancillary behavior like error messages.
+
+   The second idea is that accepting or rejecting the number based on its use of an international country code (which it does successfully) and informing the user of what they need to do should be considered separately. That however the program appears to to the user, if it accepts numbers in the desired format and rejects others then the component is working. The statement reflects a world view that, if a component is expected to have multiple outputs for a given input, each output should be considered working or non-working separately and that there is a hierarchy to which functions are more or less important. 
+
+   % discussion
+   \subsection*{Implications of my failed bug fix}
+   Before going into the interesting aspects of the K{\"o}nig quote, I want to talk about something I find interesting about the context of how the discussion about the bug took place. This was, as I said, a discussion between people who both had access to one (or more) \acrshort{eden} \glspl{sa}. I originally noticed the bug when I was interacting with my \gls{sa}. This is in line with how most software projects come to have an impact on the world: through directly or indirectly affecting the world through the \glspl{sa} that the project produces or makes possible \citep{Kitchin2011-af}. While software impacts our lives in direct and indirect ways, those impacts derive from how one or many \gls{sa}(s) interact with particular human agents. Though software has made is possible to remove humans at many of the intersections of power, it is still expressed through a multitude of relational contacts between a representative of power (a person or a \gls{sa}) and a human outside that power \citet{Cheney-Lippold2018-lw,Deluze1995-eo}. 
+
+   \subsection*{Do Software Artifacts Matter}
+   Given all of that, I think it's interesting to note that the entire discussion about bugs took place without referencing the behavior of any particular \gls{sa}. I've already speculated that the \acrshort{eden} project may recommend older components to minimize the risks of improper assembly and that questions \textit{about} the correctness of assembly are common \citep{Trendspotter2020-ps}. Because investigating the particulars of a misbehaving \gls{sa} are common, the lack of discussion here is interesting. 
+
+   When a \gls{sa} is under discussion, that discussion often proceeds with the implicit goal of finding a mistake or a mismatched relationship in the assembly process. My bug fix, in contrast, was to a particular pre-assembly component. In order to realize my change, a new \gls{sa} would need to be assembled. Nothing in my attempt to fix the bug or in the eventual official bug fix can repair existing \glspl{sa} \citep{Konig2020-yx,Konig2020-ey}. This explains the lack of interest in any existing \gls{sa} - nothing about any \gls{sa} that might or might not express this bug is of interest. Instead, when the bug is fixed in a component of \acrshort{eden}, any potentially problematic \gls{sa} will be replaced with a new one assembled from updated components.
+
+   % https://stackoverflow.com/questions/1945075/how-do-i-create-binary-patches
+   To underline this point again - \glspl{sa} are never updated. When a 'patch' is applied to a \gls{sa}, the goal of that patch is to make the existing \gls{sa} identical to the \gls{sa} that would be generated by a fresh assembly. This means that a patch program is a new \gls{sa} that will effectuate a different assembly process than usual with the goal of producing the same outcome as a full re-assembly with all components \citep{Endsley_undated-iy}. It's also common for a \gls{sa} to contain many internal \glspl{sa} and for a patch to replace one or more component \glspl{sa} in full. However, the \glspl{sa} that accomplish these tasks of updating existing \glspl{sa} are separate \glspl{sa} in their own right. A software project can choose to utilize them or not utilize them, but their choice won't change how they "fix" problems found in an existing \gls{sa}. 
+
+   The bug was fixed by changing a component with the intent of that component being assembled into a new \gls{sa}. It could also have been repaired by creating a new \gls{sa} to intentionally make changes to existing \acrshort{eden} \glspl{sa}, but this would need to be repeated for every previous \gls{sa}\sepfootnote{interpreted}. So \glspl{sa} are always replaced, because digital technology makes it easy to do so and the practical consequences are the same either way: a particular number of bytes in a particular order on digital storage. 
+
+   This means that scholars must be careful when applying concepts whose identities were formed based on our collective experiences with physical goods. It's true that software is maintained, updated, repaired, cleaned, polished, and so on. Those operations often serve the same purpose as similar operations on physical tools, but the material character of how they are carried out will be dramatically different. This will impact the worlds of the people doing the work, the particulars of how these operations change the operation of software, and the proper weighting of concerns in assessing the impact of these operations. Because the material that composes the physical character of \glspl{sa} is cheap and plentiful (electrical charge), many of the previous systems that evolved in response to more complicated systems of material construction have limited implications for software projects and \glspl{sa}.
+
+   \subsection*{The Limits of Developer Attention}
+   I want to briefly expand on the idea, expressed by K{\"o}nig, that testing in too much detail can harm software development. I think this idea, in combination with some discussion of assembly in the following section, will be helpful for thinking about agency in software. An uncharitable understanding of the idea that too much testing harms development is that developers might not care about some dysfunction, but I see no evidence of this. The \acrshort{eden} project immediately implemented a fix for the problem I found, even though they do not wish to add a test for it. 
+
+   Instead, I think this approach reflects a \citet{Citton2017-xq}-esq approach to the problem posed by the enormous complexity of \glspl{sa}. In just the 4 libraries
+
+   % todo: finish
+
+   \subsection*{What does Working Mean Here?}
+   I want to return to talking about the various experiences of functionality and non-functionality I've encountered in this work \sepfootnote{working}. First I'm going to try and explore the ideas of assembly and then how to think about the functionality of assembled artifacts.
+
+   Assembly is a process whose limits are challenging to clearly mark. There are instances where assembly is clearly successful, such as when a \gls{sa} works correctly in all ways or in instances where the failure of an assembled \gls{sa} clearly comes directly from a single flaw in a single component (such as the international number bug). There are also limits where assembly is clearly unsuccessful: when a component cannot be found, when a language that must be translated into machine code (or any language) is found to contain a syntax error \citep{Cramer2008-cw}. However, when I created a software artifact that failed to work because of a broken relationship between its components, I began to wonder if my definition of assembly was flawed.
+
+   Unlike compiled languages, which fully parse their constituent source files before reaching a state where an executable \gls{sa} exists, Python \gls{sa} performs assembly immediately before executing a python program\sepfootnote{runtimeimports}. In fact, the \gls{python} assembly is piecemeal - each file is only read when needed, so files that are part of the \gls{sa} could go unused for any period of time before being used in the \gls{sa}. It would be possible to, for instance, begin running an \acrshort{eden} \gls{sa} and replace the line of web2py code that, if it were executed, would cause a crash. If the code was replaced before the \acrshort{eden} \gls{sa} called the code with the bug, no crash would occur. So do I need one approach for assembly with interpreted languages and another approach with compiled languages?
+
+   No, because the apparent differences are illusions. Compiled programs can also have their contents changed mid-executions (this is the usual method for 'breaking into' a computer). Changing the contents of a program that has already been translated to machine code is simply much less convenient than changing the text in the source file of an interpreted language. The moment of failure that I encountered when web2py tried to invoke \acrshort{eden} code it no longer knew how to find was a moment where the computer tried to follow a chain of relationships. It would not be possible to know if any given instance of an \acrshort{eden} validator that inherits from web2py code would work correctly without running the program. This means that finding the error would require solving the halting problem, which is impossible \citep{Kaplan_undated-xy}. 
+
+   For the purposes of this this project, what I call assembly is every aspect of preparing a program to execute that can be done without needing to actually execute the program (i.e. the limits of the halting problem). These processes (compilation, the locating of python files) are often themselves executed by \glspl{sa}. As long as the work being done could be done without executing source code, it is considered part of the assembly step\sepfootnote{pythonexeq}. 
+
+   Why is this important? Does it matter for sociologists when assembly stops and execution begins? The end of assembly is the point where human intervention into a \gls{sa} largely stops being useful. After assembly is complete, the balance of which components will impact the overall behavior of the \gls{sa} is fixed. The only human intervention that is possible is the decision to start or stop the \gls{sa}\sepfootnote{askingforhumaninput}. This is doubly important because our ability to predict what a \gls{sa} will do when it is executed is hampered by both practical and theoretical limits \citep{Kaplan_undated-xy}. 
+
+   This reality is reflected the practice of testing in the development of \glspl{sa}. The \acrshort{eden} \gls{sa} assembled in \acrshort{eden}'s test code is not exactly like the final \gls{sa} (it largely differs in the database entries that compose it), but the goal is to make it as close as possible to the final \gls{sa}. For instance, the assembly error I encountered with web2py was easily detected by tests. Testing is a reaction to the fixing of agency in a \gls{sa} and an attempt to ensure that the agency reflected in the final \gls{sa} is sufficiently similar to the developers' intent. These tests can take the form of source code that is incorporated into one or more testings \glspl{sa} or in planned interaction with the final \gls{sa} before releasing it to the public. 
+
+    
+    \printnoidxglossaries
+
+   \section*{Long Tables}
+   These tables are missing some information that is available in this google sheet: \url{https://docs.google.com/spreadsheets/d/1fi5cNCA1mQgS8gZ7VL7MfalSXNQoD2pM1vC3uH18cNw/edit}. Additionally, the contributor who is identified as 'sherdim' used their real name, but I was unable to get \LaTeX to display their name properly, so I have used their github handle. Their profile can be found here: \url{https://github.com/sherdim}.
+
+\begin{table}[ht]
+\caption{Eden Contributors}
+\label{tab:contribs-1}
+\begin{tabular}{|l|r|r|}
+\hline
+Name            & Related Changes & Total Changes \\ \hline
+Ashwyn          & 69              & 7,580         \\ \hline
+Aviral Dasgupta & 88              & 6,147         \\ \hline
+biplovbhandari  & 18              & 2,6692        \\ \hline
+Daniel Drexler  & 69              & 10,342        \\ \hline
+Dominic König   & 33,934          & 1,940,890     \\ \hline
+Fran Boon       & 23,604          & 3,816,361     \\ \hline
+Graeme Foster   & 646             & 241,090       \\ \hline
+hitesh96db      & 8               & 13,588        \\ \hline
+James O'Neill   & 4               & 4,038         \\ \hline
+Kunal Hari      & 33              & 8,920         \\ \hline
+Michael Howden  & 755             & 143,771       \\ \hline
+Pratyush Nigam  & 312             & 290           \\ \hline
+raj454raj       & 1               & 10,917        \\ \hline
+redsin          & 810             & 25,265        \\ \hline
+tirgil          & 2               & 3,804         \\ \hline
+VishrutMehta    & 6               & 1,153         \\ \hline
+\end{tabular}
+\end{table} 
+
+\begin{table}[ht]
+\caption{pydal Contributors 1}
+\label{tab:contribs-2.1}
+\begin{tabular}{|l|r|r|}
+\hline
+Name                 & Related Changes & Total Changes \\ \hline
+abastardi            & 189             & 15            \\ \hline
+alan                 & 8               & 11            \\ \hline
+boa-py               & 4               & 2             \\ \hline
+BuhtigithuB          & 9,035           & 5,524         \\ \hline
+Cássio Botaro        & 2               & 2             \\ \hline
+Christophe Varoqui   & 42              & 2             \\ \hline
+Dan Feeney           & 11              & 11            \\ \hline
+David Orme           & 160             & 30            \\ \hline
+Dominic König        & 15              & 43            \\ \hline
+dz0                  & 12              & 1             \\ \hline
+Emmanuel Goh         & 68              & 4             \\ \hline
+Fran Boon            & 75              & 21            \\ \hline
+Francisco Tomé Costa & 8               & 4             \\ \hline
+gi0baro              & 75,295          & 69,785        \\ \hline
+Giovanni Barillari   & 17,667          & 8,240         \\ \hline
+ilvalle              & 16,027          & 37,158        \\ \hline
+Jack Kuan            & 147             & 7             \\ \hline
+JusticeN             & 15              & 15            \\ \hline
+jvanbraekel          & 381             & 40            \\ \hline
+kvanzuijlen          & 116             & 2             \\ \hline
+Leonel Câmara        & 1667            & 896           \\ \hline
+Name                 & Related Changes & Total Changes \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\caption{pydal Contributors 2}
+\label{tab:contribs-2.2}
+\begin{tabular}{|l|r|r|}
+\hline
+Name                 & Related Changes & Total Changes \\ \hline
+Martin Doucha        & 9,233           & 3,037         \\ \hline
+maxcrystal           & 11              & 11            \\ \hline
+Massimo DiPierro     & 22,447          & 903,691       \\ \hline
+Michael Loster       & 4               & 2             \\ \hline
+Michele Comitini     & 541             & 5,975         \\ \hline
+nikakis              & 216             & 18            \\ \hline
+niphlod              & 5,178           & 30,396        \\ \hline
+preactive            & 2               & 2             \\ \hline
+Remco Boerma         & 20              & 5             \\ \hline
+Richard Boß          & 5               & 5             \\ \hline
+rodwatkins           & 56              & 14            \\ \hline
+Stephen Rauch        & 6,166           & 4,993         \\ \hline
+Stephen Tanner       & 11              & 43            \\ \hline
+Tim Nyborg           & 82              & 6             \\ \hline
+Tom Stratton         & 36              & 9             \\ \hline
+Victor Salgado       & 44              & 18            \\ \hline
+Vinyl Darkscratch    & 24              & 49            \\ \hline
+Wanderson Reis       & 53              & 5             \\ \hline
+willimoa             & 7               & 64            \\ \hline
+xuyangbocn           & 24              & 2             \\ \hline
+Christophe Varoqui   & 2               & 2             \\ \hline
+dz0                  & 1               & 1             \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\caption{yatl Contributors}
+\label{tab:contribs-4}
+\begin{tabular}{|l|r|r|}
+\hline
+Name                           & Related Changes & Total Changes \\ \hline
+Carlos Cesar Caballero Díaz    & 17              & 17            \\ \hline
+Massimo DiPierro               & 2,312           & 2,089         \\ \hline
+PhanterJR                      & 254             & 263           \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\caption{web2py Contributors 1}
+\label{tab:contribs-3-1}
+\begin{tabular}{|l|r|r|}
+\hline
+Name                           & Related Changes & Total Changes \\ \hline
+abastardi                      & 37              & 153           \\ \hline
+Adam Bryzak                    & 2               & 2             \\ \hline
+Alexander Zayats               & 16              & 8             \\ \hline
+alexdba                        & 34              & 17            \\ \hline
+Alfonso de la Guarda Reyes     & 27              & 63            \\ \hline
+Anssi Hannula                  & 20              & 12            \\ \hline
+Batchu Venkat Vishal           & 2               & 2             \\ \hline
+Carlos Cesar Caballero Díaz    & 68              & 3,136         \\ \hline
+Carlos Costa                   & 26              & 236           \\ \hline
+Cássio Botaro                  & 22              & 207           \\ \hline
+cccaballero                    & 10              & 138           \\ \hline
+Chen Rotem Levy                & 8               & 309           \\ \hline
+Chris DeGroot                  & 8               & 4             \\ \hline
+Chris Garcia                   & 12              & 34            \\ \hline
+clach04                        & 90              & 45            \\ \hline
+Daniel Libonati                & 4               & 9             \\ \hline
+Denis Rykov                    & 8               & 4             \\ \hline
+Dinis                          & 4               & 470           \\ \hline
+Dominic König                  & 4               & 10            \\ \hline
+Donald McClymont               & 7               & 7             \\ \hline
+Erik Montes                    & 4               & 147           \\ \hline
+Fran Boon                      & 20              & 28            \\ \hline
+geomapdev                      & 306             & 223           \\ \hline
+gi0baro                        & 29,055          & 38,807        \\ \hline
+Giovanni Barillari             & 105             & 346           \\ \hline
+hectord                        & 6               & 6             \\ \hline
+ilvalle                        & 3,857           & 65,421        \\ \hline
+Jack Kuan                      & 16              & 24            \\ \hline
+Jan Beilicke                   & 26              & 13            \\ \hline
+Jan M. Knaup                   & 24              & 12            \\ \hline
+Jaripekkaf                     & 112             & 56            \\ \hline
+Jeremie Dokime                 & 18              & 54            \\ \hline
+Joel Rathgaber                 & 22              & 22            \\ \hline
+Jonathan Bohren                & 59              & 59            \\ \hline
+Jonathan Vasek                 & 4               & 2             \\ \hline
+Jose C                         & 2               & 1             \\ \hline
+jvanbraekel                    & 124             & 108           \\ \hline
+kelson                         & 40              & 306           \\ \hline
+Kiran Subbaraman               & 98              & 99            \\ \hline
+Koen van Zuijlen               & 4               & 8             \\ \hline
+Kristján Valur Jónsson         & 2               & 2             \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\caption{web2py Contributors 2}
+\label{tab:contribs-3-2}
+\begin{tabular}{|l|r|r|}
+\hline
+Name                           & Related Changes & Total Changes \\ \hline
+Kurt Grutzmacher               & 352             & 2,378         \\ \hline
+Leonel Câmara                  & 1,444           & 14,051        \\ \hline
+Lisandro                       & 8               & 14            \\ \hline
+Luca de Alfaro                 & 2               & 2             \\ \hline
+Martin Doucha                  & 92              & 99            \\ \hline
+Massimo DiPierro               & 146,548         & 825,014       \\ \hline
+Mathieu Clabaut                & 48              & 88            \\ \hline
+mcabo                          & 56              & 28            \\ \hline
+Michele Comitini               & 2215            & 6034          \\ \hline
+mictee                         & 33              & 71            \\ \hline
+Mirko Galimberti               & 22              & 52            \\ \hline
+mpranjic                       & 12              & 36            \\ \hline
+Nik Klever                     & 10              & 45            \\ \hline
+niphlod                        & 10,189          & 45,996        \\ \hline
+Oleg                           & 82              & 43            \\ \hline
+Omar Trinidad Gutiérrez Méndez & 14              & 321           \\ \hline
+omniavx                        & 4               & 2             \\ \hline
+Oscar Fonts                    & 32              & 585           \\ \hline
+Oscar Rodriguez                & 132             & 66            \\ \hline
+Paolo Caruccio                 & 12              & 475           \\ \hline
+Prasad Muley                   & 46              & 23            \\ \hline
+Radu Ioan Fericean             & 30              & 66            \\ \hline
+Ricardo Pedroso                & 216             & 263           \\ \hline
+Richard Vézina                 & 9,605           & 17,379        \\ \hline
+samuel bonilla                 & 4               & 93            \\ \hline
+Scimonster                     & 4               & 6             \\ \hline
+Seth Kinast                    & 10              & 18            \\ \hline
+spametki                       & 946             & 3,404         \\ \hline
+Stefan Pochmann                & 120             & 114           \\ \hline
+tiago.bar                      & 2               & 4             \\ \hline
+tim                            & 4               & 2             \\ \hline
+Tim Nyborg                     & 84              & 109           \\ \hline
+Tim Richardson                 & 444             & 337           \\ \hline
+viniciusban                    & 34              & 261           \\ \hline
+Vinyl Darkscratch              & 410             & 121,159       \\ \hline
+winniehell                     & 5               & 5             \\ \hline
+zvolsky                        & 22              & 1,543         \\ \hline
+sherdim                        & 2               & 14            \\ \hline
+Luca de Alfaro                 & 2               & 2             \\ \hline
+Jonathan Vasek                 & 2               & 2             \\ \hline
+Jose C                         & 1               & 1             \\ \hline
+\end{tabular}
+\end{table}
    \setlength{\parindent}{4em}
    \bibliography{Final_Draft}
 

@@ -1,4 +1,4 @@
-EDEN:
+EDEN(from 0718c0681bb58576a613e0edc4d4070ac214be21):
 github.com/AlDanial/cloc v 1.82  T=34.03 s (127.4 files/s, 53080.0 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
@@ -25,34 +25,68 @@ reStructuredText                 1              4              0              7
 SUM:                          4334         193900         349378        1262778
 -------------------------------------------------------------------------------
 
-web2py:
-ddrexler@Drexbook-Pro:web2py| git:(master 57↓) 1M$ cloc ./
-    1192 text files.
-    1088 unique files.
-     192 files ignored.
+web2py (93ef108c0b4b1c100622bf0002ec0972dec8be46):
+ddrexler@Drexbook-Pro:web2py| git:(master 60↓) 1M$ cloc ./ --exclude-dir=pydal,yatl
+    1102 text files.
+     998 unique files.
+     188 files ignored.
 
-github.com/AlDanial/cloc v 1.82  T=2.00 s (504.1 files/s, 109370.1 lines/s)
+github.com/AlDanial/cloc v 1.82  T=1.80 s (510.1 files/s, 106424.9 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-Python                         486          19030          24276         122400
+Python                         401          15225          20210         103593
 JavaScript                      86           2449           2843          23968
 HTML                           122            593            680           6292
 CSS                             61            619            410           3971
-Markdown                        80            894              0           2828
+Markdown                        79            879              0           2783
 Bourne Shell                    26            659            656           2196
 Dockerfile                      65            516             65           1153
 YAML                            25            112             15            608
-make                             4             58             30            419
+make                             3             58             29            402
 reStructuredText                44            166            313            179
 PowerShell                       1             23             11            135
-INI                              5             15              4             96
+INI                              4             14              4             89
 JSON                             2              0              0             16
 XML                              1              0              0              1
 -------------------------------------------------------------------------------
-SUM:                          1008          25134          29303         164262
+SUM:                           920          21313          25236         145386
 -------------------------------------------------------------------------------
 
+pydal (cecd77127c122404c1aee7f6377c6a0150d86d84):
+ddrexler@Drexbook-Pro:packages| git:(master 60↓) 1M$ cloc ./dal/
+     110 text files.
+     108 unique files.
+      11 files ignored.
+
+github.com/AlDanial/cloc v 1.82  T=0.25 s (408.4 files/s, 136823.9 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Python                          93           4548           4437          24518
+make                             1             28              6            143
+YAML                             3             25              1            120
+reStructuredText                 3             66            105             73
+Markdown                         1             19              0             50
+INI                              1              1              0             30
+-------------------------------------------------------------------------------
+SUM:                           102           4687           4549          24934
+-------------------------------------------------------------------------------
+
+yatl (5deb403a9e45f617588f02cd8f7682b3f98571b4):
+github.com/AlDanial/cloc v 1.82  T=0.02 s (491.6 files/s, 84965.0 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Python                           8            278            406           1131
+Markdown                         1             15              0             45
+make                             1              0              1             17
+INI                              1              1              0              7
+-------------------------------------------------------------------------------
+SUM:                            11            294            407           1200
+-------------------------------------------------------------------------------
+
+python 3.6.5:
 ddrexler@Drexbook-Pro:web2py| git:(master 57↓) 1M$ cloc --exclude-dir=site-packages /Users/ddrexler/.pyenv/versions/3.6.9/lib/python3.6/
     1886 text files.
     1857 unique files.
