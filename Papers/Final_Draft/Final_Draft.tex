@@ -9,7 +9,7 @@
                    
 % -------------------------------------------------------------------------
 % https://www.kammerl.de/ascii/AsciiSignature.php - standard
-% I've moved beyond justifying latex and am not just living in it.
+% I've moved beyond justifying latex and am now just living in it.
 
 
 % Use APA module
@@ -27,7 +27,7 @@
 % /unicode
 \usepackage{amsmath}
 \usepackage{graphicx}
-% set single spacing
+% allow single spacing
 \usepackage{setspace}
 % glossary
 \usepackage[acronym]{glossaries}
@@ -40,14 +40,24 @@
 %\usepackage[colorinlistoftodos]{todonotes}
 % Allow seperate footnotes
 \usepackage{sepfootnotes}
+% adding spaces around paragraphs
 % https://tex.stackexchange.com/questions/74170/have-new-line-between-paragraphs-no-indentation
-\usepackage[parfill]{parskip}
+%\usepackage{parskip}
 % Diagrams!
 \usepackage{svg}
 \usepackage{graphicx}
-\graphicspath{ {images/} }
+% vertical space around list items
+\usepackage{enumitem}
+% small font in verbatum
+% https://tex.stackexchange.com/questions/171803/change-font-size-of-the-verbatim-environment
+\usepackage{fancyvrb}
 
-% actually print contributors' name
+% image location
+\graphicspath{ {images/} }
+% less space in bulleted lists
+\setlist{nosep}
+% set single spacing
+
 
 
 % Trying to include graphics has been a JOURNEY
@@ -119,7 +129,7 @@
 \newacronym{foss}{FOSS}{Free Open Source Software}
 \newacronym{sts}{STS}{Science, Technology \& Society}
 \newacronym{ict}{ICT}{Information and Communications Technology}
-\newacronym{eden}{EDEN}{Emergency Development ENvironment}
+\newacronym{eden}{Eden}{Emergency Development ENvironment}
 \newacronym{ict4d}{ICT4D}{Information and Communication Technologies for Development}
 
 
@@ -141,11 +151,11 @@
     description={Python is an open source, interpreted, high-level, general-purpose programming language. It was initially released in the early 1990s, but has been continuously updated since then. Python 2 was the standard from 2000 to 2008, but in 2008 Python 3 was released with backwards-incompatible changes. This split the Python community, leading to Python 2 and Python 3 having slightly different versions of tools available. Python 2 continued to receive support and updates until 2020, when official support for Python ended (Wikipedia contributors, 2020). The open source nature of Python means that it is likely that Python 2 will continue to be updated by users after official support ends. }
 }
 
-\newglossaryentry{OpenStreetMap}
-{
-    name=OpenStreetMap,
-    description={An open community of volunteers that maintain data about roads, trails, cafés, railway stations, and much more, all over the world.}
-}
+% \newglossaryentry{OpenStreetMap}
+% {
+%     name=OpenStreetMap,
+%     description={An open community of volunteers that maintain data about roads, trails, cafés, railway stations, and much more, all over the world.}
+% }
 \newglossaryentry{web framework}
 {
     name=web framework,
@@ -180,11 +190,11 @@
    description={The movement to use digital technologies to serve the needs of the underprivileged and those living in the developing world. Criticized for being directed more at the developed worlds' love of technology than the actual needs of those it purports to serve. Also called digital humanitarianism}
 }
 
-\newglossaryentry{capta}
-{
-   name=capta,
-   description={If data is every piece of information about an entity, capta are the semantically meaningfull elements within that data (Kitchin \& Dodge, 2011). The data of DNA is the entire sequence and the capta would be (we think) the genes that encode for particular traits and proteins}
-}
+% \newglossaryentry{capta}
+% {
+%    name=capta,
+%    description={If data is every piece of information about an entity, capta are the semantically meaningfull elements within that data (Kitchin \& Dodge, 2011). The data of DNA is the entire sequence and the capta would be (we think) the genes that encode for particular traits and proteins}
+% }
 
 \newglossaryentry{srcd}
 {
@@ -195,19 +205,32 @@
 \newglossaryentry{mscd}
 {
    name=machine code,
-   description={A language understood by a particular kind of computer chip. Can be generally understood as a list of specific instructions to the computer chip to do digital operations. I.e. add two numbers, load a value into memory, write a value to disk or send a value over the internet. Common machine languages would be x86 (most laptops and desktops) and ARM (most phones).}
+   description={A language understood by a particular kind of computer chip. As \citet{Cramer2008-cw} notes, machine code is the only true "native" language to a particular computer. Can be generally understood as a list of specific instructions to the computer chip to perform operations: add two numbers, load a value into memory, write a value to disk or send a value over the internet. Common machine languages would be x86 (most laptops and desktops) and ARM (most phones).}
 }
 
 \newglossaryentry{sp}
 {
     name=software project,
-    description={Drawing from \citet{Mackenzie2006-hb}, this is the total social, material and organizational structure associated with the production, distribtuon and use of a particular piece of software. This includes the people who work directly on the source code of any \gls{sa} associated with the project as well as anyone who is part of the organization that manages, funds and directs the development of the software. It may also involve people who are not employed by the formal owner of the software project (this is especially true for open source developers). Any \glspl{sa} assembled by members of the project who are acting as members (and not on their own) are also part of the project. \glspl{sa} assembled using source code from the project are not part of the project per-se, but the software project bears some measure of responsibility for how those \glspl{sa} function and act in the world.}
+    description={Drawing from \citet{Mackenzie2006-hb}, this is the total social, material and organizational structure associated with the production, distribution and use of a particular piece of software. This includes the people who work directly on the source code of any \gls{sa} associated with the project as well as anyone who is part of the organization that manages, funds and directs the development of the software. It may also involve people who are not employed by the formal owner of the software project (this is especially true for open source developers). Any \glspl{sa} assembled by members of the project who are acting as members (and not on their own) are also part of the project. \glspl{sa} assembled using source code from the project are not part of the project per-se, but the software project bears some measure of responsibility for how those \glspl{sa} function and act in the world.}
 }
 
 \newglossaryentry{sa}
 {
     name=software artifact,
     description={An entity of uncertain composition that behaves, for common users (as opposed to technical staff) as a single entity. A software-artifact could be a single binary with all its functionality provided by machine code included in that single location in memory. It could also be a binary that makes calls to various libraries. In the case of EDEN, it's an expensive set of Python files - some of which are human readable and some of which have been modified to make them faster to read. In this case a separate program, the Python binary itself, reads and executes the EDEN program. Even though EDEN is many separate files and contains no machine code, it is properly considered a software-artifact because users interact with it as a single entity.  Software-artifacts are produced periodically by software projects, but are not themselves entirely "software." The idea of software must be large enough to allow multiple software-artifacts to exist within the same project: the current version of your phone OS and the next version, the Facebook app on your phone and the web server that tells it what has happened. Nevertheless, when we are using "software" we are always directly interacting with one or more software-artifact(s). They are the material reality of software projects.}
+}
+
+\newglossaryentry{ap}
+{
+    name=assembly process,
+    plural=assembly processes,
+    description={All software must be assembled. In the simplest case this means the placing of machine code instructions, one after the other, in computer memory. In more complicated processes, this can include the translation from one or more programming language to the appropriate machine code, linking libraries together, retrieving source code from a remote location, and so on. This is rarely a manual processes, and is often done through one or more software artifacts. How a software artifact is assembled has an impact on the behavior of the artifact. Components can be placed in such a way that they do not function as expected, that their contribution to the artifact subverts expectations (an artifact might include a component designed for machine learning but only use its error formatting functionality) or in a way that makes functioning impossible. Assembly processes are often managed by a software project with the aim of producing their software artifact(s), but the process should not be considered a component of the artifact. It impacts the artifacts' structure, but isn't carried around in the artifact.}
+}
+
+\newglossaryentry{cmp}
+{
+  name=composite,
+  description={Composites are fixed assemblies of more than one component which inherits the material qualities of its components, mediated through the structure which those components are assembled into. Once assembled, a composite can operate without human intervention. Composites are typified by extremely high complexity and extremely complex behavior, but once assembled their possible actions are set. They cannot be changed, only replaced. Each component of a composite may be an instruction or a datum, but they are generally composites themselves. Generally, each component makes a proportional contribution to the material qualities of the composite it is integrated into, but layers of assembly can place components in unexpected relationships with unforeseen outcomes. }
 }
 
 \newglossaryentry{webframework}
@@ -230,15 +253,15 @@
 
 \newglossaryentry{w2p}
 {
-  name=Web2Py,
+  name=web2py,
   description={An open source web framework for Python 2.7 and 3+.}
 }
 
-\newglossaryentry{cmp}
-{
-  name=Composite,
-  description={A \citet{Latour1999-ui}ian black box whose functionality cannot be reduced to a blackbox containing other blackboxes. Instead, a composite is a network of blackboxes are heterogeneously linked. In addition, where the contents of a blackbox become socially visible when the blackbox stops working, composites can totally fail and remain opaque.}
-}
+% \newglossaryentry{cmp}
+% {
+%   name=Composite,
+%   description={A \citet{Latour1999-ui}ian black box whose functionality cannot be reduced to a blackbox containing other blackboxes. Instead, a composite is a network of blackboxes are heterogeneously linked. In addition, where the contents of a blackbox become socially visible when the blackbox stops working, composites can totally fail and remain opaque.}
+% }
 
 
 % \newglossaryentry{}
@@ -256,11 +279,9 @@
 %                                          __/ |
 %                                         |___/ 
 
-\singlespacing
-
 % \loadglsentries{glossary}
 
-\renewcommand{\bibsection}{\section*}
+\renewcommand{\bibsection}{\section}
 
 %  ______          _               _            
 % |  ____|        | |             | |           
@@ -271,7 +292,7 @@
                                               
                                               
 
-\sepfootnotecontent{boellactualvirtual}{\citet{Boellstorff2015-al} rejects the idea that events in digital spaces (like games or chat rooms) are any less "real" than things that exist in the physical world and thus rejects the common language of "real" and "virtual." He instead talks about "actual" (physical) spaces and "virtual" (within digital worlds) spaces. I will be describing the physical world as the "actual" world when appropriate and will talk about both virtual space (space that fully exist in computers such as Second Life and World of Warcraft) and digital space (spaces that are displayed though digital mediums, but are constituted of a mix of real and generated media [facebook, instagram]). It is all "real."}
+\sepfootnotecontent{boellactualvirtual}{\citet{Boellstorff2015-al} rejects the idea that events in digital spaces (like games or chat rooms) are any less "real" than things that exist in the physical world and thus rejects the common language of "real" and "virtual." He instead talks about "actual" (physical) spaces and "virtual" (within digital worlds) spaces. I will be describing the physical world as the "actual" world when appropriate and will talk about both virtual space (space that fully exist in computers such as Second Life and World of Warcraft) and digital space (spaces that are displayed though digital mediums, but are constituted of a mix of real and generated media [Facebook, Instagram]). It is all "real."}
 
 \sepfootnotecontent{edensetup}{The Script I used can be found \url{http://eden.sahanafoundation.org/wiki/InstallationGuidelines/Linux/Server/CherokeePostgreSQL}, though as I describe, I often used different components. Unedited notes on the things I ran into can be found at \url{https://github.com/aeturnum/masters_project/blob/master/Notes/Web2Py_Notes}.}
 
@@ -289,7 +310,7 @@
 
 \sepfootnotecontent{problemfix}{Interestingly enough, the problem was fixed by a piece of code written by a member of the \acrshort{eden} team \citep{Konig2019-fw}. The \gls{w2p} team had already noticed the problem and thought they had fixed it, but their fix did not work for for all circumstances and required more work.}
 
-\sepfootnotecontent{dslnote}{'General purpose' programming languages are all turing complete, which means they can fully describe the behavior of a 'turing machine' - a theoretical automaton described by Alan Turing in the early 20th century. This means that all general purpose programming languages can be reduced to one another (a series of instructions generated by one language can be generated by another). However, there are also 'domain specific languages' that are designed to solve more specific problems that cannot be reduced to one another (and cannot fully describe the behavior of a turing machine). Ironically, this document was typeset in \LaTeX, which is turing complete.}
+\sepfootnotecontent{dslnote}{'General purpose' programming languages are all Turing complete, which means they can fully describe the behavior of a 'Turing machine' - a theoretical automaton described by Alan Turing in the early 20th century. This means that all general purpose programming languages can be reduced to one another (a series of instructions generated by one language can be generated by another). However, there are also 'domain specific languages' that are designed to solve more specific problems that cannot be reduced to one another (and cannot fully describe the behavior of a Turing machine). Ironically, this document was typeset in \LaTeX, which is Turing complete.}
 
 \sepfootnotecontent{socialcharacter}{I see a straight line between the historical social oddities of computer workers and the formation of the modern \acrshort{foss} movement. Having a space where computer people already understood themselves as being "special" (even if it was special in an pejorative way) would have also helped them imagine that different property systems were possible. The early history of Linux was fueled by the unusual legal position of AT\&T's Bell Labs (they were banned from making money off their work) which led to them taking few steps to protect their copyright and helping seed the open source movement \citep{Kelty2008-jm}.}
 
@@ -317,7 +338,11 @@
 
 \sepfootnotecontent{askingforhumaninput}{A \gls{sa} can be designed to seek input at any point, but this does not change the fact that humans cannot \textit{intercede and change} the actions the \gls{sa} will take. The list of actions the \gls{sa} takes may involve seeking human input, but the possible range of actions is already fixed. As \citet[p. 181-182]{Mackenzie2006-hb} points out, once agency is fixed in software, the software will reflect it in its execution. Any opportunity to "give feedback" to an assembled \gls{sa} will, at best, select another path from the possible paths fixed by assembly.}
 
-\sepfootnotecontent{libversions}{The exact versions of the components may not be the ones stored in the canoical git repostiory. Each repository was at a particular git hash for this project. Eden was at 0718c0681bb58576a613e0edc4d4070ac214be21. web2py was at 93ef108c0b4b1c100622bf0002ec0972dec8be46. pydal was at cecd77127c122404c1aee7f6377c6a0150d86d84. yatl was at 5deb403a9e45f617588f02cd8f7682b3f98571b4. Some of these only exist in my fork of the respective repos. }
+\sepfootnotecontent{libversions}{The exact versions of the components may not be the ones stored in the canonical git repository. Each repository was at a particular git hash for this project. Eden was at 0718c0681bb58576a613e0edc4d4070ac214be21. web2py was at 93ef108c0b4b1c100622bf0002ec0972dec8be46. pydal was at cecd77127c122404c1aee7f6377c6a0150d86d84. yatl was at 5deb403a9e45f617588f02cd8f7682b3f98571b4. Some of these only exist in my fork of the respective repositories. }
+
+\sepfootnotecontent{symbol}{In computer programming languages, a symbol a generic term for a saved value. The name comes from the practice in many languages of using a symbol table, which is an index of variable name to current value.} %todo: find source?
+
+\sepfootnotecontent{moduledetails}{In order for a directly to be a well formed \Gls{python} module, it must contain a \Gls{python} file named \_\_init\_\_.py. This file may be empty, but may also execute \Gls{python} code. \_\_init\_\_ files are commonly used to make the elements of the library that are intended to be used by outsiders more easily accessible. For example, an \_\_init\_\_.py file in the \textit{example} module could contain the statement 'from .functions import run.' This would allow module users to type 'from example import run' instead of 'from example.functions import run.' This approach would allow \textit{example} users to know less about the internal details of \textit{example}.}
 
 %      ________          _               _            
 %     / /  ____|        | |             | |           
@@ -337,9 +362,16 @@
 
 \begin{document}
    \maketitle
+   % single space toc
+   \singlespacing
+   \tableofcontents
+   % back to double spacing
+   \doublespacing
    % This is a progressive work that's trying to explain my situatedness
-   \section*{It's Software's World, We Just Live in it}
+   \section{It's Software's World, We Just Live in it}
+   \singlespacing
    \epigraph{[It] matters with which ways of living and dying we cast our lot}{\textit{\citet[p. 55]{Haraway2016-nc}}}
+   \doublespacing
  
 
    Software is now well represented in every nook and cranny of the world. Though this project directly engages software, software was also used at every stage of its production: conception, composition, distribution and (in the age of covid-19) discussion. In the same moment that our reliance on software reaches ever loftier heights, we are surrounded by stories of important software projects being biased against vulnerable groups. Standpoint theory suggests that such biases often come from the hidden and unacknowledged perspectives of the people making software \citep{Harding1992-od,Haraway1988-nh}. In this sense, the problems caused by bias in software are not new problems. But, as \citet{Mackenzie2006-hb} and \citet{Kitchin2011-af} have noted, the management of a software project is filled with the work of managing relationships. Relationships between particular \glspl{sa} (both the current version and older releases), the humans working on the project and expectations about the future. Software also exists within ecosystems: code written for a particular software project is surrounded and supported by code that many other software projects rely upon. How a particular \gls{sa} impacts the world reflects the intent of both the organization that released this \gls{sa} and the diffuse intent of the surrounding software/hardware ecosystem. Software interventions into existing projects can highlight the paths of agency within \glspl{sa}. What can we learn about effecting change in software by studying how agency is mediated by the assembly process?
@@ -348,7 +380,15 @@
 
    Returning to the question of what one can do to address perspectives in software, this project takes the \acrfull{foss} project \acrfull{eden} as its object of study and site of intervention. I chose \acrshort{eden} because it is, as far as I can tell, a well-made piece of software that fulfills its role in the world. Others will engage socially problematic software and try to fix it, but the goal of my work here is to engage with a piece of software which is not obviously harmed by the standpoints of its developers. This does not aim to be a critical engagement, but an engagement whose successes and failures may be informative for future critical projects. The result of the modifications to \acrshort{eden} can be seen at <url>. The changes to \acrshort{eden} highlight where \acrshort{eden} crosses blackbox boundaries, though my efficacy in making those crossings apparent is limited to particular \textit{kinds} of boundaries. As we will discuss, software is deeply heterogeneous and that heterogeneity impacts the work that is needed to engage with it. 
 
-   % \section*{How I Think About Software}
+% ===================================================
+% =  _     _ _     ____            _                =
+% = | |   (_) |_  |  _ \ _____   _(_) _____      __ =
+% = | |   | | __| | |_) / _ \ \ / / |/ _ \ \ /\ / / =
+% = | |___| | |_  |  _ <  __/\ V /| |  __/\ V  V /  =
+% = |_____|_|\__| |_| \_\___| \_/ |_|\___| \_/\_/   =
+% ===================================================
+
+   % \section{How I Think About Software}
 
    % Modern Software Production
   % Sources in this section:
@@ -360,12 +400,14 @@
   % Elish, Madeleine Clare. “Moral Crumple Zones: Cautionary Tales in Human-Robot Interaction.” Engaging Science, Technology, and Society 5, no. 0 (March 23, 2019): 40–60.
   
   % ...?
-  \section*{Software: a Thing and a Process}
+  \section{Software: a Thing and a Process}
+  \singlespacing
   \epigraph{I have passed through a membrane where the real world and its uses no longer matter. I am a software engineer[.]"}{\textit{\citet[p. 3]{Ullman2012-fq}}}
+  \doublespacing
   
   It is difficult to talk with precision about what software 'is.' Individual programs that have been written in (or translated into) machine code are software (I will be calling these '\glspl{sa}'). Networks of \glspl{sa} which only function when connected (such as the combination of one or more Facebook apps and the Facebook servers) also are clearly software. There are also software projects like the IETF Task Force that produce no \glspl{sa} at all, but create and manage standards that are essential for the interoperability of software. The field is diverse and engaging with it demands some definitional boundaries.
    
-  \citet{Mackenzie2006-hb} focuses on understanding how 'software projects' function. The \glspl{sa} produced by (or associated with) a given project, the people who work for the organization that owns the project, and imaginaries  about the future or the purpose of the project are all part of Mackenzie's definition. A software project is made of individual artifacts (both software and otherz) and relationships. This means including both the particular qualities of each \gls{sa} (how does the current version of a program work and how the next one \textit{will} work) as well as the relationships between each \gls{sa} (how the current version will give way [or not] to the next version) in software. It also means that software is the thinking, planning, and imagining about how the project will: work, relate to the world, and relate to other \glspl{sa} and projects \citep{Mackenzie2006-hb}. Software is both material and socially defined. 
+  \citet{Mackenzie2006-hb} focuses on understanding how 'software projects' function. The \glspl{sa} produced by (or associated with) a given project, the people who work for the organization that owns the project, and imaginaries  about the future or the purpose of the project are all part of Mackenzie's definition. A software project is made of individual artifacts (both software and others) and relationships. This means including both the particular qualities of each \gls{sa} (how does the current version of a program work and how the next one \textit{will} work) as well as the relationships between each \gls{sa} (how the current version will give way [or not] to the next version) in software. It also means that software is the thinking, planning, and imagining about how the project will: work, relate to the world, and relate to other \glspl{sa} and projects \citep{Mackenzie2006-hb}. Software is both material and socially defined. 
 
   The qualities that exist within a particular \gls{sa}, were first imagined by engineers (much like \citet{Fleck2012-qr}'s thought collective) that work on that \gls{sa}'s software project or one of the supporting projects. The pipeline between how we imagine software will be in the future and the work of creating software that behaves like we imagine it should is important. It means that examining the details of how software works will tell us about how people imagined it would work.
 
@@ -385,7 +427,7 @@
   % Tiidenberg, Katrin, ed. Selfies: Why We Love (and Hate) Them. Emerald Publishing Limited, 2018.
   %   - more on using media to communicate meaning
   %   - new forms of media facing hostility
-  \subsection*{The Material Character of Software}
+  \subsection{The Material Character of Software}
   The material and social characteristics of software are co-constitutive its impact on the world. As Facebook attempted to respond the changing social situation around gender, they faced a back-and-forth between what was technically possible and generally allowed. They eventually settled on a solution that allowed lacuna to exist in the database in return for a more socially acceptable list of gender options \citep{Bivens2017-tc}. Softwares flexibility means that nearly any situation can be represented and recorded, but each new piece of software is built on top of an ecosystem which makes certain things easy and other things hard. The database practices Facebook relied on in their early days represented gender as a binary value - a choice which later made it impossible to both offer non-binary genders and have a value in the gender field of the database.
 
   Sociological work on new media supports the idea that there is something unique about how software impacts the world. Many of the ways we socialize through software have pre-digital antecedents, but the unique power of software to create new experiences is clearly visible. You do not have to be making software to feel the power \textit{of} software to structure and channel your life. We are both using media in was that are only possible through digital systems and using digital media to account for ourselves in new ways and to new audiences \citep{Humphreys2018-ge,Jurgenson2019-tl}. Though we have always been different things to different people, it is only through software that we can be interacting with people who treat us as if we are famous and as if we are totally unknown simultaneously \citep{Dean2010-lk}. The important thing to understand is that these new social realities reflect the new material force of software being brought to bear on society. These new bottles contain old wine, but it turns out that the bottle makes a huge difference to how we experience the wine. It isn't necessary for software to be attempting to transform the structure of society, its material force drives social transformation even when that transformation isn't imagined by its creators. 
@@ -407,7 +449,7 @@
   %   - ways of experiencing freedom within software and software groups
   % Kelty, Christopher M. Two Bits: The Cultural Significance of Free Software. Duke University Press, 2008.
   %   - rules of FOSS give rise to certain consistent social rules
-  \subsection*{Software Cultures are Cultures of Materiality}
+  \subsection{Software Cultures are Cultures of Materiality}
 
   Ethnographic work on communities that are deeply involved with software support the idea that the material qualities of software uniquely and meaningfully impact those who work on it. When \citet{Kelty2008-jm} argues that the open culture of digital spaces follows from the commitment to sharing, he is also suggesting a strong linkage between the material character of technology and the social goals of its builders. It would be possible to build software \textit{wrong} and undermine the \gls{foss} movements' goals \citep{Kelty2008-jm}. His work underlines the importance of understanding the material qualities of software while it largely leaves them untouched.
 
@@ -432,8 +474,10 @@
   %   - materialization of human perspectives in computer algorithms
   %   - questioning the projection of agency onto computer code v.s. understanding computer code as "doing the work" of humans
   %   - more examples of tools containing material standpoints (specifically the eugenical quality of population statistics)
-   \subsection*{Materialized Perspectives}
+   \subsection{Materialized Perspectives}
+   \singlespacing
    \epigraph{A model is worked, and it does work}{\textit{\citet[p. 63]{Haraway2016-nc}}}
+   \doublespacing
 
    My account of the pluripotency of software and its particular material impacts begs a question of the nature of software: how much of its impact is intended and how much of its impact is caused by bias within the software? Software is basically epistemic - it functions through selecting and acting on understandings of the world. Understanding bias and developing language around bias is a well-studied area in its own right. Bias can persist in knowledge and practice in a peripheral way (\citet{Fleck2012-qr} describes how syphilis retains a moral dimension even when it is understood to be a microbe) or in a way that determines the entire structure of thought on a subject (such as \citet{Said1979-jw}'s deconstruction of orientalism). 
 
@@ -445,8 +489,10 @@
   % Cheney-Lippold, John. We Are Data: Algorithms and the Making of Our Digital Selves. NYU Press, 2018.
   % todo: 
   % Boellstorff, Tom. Coming of Age in Second Life: An Anthropologist Explores the Virtually Human. Princeton University Press, 2015.
-  \subsection*{Software Without Ethnography}
+  \subsection{Software Without Ethnography}
+  \singlespacing
   \epigraph{[T]he "writing of technology" is by by no means universal; the opaque and stubborn places do not lie simply beneath technology, but are wrapped around and in it}{\textit{\citet[p. 181]{Mackenzie2006-hb}}}
+  \doublespacing
 
   The bulk of sociological work around software has been work that with the material effect of software through its impact on social worlds. This project does not do that. It is conducted with the assumption that omitting social engagement will limit, rather than eliminating, the usefulness of the project. This belief is based on the studies of social outcomes that suggest that software possess a strong material character outside of social construction \citep{Dean2010-lk,Eubanks2018-hc,Humphreys2018-ge,Kelty2008-jm}. It is also based on work that show that once social information has passed into digital systems, that information will be manipulated and used in ways that can be driven as much by the quirks of digital systems as by social goals \citep{Cheney-Lippold2018-lw}. This project, I believe, points towards a future project that engages more deeply in the social worlds of the makers and users of \acrshort{eden}. Doing so would allow us to understand how \acrshort{eden} constructs space for its makers, its users and the world in general \citep{Kitchin2011-af}. 
 
@@ -459,8 +505,7 @@
   % Yuill, Simon. “INTERRUPT.” In Software Studies: A Lexicon, edited by Matthew Fuller, 161–68. MIT Press, 2008.
   % Cramer, Florian. “LANGUAGE.” In Software Studies: A Lexicon, edited by Matthew Fuller, 168–74. MIT Press, 2008.
   % Crutzen, Cecile, and Erna Kotkamp. “OBJECT ORIENTATION.” In Software Studies: A Lexicon, edited by Matthew Fuller, 200–207. MIT Press, 2008.  
-  \subsection*{Yes, but what IS Software?}
-  \epigraph{[T]he "writing of technology" is by by no means universal; the opaque and stubborn places do not lie simply beneath technology, but are wrapped around and in it}{\textit{\citet[p. 181]{Mackenzie2006-hb}}}
+  \subsection{Yes, but what IS Software?}
 
   Work on the powerful impact of software on our social world (and the power impact of our social world on software) somewhat elides the central question of my work: what \textit{is} software? What are the qualities of this thing and this practice that has transformed our world, often on accident? \citet{Cramer2008-cw} focused on the Janus-like qualities of computer languages - forced to fulfill the needs of humans and machines. While \citet{Cramer2008-cw} notes that the only actual computer language are the machine languages spoken by computer chips, he also points out that the primary concern of general purpose 'computer'\sepfootnote{dslnote} languages (including \gls{python}) is attending to different human priorities. This is especially true because all general purpose languages can be reduced to one another, so any difference in functionality come only from the difference in how well the language suits the preferences of the human writing it. \citet{Yuill2008-by} talks about the character of the ecosystem of programs and the centrality of "interrupts" to modern system design. Most software written today is written with the expectation that it may be interrupted. This is because modern computers remain responsive to people (and other \glspl{sa} running on the computer) by being ready to interrupt any process at any moment. This is important because it prepares software to try to deal with the unexpected.
 
@@ -474,37 +519,66 @@
   % Sismondo, Sergio. “Science and Technology Studies and an Engaged Program.” The Handbook of Science and Technology Studies 3 (2008): 13–32.
   
   
-  \subsection*{Taking Action}
+  \subsection{Taking Action}
+  \singlespacing
   \epigraph{We live in capitalism, its power seems inescapable – but then, so did the divine right of kings. Any human power can be resisted and changed by human beings.}{\textit{\citet{Le_Guin2014-ue}}}
+  \doublespacing
   
   So in one hand I hold \citet{Latour1999-ui}'s blackboxes and in the other \citet{Harding1992-od} and \citet{Haraway1988-nh}'s situated knowledges. As \citet{Mackenzie2006-hb} recounts, the process that produces software is complex and heterogeneous. It defies simple analysis and it, itself, a deeply social thing that will also produce \glspl{sa} that can be mechanistically executed \citep{Cox2013-zo}. Yet we are beset on all sides with software whose bias is plain for all the world to see \citep{Bivens2017-tc,Dean2010-lk,Elish2019-ls,Eubanks2018-hc,Schull2012-nc}. How can our academic theories be used to address these practical concerns? How can we find what \citet{Sismondo2008-xz} called an "engaged program," which combines theory and contact with the real world?
 
   The first step to to try doing real work on real software. \citet{Zuiderent-Jerak2015-go}'s \textit{Situated Intervention} (which also draws from situated knowledges) argues forcefully that social scientists can and must intervene to learn. He describes how medical professionals use interventions (and their outcomes) as tools to generate knowledge and test assumptions. My own pre-academic experience as a software engineer supports the knowledge generating power of careful and measured intervention. This project hopes that it can find materialized perspectives within a wholly unobjectionable software project (and its associated \glspl{sa}) and, though engaging with the source code of that software project, learn something about how we might address materialized bias in more convoluted situations.
 
-  \section*{The object of study}
-  \subsection*{Software in General}
-  Before diving in, I should define some language. Some of this langauge will be drawn from existing literature and some of it will simply be me drawing boundaries around the sometimes fuzzy concepts that can be involved with software.
+% =======================================
+% =  __  __      _   _               _  =
+% = |  \/  | ___| |_| |__   ___   __| | =
+% = | |\/| |/ _ \ __| '_ \ / _ \ / _` | =
+% = | |  | |  __/ |_| | | | (_) | (_| | =
+% = |_|  |_|\___|\__|_| |_|\___/ \__,_| =
+% =======================================
 
-  \textbf{\gls{sa}}:  my most common element of analysis will be the 
 
-  \subsection*{EDEN}
+
+  \section{The object of study}
+  \subsection{Software in General}
+  Before diving in, I should define some language. Some of this language will be drawn from existing literature and some of it will simply be me drawing boundaries around the sometimes fuzzy concepts that can be involved with software. I will be developing these ideas throughout the paper and some of them exist in an updated form in the glossary.
+
+  A \textbf{\gls{sa}} is any arrangement of machine code, scripts, configuration files, network connections, or other constitutive resources that can be executed by a computer. A collection of such resources become a software artifact as soon as the computer can be passed the bundle of elements and follow the instructions encoded within the artifact. This form of software is important because it is in this form that software is distributed.
+
+  A \textbf{\gls{sp}} is, as \citet{Mackenzie2006-hb} defines it, the extended social, material and organizational structure that produces "software." These projects are not unified by the production of software per-se, but by hoping to change how software functions or how it impacts the world (in a \citet{Kitchin2011-af} sort of way). Though software projects may produce \glspl{sa}, they do not have to. Technical organizations that create standards that other software projects might follow are also software projects. The same is true for professional organizations that aim to shape the culture of software production. 
+
+  Throughout this paper I will speak about the intent or actions of a \gls{sp}. This is not an attempt to say that the \gls{sp} totally controls the actions of individuals involved with it, but a recognition that the social conditions inside a \gls{sp} are expressed through individual members of that \gls{sp} taking action. Each individual person has their own explanation for why they acted in their particular way, but we can still usefully speak about the general opinion, actions and intents of the general project.
+
+  Finally, an \textbf{\gls{ap}} is the arranging of elements of a \gls{sa} in such a way that the computer can execute them. Such a process always happens (even if it is just placing machine language instructions sequentially in memory) before the computer can execute the \gls{sa}. This process is often carried out by one or more \gls{sa}(s). Sometimes these \glspl{sa} are part of the software project making the \gls{sa}, sometimes the are tools shared between many software projects (generally with configuration supplied by this particular project).
+
+% =====================================================
+% =  ____  _ _          _______ ____  _____ _   ___   =
+% = / ___|(_) |_ ___   / / ____|  _ \| ____| \ | \ \  =
+% = \___ \| | __/ _ \ | ||  _| | | | |  _| |  \| || | =
+% =  ___) | | ||  __/ | || |___| |_| | |___| |\  || | =
+% = |____/|_|\__\___| | ||_____|____/|_____|_| \_|| | =
+% =                    \_\                       /_/  =
+% =====================================================
+
+  \subsection{EDEN}
+  \singlespacing
   \epigraph{That virtual worlds are places means they can be fieldsites;}{\textit{\citet[p. 107]{Boellstorff2015-al}}}
+  \doublespacing
 
-   The particular piece of software this project studies is \acrlong{eden}. \acrshort{eden} was originally created by a coalition of Sri Lankan \acrlong{ict} companies in the wake of the 2004 Indian Ocean Earthquake and Tsunami. The project is now managed by the nonprofit \gls{sf}. It has been used in numerous disaster responses since 2004 and is also used by a number of organizations for managing resources outside of any specific disaster \citep{Sahana_Foundation_undated-hl}. \acrshort{eden}'s functionality can fairly be described as tracking and managing resources. Its power comes from the enormous range and detail of the information it knows how to track. \acrshort{eden} has indexes for organizations, people, projects, events, facilities, supplies, documents, possible scenatios, and events. It also provides on-platform messaging and special tools for the management of emergency shelters \citep{Sahana_Foundation2011-od}. Each resource is meant to be connected to other resources: people work for organizations, projects are run by organizations and are associated with people, facilities are linked with projects and organizations and other resources like supplies and verticals. The flexibility of the software means that it can be used to manage a single organization, multiple organization, or used as a hub for many different groups coordinating around shared goals but without central authority. The system aims to be as comprehensive as possible and to use the same entity for resource and system management. The entries for people can act as a simple rolodex and will also double, if desired, as that person's account within \acrshort{eden}. The interface for managing goods is the same interface for managing access to the management system. To the degree possible, \acrshort{eden} is structured to allow the same people who do the day-to-day work of the organization to administer the system that manages the organizations' resources. It also aims to be an effective tool for people at all levels: administrators can track where people and supplies are allocated and volunteers can access their assignments, documents and information about how to use resources.
+   The particular piece of software this project studies is \acrlong{eden}. \acrshort{eden} was originally created by a coalition of Sri Lankan \acrlong{ict} companies in the wake of the 2004 Indian Ocean Earthquake and Tsunami. The project is now managed by the nonprofit \gls{sf}. It has been used in numerous disaster responses since 2004 and is also used by a number of organizations for managing resources outside of any specific disaster \citep{Sahana_Foundation_undated-hl}. \acrshort{eden}'s functionality can fairly be described as tracking and managing resources. Its power comes from the enormous range and detail of the information it knows how to track. \acrshort{eden} has indexes for organizations, people, projects, events, facilities, supplies, documents, possible scenarios, and events. It also provides on-platform messaging and special tools for the management of emergency shelters \citep{Sahana_Foundation2011-od}. Each resource is meant to be connected to other resources: people work for organizations, projects are run by organizations and are associated with people, facilities are linked with projects and organizations and other resources like supplies and verticals. The flexibility of the software means that it can be used to manage a single organization, multiple organization, or used as a hub for many different groups coordinating around shared goals but without central authority. The system aims to be as comprehensive as possible and to use the same entity for resource and system management. The entries for people can act as a simple rolodex and will also double, if desired, as that person's account within \acrshort{eden}. The interface for managing goods is the same interface for managing access to the management system. To the degree possible, \acrshort{eden} is structured to allow the same people who do the day-to-day work of the organization to administer the system that manages the organizations' resources. It also aims to be an effective tool for people at all levels: administrators can track where people and supplies are allocated and volunteers can access their assignments, documents and information about how to use resources.
    % \includegraphics{images/EDEN_diagram.png}
    
 
-   \subsection*{Why EDEN}
+   \subsection{Why EDEN}
    I selected \acrshort{eden} for this project for two primary reasons: it is a \acrlong{foss} software project in a language I am familiar with and it is not obviously problematic. I will detail its open source pedigree shortly, but first I want to explain my second selection criteria. "Improving" software (whatever improving means) can usefully be separated into at least two questions: what quality should change and how do you bring that change about? This project attempts only to speak about the second (likely easier) question. Partially this is because the project was designed to fit within the confines of a final project for a masters degree. This project represents, roughly, three graduate level classes worth of work. I didn't feel like I had time to find \textit{and} fix flaws. So this project should be understood as neutral on the question of, "is \acrshort{eden} good?" Nothing about \acrshort{eden} seems bad to me. They have received numerous awards, glowing testimonials, and are used by many large organizations that could use other products if \acrshort{eden} were lacking. 
 
    I lack the experience and expertise to say that I think \acrshort{eden} is \textit{good}. Assessing if software is "good" or "bad" is not straightforward. Simply examining \glspl{sa} in isolation tell us very little. It's only through engaging with one or more \gls{sa}(s) as they exist in the lived world and contextualizing that with detailed ethnographic work that it's possible to start making value judgments \citep{Eubanks2018-hc,Schull2012-nc}. Those judgments wouldn't be universal, of course, but would be about a particular population. So this paper is done from the perspective that \acrshort{eden} seems fine to me. The project is interested in the technical details of how the \acrshort{eden} \gls{sa} emerges out of its \gls{sp} and how agency is modified by that process. 
 
    Finally, and briefly, this project does not take the position that the technical qualities it investigates are free from the impact of social structures. \citet{Gabriella_Coleman2012-lq} and \citet{Kelty2008-jm} have both compellingly shown that the social and technical co-produce each other. However, we can still usefully speak about qualities that technical systems have and how those qualities impact our lived experience. That this project has obvious extensions in the social and ethnographic realm is a strength and declining to investigate them should be understood as a concession to time.
 
-   \subsection*{Out of Many, One}
+   \subsection{Out of Many, One}
    Wherever possible, \acrshort{eden} uses \acrshort{foss} technologies. The language it is written in, the libraries it relies on to provide functionality, the tools it uses to support its functionality, and its main operating system are all both open source and available at no cost. \acrshort{eden} will generally operate on top of non-\acrshort{foss} systems like Microsoft Windows, but the team doesn't prioritize systems outside of the \acrshort{foss} systems they develop and test on \citep{Sahana_Foundation2015-zs}. \citet{Kelty2008-jm} talks about how \acrshort{foss} is both a philosophy and a system of development that has practical impacts. One of the side effects of \acrshort{eden} committing to use the \acrshort{foss} ecosystem is it makes my form of engagement possible. Though it is possible to examine compiled machine code and draw some conclusions about the intent and process that assembled it, such a project would be far outside my capabilities. Instead, the source code of \acrshort{eden}, web2py (the \gls{web framework} \acrshort{eden} uses), Python (the language \acrshort{eden} and web2py are written in) and all of the libraries used by the project are open source. Their preferred databases (MySql or PostgreSQL) are also fully open source projects. Open source projects often don't just publish the current source code, but offer full histories of what change, when it changed, who changed it and how it was changed. These changes often include notes about why \textit{that particular} change was made over any other possible change \citep[p. 13-16]{Chacon2014-im}. Open source projects also commonly have systems for tracking lists of unfixed flaws as well as planned future improvements (both types of \citet{Mackenzie2006-hb} relationships), but those systems operate above the layer of source code so this project does not engage with them.
 
-  \subsection*{Enumerating The Specifics of my Engagement}
+  \subsection{Enumerating The Specifics of my Engagement}
   % much thanks to https://www.tablesgenerator.com/#
   \Acrshort{eden} has a large number of individual components. Executing a fully assembled \acrshort{eden} \gls{sa} would involve a number of \Gls{python} libraries, a number of other \glspl{sa} (a database, various compiled libraries) and a large amount of non-python code (such as the javascript contained in the \acrshort{eden} repository). Engaging all of this code is certainly possible if given enough time, but did not seem possible given the constraints of a masters project. So, I have chosen to focus on the \Gls{python} portions of a limit set of the libraries used by \acrshort{eden}. These libraries are listed in Table \ref{tab:table-1}\sepfootnote{libversions}. 
 
@@ -524,11 +598,11 @@
 % https://tex.stackexchange.com/questions/62278/problems-with-endfloat-package
 \end{table}
   
-  My choice to focus on these components in particular does not come from a considered opinion that these four components are the most important components. That judgement would require a good deal more work than I have done to develop an opinion about how to compare functionality across programming language boundaries. For the same reason, my analysis omits all non-programmatic components (databases, static content, etc). This omission should also be understood as a limitation imposed by time as opposed to a considered opinion that those components contribute less to the behavior of a \gls{sa}. 
+  My choice to focus on these components in particular does not come from a considered opinion that these four components are the most important components. That judgment would require a good deal more work than I have done to develop an opinion about how to compare functionality across programming language boundaries. For the same reason, my analysis omits all non-programmatic components (databases, static content, etc). This omission should also be understood as a limitation imposed by time as opposed to a considered opinion that those components contribute less to the behavior of a \gls{sa}. 
 
-  Instead, I chose these components because they were the ones I interacted with most during my investigation of the \acrshort{eden} project. There are also formal links between the projects: the \acrshort{eden} project identifies web2py as its \gls{webframework} and web2py identifies both pdal (as DAL) and yatl components of itself \citep{Di_Pierro2020-wn,Sahana_Foundation_undated-ww}. There are other primary components of the \acrshort{eden} project, but many of them are in other langauges or are themselves \glspl{sa} (such as databases).
+  Instead, I chose these components because they were the ones I interacted with most during my investigation of the \acrshort{eden} project. There are also formal links between the projects: the \acrshort{eden} project identifies web2py as its \gls{webframework} and web2py identifies both pdal (as DAL) and yatl components of itself \citep{Di_Pierro2020-wn,Sahana_Foundation_undated-ww}. There are other primary components of the \acrshort{eden} project, but many of them are in other languages or are themselves \glspl{sa} (such as databases).
 
-  It's forseeable that my conclusions, focused on these four components, might not extend to the entire \gls{sa} / project, but I doubt it. In almost all circumstances, the components that most impacts what the \gls{sa} does would likely be in the \acrshort{eden} source code. That does not mean, as I will show, that most of the code that is associated with a particular element of an \acrshort{eden} \gls{sa} is within the \acrshort{eden} source code. It may be useful to refer to the size (in lines of code) of the various libraries to get a rough sense of the relative size of each one (See Table \ref{tab:table-2}). 
+  It's foreseeable that my conclusions, focused on these four components, might not extend to the entire \gls{sa} / project, but I doubt it. In almost all circumstances, the components that most impacts what the \gls{sa} does would likely be in the \acrshort{eden} source code. That does not mean, as I will show, that most of the code that is associated with a particular element of an \acrshort{eden} \gls{sa} is within the \acrshort{eden} source code. It may be useful to refer to the size (in lines of code) of the various libraries to get a rough sense of the relative size of each one (See \ref{tab:table-2}). 
 
   \begin{table}[ht]
   \caption{Size of Libraries}
@@ -539,37 +613,43 @@
   Eden           & 469,117              & 793,661                  \\ \hline
   web2py         & 103,593              & 41,793                   \\ \hline
   pydal          & 24,518               & 416                      \\ \hline
-  yatl           & 1131                 & 69                       \\ \hline
+  yatl           & 1.131                & 69                       \\ \hline
   \end{tabular}
 \end{table}
 
-  In general, the number of lines of code in a piece of software will correspond to that programs capabilities. Lines of code can also be used to roughly compare the relative contrabutions of components, especially when all components are written in the same language. It's possible to write lines of code that have no meaningful impact and it's easy to imagine scenarios where single lines of code make thousands meaningless (by turning off a feature, for insatance), but there is no reason to believe these instances would happen more or less often in any partcular component. Similarly -  it is much easier to imagine accomplishing the work done in fifteen lines of code with ten different lines, but it is much harder to imagine doing the work of fifteen hundred lines of code in a thousand. Efficient code is efficient, but there is a limit.
+  In general, the number of lines of code in a piece of software will correspond to that programs capabilities. Lines of code can also be used to roughly compare the relative contributions of components, especially when all components are written in the same language. It's possible to write lines of code that have no meaningful impact and it's easy to imagine scenarios where single lines of code make thousands meaningless (by turning off a feature, for instance), but there is no reason to believe these instances would happen more or less often in any particular component. Similarly -  it is much easier to imagine accomplishing the work done in fifteen lines of code with ten different lines, but it is much harder to imagine doing the work of fifteen hundred lines of code in a thousand. Efficient code is efficient, but there is a limit.
 
+% ====================================
+% =  ____                 _ _        =
+% = |  _ \ ___  ___ _   _| | |_ ___  =
+% = | |_) / _ \/ __| | | | | __/ __| =
+% = |  _ <  __/\__ \ |_| | | |_\__ \ =
+% = |_| \_\___||___/\__,_|_|\__|___/ =
+% ====================================
 
-
-  \section*{Investigating EDEN}
-   My work began, as all software work does, with work of assembling the components that transform \acrshort{eden} from a collection of \gls{python} source files into a \gls{sa}. This requires connecting a number of components together: libraries and tools in the gls{python} language and a wider set of heterogeneous tools (databases, non-\gls{python} libraries and tools). Some of these components remain as source code to be interpreted by \gls{python}, some of them are downloaded as source code and go through their own assembly process to generate their own \glspl{sa}. The assembly process that draws the components of \acrshort{eden} together does not happen in a single step, but is a number of loosely ordered heterogeneous processes. Some must be completed before others and there is an officially recommended order in which to prepare the various components, but often these orders are more matters of preference than necessity. What is important is that all of the required components are collected in their expected places by the time \acrshort{eden} itself is run. 
+  \section{Investigating EDEN}
+   My work began, as all software work does, with work of assembling the components that transform \acrshort{eden} from a collection of \gls{python} source files into a \gls{sa}. This requires connecting a number of components together: libraries and tools in the \Gls{python} language and a wider set of heterogeneous tools (databases, non-\gls{python} libraries and tools). Some of these components remain as source code to be interpreted by \gls{python}, some of them are downloaded as source code and go through their own assembly process to generate their own \glspl{sa}. The assembly process that draws the components of \acrshort{eden} together does not happen in a single step, but is a number of loosely ordered heterogeneous processes. Some must be completed before others and there is an officially recommended order in which to prepare the various components, but often these orders are more matters of preference than necessity. What is important is that all of the required components are collected in their expected places by the time \acrshort{eden} itself is run. 
 
    The \gls{sf} recommends that developers use a \gls{vm} that has \acrshort{eden} and its supporting libraries installed through a script. However, at the time that I engaged with the project, the instructions for how to install \acrshort{eden} focused on using operating systems and \gls{python} versions that have since stopped being updated\sepfootnote{softwareupdates}. Though more modern scripts can be found, the standard install scripts for the \acrshort{eden} \gls{vm} and the script to install the software on a physical machine both use operating systems released in the mid-2010s that have not been maintained for at least 5 years \citep{Canonical2020-ru}. However, \acrshort{eden} is aware that this is problematic and makes an effort to support newer versions of \gls{python} and newer operating systems, but official instructions to use the latest software are sparse.
 
-   \subsection*{Approaches to Tooling}
+   \subsection{Approaches to Tooling}
    Choosing to offer a fixed and unusually old set of tools is the first materialized I found encoded into \acrshort{eden}\sepfootnote{whatiseden}. The state of the scripts reflect a culturally important choice. The team could note and situate their approach in their documentation, but they have not. However, project-wise choices to use older or newer versions of tools are common. There are software projects (sometimes entire programming languages) that greatly value using the most up to date version of a tool or library \citep{Fernandes_da_Costa2017-mh}. These communities have legitimate fear that older versions of tools are examined less often and will likely be fixed less frequently. They feel that using the latest (within reason) version is a goodness in of itself\sepfootnote{releaselanguage}. If the \acrshort{eden} team followed this philosophy, they would not default to using older operating systems and versions of \gls{python}. They would need to watch their ecosystem of tools and libraries more closely, but the versions they were watching would also be more in the collective consciousness of the \acrshort{foss} world. 
 
    All this isn't to say that the \acrshort{eden} team choice isn't a sensible one. The latest versions of tools often lose track of the world outside the top of the capitalist pyramid. The same networks of power that structure the spread of physical technology also shape the attention of active software engineers. \acrshort{eden} has chosen to use established and well-supported versions of their tools\sepfootnote{stablecaveat}. Their older set of tools is more likely to have undiscovered (or unpatched) security vulnerabilities, but they are virtually certain to function properly and immediately allow the successful assembly of an \acrshort{eden} \gls{sa}. That set of probabilities seems very well suited to the expected audience for individuals first setting up their own copies of \acrshort{eden}: individual developers setting the system up to better understand it. When another team decides to deploy their own copy of \acrshort{eden} in a way that's available to the public, they can assemble that \gls{sa} using a balance of newness and stability that feels comfortable to them\sepfootnote{updaterisk}. 
 
-   \subsection*{Investigating Assembly}
+   \subsection{Investigating Assembly}
    It's one thing to identify where the \acrshort{eden} install scripts sit in a cultural gradient. It's another to engage the particular choices that the \acrshort{eden} project has made. I chose to install a far newer set of tools, based on the projects newest recommendations for new installs \citep{Konig2019-ya}. I was guided by the \gls{python} 2.7 installation script provided on the Sahana \acrshort{eden} wiki\sepfootnote{edensetup}. However, I chose to use a version of \gls{python} originally released in 2016 (six years after the default version used by \acrshort{eden}). Using a newer version of python seemed like a sensible software engineering choice and also a way to check if \acrshort{eden} was, as they claim, able to operate equally well on the version I selected (3.6.9) and the 2.7 version that \acrshort{eden} uses by default\sepfootnote{pythonversion}.
 
    Selecting a more modern \gls{python} turned out to have knock-on effects. Some of the libraries that \acrshort{eden} requires are written only for \gls{python} 2.7 and replacements were needed to function with 3.6. One of the major changes was that the version of \gls{w2p} the \acrshort{eden} scripts installs does not support \gls{python} 3.6 and so I needed to chose an updated version. I selected 2.18.5, but this new combination of the \acrshort{eden} source code and the \gls{w2p} source code revealed that the two projects had drifted apart in small but essential ways. Specifically, in a section of the \gls{w2p} and \acrshort{eden} code that handled data validation.
 
    Data validation is, in general, the work of verifying that information conforms to a set of standards and informing the user how it has failed to conform when a problem is found. This should always be performed any time data is stored in a system. Digital storage systems have expectations that, when violated, can cause immediate systems failures. Web frameworks commonly provide facilities for verifying data and \gls{w2p} is no exception. \Gls{w2p} has components that will check that that user input can be converted to numbers or dates or email addresses, among others. \Gls{w2p} is open source and so all of that functionality can be expanded by programs that make use of \gls{w2p} and \acrshort{eden} does so in a number of places.
 
-   \subsection*{Shifting Relationships}
+   \subsection{Shifting Relationships}
    In between the version of \gls{w2p} that \acrshort{eden} uses by default and the version of \gls{w2p} that I selected, the control flow of data validation has changed slightly. This change meant that custom data validation classes that were written using the older \gls{w2p} system no longer fit into the expected control flow of data validation. The \acrshort{eden} data validation code, based on the older standard, is not called properly when using the newer version of \gls{w2p}. This doesn't stop the successful assembly of an \acrshort{eden} \gls{sa}, but once that \gls{sa} is assembled most of its functionality in inaccessible because the \acrshort{eden}-specific data validation code won't run and so the system won't accept that data. 
 
    This problem is interesting because it turns out it captures a moment in time between the \gls{w2p} team and the teams that use \gls{w2p} (i.e. \acrshort{eden}). If I had selected a slightly earlier version of \gls{w2p}, then it would have used the old system and the \acrshort{eden} code would remain functional. \gls{w2p} immediately realized the problem and integrated a fix\sepfootnote{problemfix} for the issue. This shows the management of relationships that \citet{Mackenzie2006-hb} describes. There is the work of making software and then the subsequent and parallel work of adjusting that software to stay within relationships boundaries. The \gls{w2p} successfully implemented a new way of handling data validation control flow, but they neglected that they were doing it in such a way as to break an existing relationship they did not mean to break. Because I happened to select a version of \gls{w2p} that was temporarily out of relation with \acrshort{eden}, I failed to assemble a fully functional \gls{sa}. This was what got me interested in the assembly process itself.
 
-   \subsection*{Investigating Assembly}
+   \subsection{Investigating Assembly}
    Assembly is a label I'm using to cover a variety of software processes that source code (and many other things) and produce \glspl{sa}. Almost all software is written in programming languages that have the dual goal of being possible for humans to understand and being suitable for mechanical translation into machine code. Machine code is, after all, the only language a computer can really understand \citep{Cramer2008-cw}. 
 
    Methods of assembly vary widely, but they can roughly said to lie between compilation and interpretation. The purest compiled language will generate a \gls{sa} that contains all the machine code that will be used by the \gls{sa} into a single contiguous piece of machine code. That machine code will generally only work on a single hardware architecture, but the same source code can be assembled\sepfootnote{compilelanguage} into machine code on other architectures by different assembly tool-chains. On the other side of this spectrum are interpreted languages. A purely interpreted language assembly process does not involve the generation of any new machine code. Instead, it uses a standard \gls{sa} (called an "interpreter") that reads the source code of the interpreted program in its human readable form like a recipe: reading the file(s) as the interpreted program executes and using machine code that exists within the artifact of the interpreter to tell the hardware what to do.
@@ -578,14 +658,14 @@
 
    Most languages and \glspl{sa} sit somewhere between being fully compiled and fully interpreted. \Gls{python} is largely an interpreted language, but it also creates non-human readable bytecode versions of each python source file that allow the interpreter to execute more quickly \citep{The_Python_Software_Foundation2020-qz}. \Gls{python} also allows access to libraries written in machine code and \acrshort{eden} invokes machine code libraries through \gls{python} interfaces.
 
-   \subsection*{Digital Relationships}
+   \subsection{Digital Relationships}
    These libraries exist on the border of all of the \glspl{sa} that use them\sepfootnote{staticlink}. They contribute to how the \glspl{sa} that use them behave. Flaws in libraries can allow the programs that use them to be taken over. Sometimes these flaws only require attention to discover, but it's often the case that other elements of the hardware / software ecosystem must change before they can be found \citep{Huang2003-ki}. All this is to say that the kind of assembly problem I encountered in assembling \acrshort{eden} is not particular to \acrshort{eden}. It's a universal concern when assembling \glspl{sa} that use any functionality that resides outside their own source code (which nearly all do).
 
    This system of linking together different code written by different people is an example of the relationships that \citet{Mackenzie2006-hb} found at the center of the software projects he studied. At the project level this means that a the people working on one project must pay attention to the development of many other projects. Are new versions of the libraries that you use being released? Will the old version be updated if security flaws are found? Does the new version have features or changes that would be useful for our project? 
 
    What is striking about the problems encountered while trying to assemble my own artifact of \acrshort{eden} is that, while every individual who assembles an \acrshort{eden} \gls{sa} will need to go through their own process, the problems I encountered are particular to using an un-patched version of \gls{w2p} 2.18.5. The install script I used contains other fixes for other aspects of that particular pairing of components, as well as different fixes for different combinations of components \citep{Sahana_Foundation2018-eq}. \acrshort{eden} can be assembled using an extremely wide set of components. It can run on that haven't been considered up to date for over ten years ago and components that are still considered cutting edge now (as well as many mixes between these two extremes). The \acrshort{eden} \gls{sa} is designed with this capability in mind. It is a strength of the \acrshort{foss} ecosystem that such a wide range of compositions is possible, but it also means that \acrshort{eden} can be a nearly limitless number of different \glspl{sa} whose qualities emerge both from \acrshort{eden}'s source code and the interactions between the particular versions of the components.
 
-   \subsection*{The Social and Material Components of Software}
+   \subsection{The Social and Material Components of Software}
    Keeping in mind the range of possible component sets for \acrshort{eden}, think back to the particular set used in the install script. I speculated the set in that script were selected because they're well known familiar to the \acrshort{eden} development team. They minimize the chance that people will mistake a problem caused by assembly for a problem that exists within the \acrshort{eden} source code.  
 
    When a particular \gls{sa} fails to function as expected, there are many possibilities as to why. It might be mis-configured, the resources it needs to function properly might not be available, there may be an internal incompatibility between components, or there may be an error in the \acrshort{eden} source code. There are many functional \acrshort{eden} \glspl{sa} that contain component combinations that the developers have never tried and have no experience with. When what appears to be an error is reported to the \acrshort{eden} team, often the first questions they ask are about the versions of the libraries that were involved. If the versions of the libraries being used aren't considered to be the correct ones, the bug can be closed as wholly or partially invalid \citep{Trendspotter2020-ps}.
@@ -594,7 +674,7 @@
 
    This suggests a limit on the boundaries of the \acrshort{eden} software project. Maybe the unofficial \glspl{sa} that the \acrshort{eden} team won't support now aren't really \acrshort{eden} \glspl{sa}. However, I don't think it's that simple. What components (and versions of the \acrshort{eden} source code itself) are inside the 'official' \acrshort{eden} change over time. What is an unofficial \acrshort{eden} \gls{sa} might one day become an official software version as the \acrshort{eden} software project changes its thinking about relationships. By the same stroke, official versions will often become unofficial. The team recently announced that, with the end of official support for \gls{python} 2, they will be moving to using \gls{python} 3 for all of their builds and updating their install scripts to use \gls{python} 3. Suddenly, my \acrshort{eden} \gls{sa}, which already uses \gls{python} 3 is within the official definition and the \acrshort{eden} \gls{sa} assembled by the script on the Sahana website is unofficial \citep{Konig2019-ya,Sahana_Foundation2015-zs}. 
 
-   \subsection*{Software Exists Outside of the Social}
+   \subsection{Software Exists Outside of the Social}
    Instead, I think what this shows is a material reality interacting with a social relationship. Each given version of \acrshort{eden}'s source code has a particular material relationship with each version of each component it could use. These relationships have an existence outside of any social system because computer code can be executed mechanistically \citep{Cox2013-zo}. The official / unofficial layer, where the team that writes the source code for \acrshort{eden} and sets forth the list of officially supported component relationships, exists on top of this material reality. But this social layer does not change what software \textit{is}.
 
    Understandings of software where only the official versions of \acrshort{eden} are "the software called \acrshort{eden}" lead to an understanding of software that defies common experience. It would mean that, once the \acrshort{eden} team announced that they were migrating away from \gls{python} 2, all of the \gls{python} 2 \acrshort{eden} \glspl{sa} that exist and function now suddenly stopped being software. It would also mean that, because I have changed some elements within the \acrshort{eden} source code\sepfootnote{sourcemodifications}, my \gls{sa} can no longer be \acrshort{eden} - even if I used all the official supporting components. It would require an impossible level of information about every component and every element of every \gls{sa} that appears to be \acrshort{eden}.
@@ -604,7 +684,7 @@
    It's useful to draw out these different social experiences of software because it allows us to think in a more informed way about the impact of materialized perspectives. It is not just the source code of a particular software project that adds to its behavior, it is also the various components that source code is combined with. For those who only interact with post-assembly \glspl{sa}, the relationship of the software they are using to the official software is unknowable. Software that has the reputation for being unstable and unreliable can get that reputation because people are, knowingly or unknowingly, using pirated copies that crash because of anti-piracy code \citep{Fitch2008-vq}. The team that makes that piece of software may never know why people think its unstable, because they would need to understand the assembly processes that particular \glspl{sa} went through. The users may want the software to be different, but though the software team is the single entity most responsible for how a particular \gls{sa} functions, they may simultaneously be unable to understand or repair the problem.
 
 
-   \subsection*{Reckoning with Failures}
+   \subsection{Reckoning with Failures}
    After assembling a functional \gls{sa} I began to explore how my \acrshort{eden} \gls{sa} functions on its own terms. I did this by entering the high level details of this project into \acrshort{eden}'s project tracking feature. This included creating an entry for Drexel University's Center for Science, Technology and Society, an entry for my project within that organization, and an entry for myself as the manager of that project. During this process I encountered both a bug in the source code of \acrshort{eden} and another unacknowledged materialized perspective. 
 
    The form that \acrshort{eden} uses to record the details of an individual has a field for a phone number. There's no indication that this number number should be formatted in one particular way over another. I didn't think anything the lack of instruction until my \acrshort{eden} \gls{sa} informed me that I needed to "Enter a valid phone number" \citep{Konig2020-yx}. I didn't understand because my phone number was following the common conventions for phone number formats (I tried the 'xxx.xxx.xxxx' as well as 'xxx-xxx-xxxx' and 'xxxxxxxxxx'). Upon review of the source code of the file responsible for the message I discovered two things: that, based on a setting I was not aware of, the form was expected a phone number in international format (beginning with a '+' and a country code) and that the code was returning the wrong message (complaining that the input was not a phone number instead of complaining it was not an international phone number). After entering my number in the international format, my profile was created.
@@ -632,10 +712,10 @@
    The second idea is that accepting or rejecting the number based on its use of an international country code (which it does successfully) and informing the user of what they need to do should be considered separately. That however the program appears to to the user, if it accepts numbers in the desired format and rejects others then the component is working. The statement reflects a world view that, if a component is expected to have multiple outputs for a given input, each output should be considered working or non-working separately and that there is a hierarchy to which functions are more or less important. 
 
    % discussion
-   \subsection*{Implications of my failed bug fix}
+   \subsection{Implications of my failed bug fix}
    Before going into the interesting aspects of the K{\"o}nig quote, I want to talk about something I find interesting about the context of how the discussion about the bug took place. This was, as I said, a discussion between people who both had access to one (or more) \acrshort{eden} \glspl{sa}. I originally noticed the bug when I was interacting with my \gls{sa}. This is in line with how most software projects come to have an impact on the world: through directly or indirectly affecting the world through the \glspl{sa} that the project produces or makes possible \citep{Kitchin2011-af}. While software impacts our lives in direct and indirect ways, those impacts derive from how one or many \gls{sa}(s) interact with particular human agents. Though software has made is possible to remove humans at many of the intersections of power, it is still expressed through a multitude of relational contacts between a representative of power (a person or a \gls{sa}) and a human outside that power \citet{Cheney-Lippold2018-lw,Deluze1995-eo}. 
 
-   \subsection*{Do Software Artifacts Matter}
+   \subsection{Do Software Artifacts Matter}
    Given all of that, I think it's interesting to note that the entire discussion about bugs took place without referencing the behavior of any particular \gls{sa}. I've already speculated that the \acrshort{eden} project may recommend older components to minimize the risks of improper assembly and that questions \textit{about} the correctness of assembly are common \citep{Trendspotter2020-ps}. Because investigating the particulars of a misbehaving \gls{sa} are common, the lack of discussion here is interesting. 
 
    When a \gls{sa} is under discussion, that discussion often proceeds with the implicit goal of finding a mistake or a mismatched relationship in the assembly process. My bug fix, in contrast, was to a particular pre-assembly component. In order to realize my change, a new \gls{sa} would need to be assembled. Nothing in my attempt to fix the bug or in the eventual official bug fix can repair existing \glspl{sa} \citep{Konig2020-yx,Konig2020-ey}. This explains the lack of interest in any existing \gls{sa} - nothing about any \gls{sa} that might or might not express this bug is of interest. Instead, when the bug is fixed in a component of \acrshort{eden}, any potentially problematic \gls{sa} will be replaced with a new one assembled from updated components.
@@ -647,14 +727,25 @@
 
    This means that scholars must be careful when applying concepts whose identities were formed based on our collective experiences with physical goods. It's true that software is maintained, updated, repaired, cleaned, polished, and so on. Those operations often serve the same purpose as similar operations on physical tools, but the material character of how they are carried out will be dramatically different. This will impact the worlds of the people doing the work, the particulars of how these operations change the operation of software, and the proper weighting of concerns in assessing the impact of these operations. Because the material that composes the physical character of \glspl{sa} is cheap and plentiful (electrical charge), many of the previous systems that evolved in response to more complicated systems of material construction have limited implications for software projects and \glspl{sa}.
 
-   \subsection*{The Limits of Developer Attention}
+   \subsection{The Limits of Developer Attention}
    I want to briefly expand on the idea, expressed by K{\"o}nig, that testing in too much detail can harm software development. I think this idea, in combination with some discussion of assembly in the following section, will be helpful for thinking about agency in software. An uncharitable understanding of the idea that too much testing harms development is that developers might not care about some dysfunction, but I see no evidence of this. The \acrshort{eden} project immediately implemented a fix for the problem I found, even though they do not wish to add a test for it. 
 
-   Instead, I think this approach reflects a \citet{Citton2017-xq}-esq approach to the problem posed by the enormous complexity of \glspl{sa}. In just the 4 libraries
+   Instead, I think this approach reflects a \citet{Citton2017-xq}-esq approach to the problem posed by the enormous complexity of \glspl{sa}. In just the four libraries I focused on for this project there are over five hundred and fifty thousand lines of code\ref{tab:table-2}. The version of \acrshort{eden} I have been working on has seventy two authors (exuding myself). Even if each developer was contributing equally (which they are not), this would require each developer to test every single outcome of around seven thousand lines of code. This would be more code than many contributors have added to the project themselves. Without drawing conclusions about the degree to which developers have a responsibility to monitor behavior of their software artifacts, it seems very likely that it would be impossible for them to monitor all possible behaviors.
 
-   % todo: finish
+   The implication of this is not to let developers off the hook because monitoring all behavior is impossible. Instead I want to bring software development back to the social context that drives it. It seems like the \acrshort{eden} project is focused on how their components interact with data rather than how they interact with people. That is to say, they would rather create a \gls{sa} that gives the user incorrect information about its actions, but records the information that the developer expects. This runs the risk of becoming disconnected from user experience of \acrshort{eden}\footnotemark.
 
-   \subsection*{What does Working Mean Here?}
+   \footnotetext{I have no reason to believe this has occurred.}
+
+   This reflects a focus on \gls{sa} behavior that is inaccessible to users. It's true, to a certain degree, that users can be confused by particular elements of how a \gls{sa} is functioning and still have an overall impression of what 'it is doing.' However, the general impression of what \acrshort{eden} (or any \gls{sp}) 'does' isn't transmitted directly from the understanding of the \gls{sp}. Instead, those impressions are formed from users' many experiences with particular \gls{sa} in particular situations \citep{Boellstorff2015-al,Eubanks2018-hc,Schull2012-nc}. Often, users do not even have to interact with a particular \gls{sa} to form an impression of its impact \citep{Kitchin2011-af}. The experiential nature of how impressions of software are formed means that users are unlikely to change their impressions of the software because one or more message is wrong, but it seems certain that at some point users will feel misinformed to such a degree that their impression changes.
+
+   The other risk is that the material qualities of the software and the messages it sends to its users begin to diverse in unsustainable ways. Developers can choose to have their \glspl{sa} send messages to users that don't reflect the internal state of the software, but this will likely make continuing to operate the hidden aspects of that \gls{sa} (and project) difficult \citep{Bivens2017-tc}. Producing a \gls{sa} that has external representations that aren't supported by all of its internal state means severing internal relationships and creating parallel internal functionality. 
+
+   % survaliance
+   All forms of testing are forms of surveillance. This makes testing practices vulnerable to the shortcomings of surveillance\footnotemark. It also reflects that \glspl{sp} recognize that their \glspl{sa} may not behave as they would wish. Surveillance systems are systems of control that are applied in situations where control is not certain. This suggests again that the expression of the agency of a \gls{sp} through their \glspl{sa} is not straightforward. The practice of surveilling \glspl{sa} through testing speaks to the potential for intent to be subverted through assembly. 
+
+   \footnotetext{An expanded survey of literature on surveillance would be extremely useful here.}
+
+   \subsection{What does Working Mean Here?}
    I want to return to talking about the various experiences of functionality and non-functionality I've encountered in this work \sepfootnote{working}. First I'm going to try and explore the ideas of assembly and then how to think about the functionality of assembled artifacts.
 
    Assembly is a process whose limits are challenging to clearly mark. There are instances where assembly is clearly successful, such as when a \gls{sa} works correctly in all ways or in instances where the failure of an assembled \gls{sa} clearly comes directly from a single flaw in a single component (such as the international number bug). There are also limits where assembly is clearly unsuccessful: when a component cannot be found, when a language that must be translated into machine code (or any language) is found to contain a syntax error \citep{Cramer2008-cw}. However, when I created a software artifact that failed to work because of a broken relationship between its components, I began to wonder if my definition of assembly was flawed.
@@ -669,10 +760,310 @@
 
    This reality is reflected the practice of testing in the development of \glspl{sa}. The \acrshort{eden} \gls{sa} assembled in \acrshort{eden}'s test code is not exactly like the final \gls{sa} (it largely differs in the database entries that compose it), but the goal is to make it as close as possible to the final \gls{sa}. For instance, the assembly error I encountered with web2py was easily detected by tests. Testing is a reaction to the fixing of agency in a \gls{sa} and an attempt to ensure that the agency reflected in the final \gls{sa} is sufficiently similar to the developers' intent. These tests can take the form of source code that is incorporated into one or more testings \glspl{sa} or in planned interaction with the final \gls{sa} before releasing it to the public. 
 
-    
-    \printnoidxglossaries
+% =============================================================================
+% =  __  __         ___       _                            _   _              =
+% = |  \/  |_   _  |_ _|_ __ | |_ ___ _ ____   _____ _ __ | |_(_) ___  _ __   =
+% = | |\/| | | | |  | || '_ \| __/ _ \ '__\ \ / / _ \ '_ \| __| |/ _ \| '_ \  =
+% = | |  | | |_| |  | || | | | ||  __/ |   \ V /  __/ | | | |_| | (_) | | | | =
+% = |_|  |_|\__, | |___|_| |_|\__\___|_|    \_/ \___|_| |_|\__|_|\___/|_| |_| =
+% =         |___/                                                             =
+% =============================================================================
 
-   \section*{Long Tables}
+  \section{Taking Action}
+  A primary motivation for this project was the sense that situated knowledges felt like an unfinished tool for the practice it was critiquing. Our ability to see the truth is impacted by our life circumstances. Individuals cannot identify false truths that only appear true because that individual exists within a structure of power \citep{Haraway1988-nh}. Situated knowledges explains the mechanism through which we inappropriately consider things true or objective, but it is of little use in understanding to affect changes to the things impacted by our limitations. 
+
+  If \glspl{sp} incorrectly believe things because of the collective backgrounds of their members, convincing them of that truth does not help them address it. The same cultural limitations that hem in action would also seem like they would hem in the process of selecting outsiders to help address the problem.
+
+  So I hoped to find ways to understand better how to address the standpoints of development teams through any materialized perspectives I might find within a \gls{sa}. I took a wide view of what "address" might mean - it could be a direct improvement, it could be a way of highlighting alternatives, it could be tools that help teams see the boundaries of their own perspective. As I worked, however, it became clear that without an ethnographic engagement this goal faced real difficulties.
+
+  \subsection{Improved for Who}
+  No sociological work is needed to learn how to improve the \acrshort{eden} \gls{sa} from the point of work of the project. If I want to improve \acrshort{eden}, doing so is simple. The \acrshort{eden} project Github has a number of minor issues with details about what change is needed to improve the \gls{sa}. They also communicate about their long term plans and are open and encouraging of outsiders and users alike joining in to comment on what they would like to see in future \acrshort{eden} \glspl{sa}. These conversations share the qualities that make accessing them difficult to users who aren't members of the right social groups (a focus on technical details, cultural signals of developers), but those are problems shared by the world of software and don't derive from specific qualities of the \acrshort{eden} project \citep{Drexler2019-tk,Kelty2008-jm}.
+
+  My decision not to engage with populations that use \acrshort{eden} \gls{sa} means that I have no reason to believe I can understand the interests or needs of people who might use the software. Even taking \citet{Kitchin2011-af} into account and proceeding from the point of view that the software might impact space in particular ways outside of particular individuals is not much help. I am not experiencing a disaster\footnotemark and even if I was it's unlikely that I have a sense of how \acrshort{eden}, among all the factors, was impacting me. That kind of work benefits from longitudinal work that I was not planning or prepared to do.
+
+  \footnotetext{Part way through this project I, and most everyone else in the world, experienced the Covid-19 pandemic. As of this writing, the pandemic is ongoing. However, I have no way of appreciating how \acrshort{eden} would impact me were it mediating my access to supplies or services. I could not replicate that power relationship and it would be inappropriate to act as if I had.}
+
+  Thankfully, a perspective I can hope to make improvements from is the perspective that I hold: that of a software engineer and a science, technology \& society scholar. I was aware that assembly processes were involved in the creation of \glspl{sa}, but it was only as I worked on this project that I began to focus on them. These processes are involved, but not particularly meaningful, when software includes only the work of one author (or, more often, one author and the \gls{sp} that produced the compiler / interpreter). However, as \glspl{sa} grow to include artifacts (software or otherwise)from many different \glspl{sp}, it seemed like there were real questions of agency involved. 
+
+  If I make a \gls{sp} and its products are used to do harm, how can I understand my role in that? Certainly, that a tool I created is turned to harmful ends is worth considering. The idea that developers' responsibility stops once they've released their work to the public is absurd. There are an enormous number of efforts, both at the software and legal levels, to ensure that software is used in ways that its creators accept \citep{Gabriella_Coleman2012-lq,Kelty2008-jm}. There are few easy answers to be had, but as it stands there are few tools to help software developers assess how much their work has contributed to another. 
+
+  \subsection{The Goal of My Intervention}
+  I decided to make a tool that would connect Git repositories and \Gls{python} files using the \Gls{python} import system. The tool traces a path from file to file, using import statements to connect them. It will try to record if an entire files is imported (as in 'import X') or if smaller portions are imported instead (as in 'from X import a, b'). After locating the relevant files, the program collects all of modifications associated with them recorded in the Git repository. Then it matches the identities attached to each modification to each file. Finally the tool assembles a list authors and a list of lines of code in specific files that are contributing to the function of a particular file.
+
+  My hope in building this tool and not another was to highlight the material contributions of the work of various authors to a particular source file. This doesn't reflect anything close to all of the work that has contributed this particular file existing over all other possible files (there are many other factors: the cultural context of each particular files' creation, the immediate and long term goals of the functionality the file attempts to implement, etc). However, for every element of a \gls{sa}, there is a concrete set of components that affect that elements' function and those components have a concrete set of authors. I hope this will be a useful starting point.
+
+  I named my the \Gls{python} module containing my tool \textbf{materiality}.
+
+  \subsection{Finding the Pieces}
+  First, I should briefly explain the relationship \Gls{python} modules and \Gls{python} source files. The idea of a \Gls{python} module is used to organize functionality within the \Gls{python} programming language. A \Gls{python} module contains \Gls{python} objects (including, possibly, other \Gls{python} modules). Each \Gls{python} module contains at least one \Gls{python} source code file. A \Gls{python} module that does not contain other \Gls{python} modules contains exactly one \Gls{python} source file. A great deal of the work \textbf{materiality} does is connecting logical modules mentioned in \Gls{python} source files to particular files in particular places in storage. As a result, I will frequently be talking about 'modules' or 'files' nearly interchangeably: the module being the logical representation inside the \Gls{python} \gls{sa}, the file being its material instructions stored on the computer.
+
+  I started by trying to use existing \gls{python} libraries to scan \Gls{python} code, but found that they weren't well suited to the task. The first library I looked in to, py2deps, was based on a command line tool for making graphical representations of the libraries used by a \Gls{python} \gls{sa}. This seemed very similar to my purpose, but it turned out that py2deps did not differentiate between using some or all of a python library. Its interest was detecting if a library was involved in any way and did not differentiate between using some and all of a library. I tried some other libraries, but none of them seemed to match my desired feature set: finding import statements and connecting an import statement to one or more lines in the referenced file.
+
+  After being unable to find a \Gls{python} library to do what I wanted, I decided to use the abstract syntax tree (AST) functionality in the \Gls{python} standard library. A \Gls{python} AST is generated by reading a file of \Gls{python} source code. The resulting AST will contain all the \Gls{python} statements in the file it read, but expressed as structured objects in \Gls{python}. This capability was originally written to allow the processing and execution of \Gls{python} source code by the \Gls{python} \gls{sa}, but it can also be used to help \Gls{python} programs process \Gls{python} source code for other purposes.
+
+  I used the AST module to parse each \Gls{python} file I wanted to investigate and catalog three things within each file: the import statements, anything that ads a symbol to the symbol table (as they may be imported), and the line number of each statement in the file. Once I had code that could extract this information from any properly formatted \Gls{python} file, I was ready to begin the real work of collating contributions from various authors.
+
+  \subsection{The Algorithm}
+  \singlespace % it looks bad if I don't single space the brief intro sentances
+  Briefly, here is the high-level algorithm \textbf{materiality} implements. The first \Gls{python} file is provided to the tool and will be referred to with the name \textlangle first\_file\textrangle.
+  \begin{enumerate}
+    \item Create an empty index of python files named \textlangle imported\_files\textrangle.
+    \item Create a list \textlangle files\_to\_scan\textrangle with \textlangle first\_file\textrangle in it. 
+    \item While there are any file locations in \textlangle files\_to\_scan\textrangle, do:
+    \begin{enumerate}
+      \item Remove a file location from \textlangle files\_to\_scan\textrangle.
+      \item Build an AST (referred to as \textlangle AST\textrangle) from that \Gls{python} file
+      \item Add this file location to \textlangle read\_files\textrangle (a list of files I have already read).
+      \begin{enumerate}
+        \item Create a new tracking \textit{object} named \textlangle file\_info\textrangle
+        \item In \textlangle file\_info\textrangle, record:
+        \begin{itemize}
+          \item Any \textit{import statements} found in \textlangle AST\textrangle
+          \item The \textit{symbols}\sepfootnote{symbol} generated by any \textlangle AST\textrangle nodes, as well as what those symbols would contain.
+          \item The lines associated with each \textit{symbol} found in the \textlangle AST\textrangle.
+        \end{itemize}
+        \item For each \textit{import} in \textlangle file\_info\textrangle try to find a particular file that it refers to:
+        \begin{enumerate}
+          \item Try to locate a file using several techniques, not all of which apply to all \textit{imports}:
+          \begin{itemize}
+            \item If the \textit{import} is relative, navigate the file structure searching for the file it refers to.
+            \item Ask the \Gls{python} \gls{sa} to locate the file for the \textit{import}.
+            \item Ignore \textit{imports} that fit these descriptors:
+            \begin{itemize}
+              \item \textit{Imports} that come from the python standard library (I did not know how to account for elements of this code that exist in within the \Gls{python} \gls{sa}).
+              \item \textit{Imports} which, when asking the \Gls{python} \gls{sa} to find them, returned an error.
+            \end{itemize}
+          \end{itemize}
+          \item If there is a copy of the \Gls{python} file I located in a Git repository, use the file located within the Git repository.
+        \end{enumerate}
+        \item Add the file locations to \textlangle files\_to\_scan\textrangle as long as they meet these requirements:
+        \begin{itemize}
+          \item They were not ignored as described above.
+          \item A particular location could be found.
+          \item This location is not already stored in \textlangle read\_files\textrangle.
+        \end{itemize}
+        \item If the file location was added to \textlangle files\_to\_scan\textrangle do the following:
+        \begin{itemize}
+          \item Retrieve the list of changes and associated authors made to this file from the appropriate Git repository and add them to \textlangle file\_info\textrangle.
+          \item Add \textlangle file\_info\textrangle to \textlangle imported\_files\textrangle.
+        \end{itemize}
+      \end{enumerate}      
+    \end{enumerate}
+    \item Empty \textlangle read\_files\textrangle. 
+    \item Create am empty tally of authors and change numbers named \textlangle changes\textrangle.
+    \item Load the \textlangle file\_info\textrangle associated with \textlangle first\_file\textrangle from \textlangle imported\_files\textrangle.
+    \item Repeat the following for each \textlangle file\_info\textrangle selected:
+    \begin{enumerate}
+      \item Add this \textlangle file\_info\textrangle to the list of \textlangle read\_files\textrangle.
+      \item Add the stats associated with this file to \textlangle changes\textrangle.
+      \item Examine each \textit{import} in this \textlangle file\_info\textrangle:
+      \begin{itemize}
+        \item If the \textit{import} is not in \textlangle read\_files\textrangle yet, select it and repeat this process.
+      \end{itemize}
+    \end{enumerate}
+    \item \textlangle changes\textrangle now contains the list of authors and files which have an impact of the contents of \textlangle first\_file\textrangle.
+  \end{enumerate}
+  \doublespace
+
+  This produces a list of as many authors as possible and generally characterizes their particular contributions to \textlangle first\_file\textrangle. As of right now, there are a number of flaws in the results and I would not recommend anyone use \textbf{materiality} without it being further developed\footnotemark. 
+
+  \footnotetext{Also, \textbf{materiality} is currently sitting in the \acrshort{eden} repository for no particular reason other than I was using \acrshort{eden} as an object of analysis. The module name is "materiality."}
+
+  \subsection{Methodological Choices}
+  There is not one obvious way to approach this and my tool reflects my choice to approach things one way over other ways. I want to briefly acknowledge and situate those choices.
+
+  First is that this tool collects changes over time and not simply the authors who are responsible for the last changes to each particular line in a file. This is an attempt to reflect the way that files change over time and are touched by many hands. Git will record the last person to change each line, but those changes are almost always based on a lineage of work that stretches back in the history of the file. On the other hand, this approach risks elevating substantial work from the distant past over recent and more impactful work. This concern is pervasive throughout the tool.
+
+  Second is that the tool ignores \Gls{python} system libraries, though \Gls{python} libraries are used throughout the \acrshort{eden} code. \Gls{python} system libraries are libraries whose functionality comes both from \Gls{python} source code and functionality within the machine code of the \Gls{python} \gls{sa}. I avoided counting them because I was unsure about how to account for that mixed responsibility. Including system code would mean fully grappling with cross-language material connections in a way I'm not prepared to do.
+
+  \subsection{Flaws in Current Functionality}
+  \textbf{materiality} is a flawed creation. I was learning about the details of how \Gls{python} handles import statements, the \Gls{python} AST and a number of other elements of the \Gls{python} ecosystem. This project was also built in concert with the academic work to bring this software into conversation with STS literature over a relatively short period of time. The result is deeply flawed. I will briefly go over known problems.
+
+  The interaction of \Gls{python}'s system for referring to modules and my management of the \Gls{python} symbol table has a number of problems. To explain I need to go into some detail about these two systems and how they interact.
+
+  \subsubsection{A Brief Overview of Symbols}
+  Symbol tables in \Gls{python} generally follow patterns in other languages. \Gls{python} maintains a list of all \Gls{python} libraries, with each \Gls{python} library taking on either the name of the file the library is defined in or, if there is more than one file, the directory the library is contained\sepfootnote{moduledetails} in. Each \Gls{python} file that the \Gls{python} \gls{sa} has seen is either recorded as a library, or (if that file is a component of a larger python library) as a sub-section of a \Gls{python} library. This means that, for instance, my library is named \textit{materiality} because that is the name of its directory. The \verb|ast_crawler.py| file is stored under the \textit{materiality.ast\_crawler} label.
+
+  This system is used by \Gls{python} to avoid redundant loading and processing of \Gls{python} source code. The first time \textit{materiality.ast\_crawler} is encountered the \Gls{python} \gls{sa} loads and processes that file. On subsequent encounters \Gls{python} refers back to its previous work. 
+
+  A similar system is used to track objects \textit{within} \Gls{python} modules. Various \Gls{python} statements (including import) add entries to a table of names and their associated \Gls{python} objects. The behavior of this system can become complex, but at a high level it functions like the \Gls{python} module system - symbol tables can be navigated using names separated by dots. For example, returning to \textit{materiality.ast\_crawler}, \textit{ast\_crawler} contains the \Gls{python} object \textit{ImportReference}, which in turn contains a value named \textit{SYSTEM\_LIBRARY}\footnotemark. To bring this value into your python module, you could write \verb|import materiality.ast_crawler.ImportReference.SYSTEM_LIBRARY|. This import statement causes the \Gls{python} \gls{sa} to navigate into a directory, select a particular file, then make two selections from two symbol tables. 
+
+  \footnotetext{This constant is used to mark import statements which refer to \Gls{python} system libraries.}
+
+  \subsubsection{Symbol Trouble}
+  The current version of \textbf{materiality} frequently has trouble with symbol tables. If I understood exactly why, then I would have fixed the problems, but I can do my best to catalog them.
+
+  Some \Gls{python} statements that add a symbol are simple to process: function definitions, object definitions. However, there are instances where symbol creating statements (such as assignment operations using the '=' sign) have complicated structures. For instance, one might write: \verb|(a, (b, (c, d))) = function_call()|. There's an implicit structure to this statement that I can write out\footnotemark, but I was unable to write \Gls{python} code that handled situations like this one. Doing so would require reference objects that stand in for the results of future \Gls{python} \gls{sa} operations. It's also worth noting this flaw would require moving beyond the assembly step, which I was not prepared to do.
+
+  \footnotetext{In this case, if we refer to the value of function\_call() as X, the symbol table would look like this: $a\Leftarrow X[0]$, $b\Leftarrow X[1][1]$, $c\Leftarrow X[1][2][1]$, $d\Leftarrow X[1][2][2]$} 
+
+  Another problem is that, simply, there are instances where my programming errors have made it difficulty to navigate the shared file \& symbol table structure I outlined above. There are many errors in the logs which indicate that my tool is unable to match an import statement against my version of the appropriate symbol table. I suspect many of these problems are caused by the fact that I don't (as \Gls{python} expects), add things that are imported to the symbol table of the module they are imported into. For instance, the long import statement I used as an example previously (\verb|import materiality.ast_crawler.ImportReference.SYSTEM_LIBRARY|) would add a \verb|SYSTEM_LIBRARY| symbol to the symbol table of the module. The current version of my tool does not do this and many \Gls{python} modules make use of this technique.
+
+  I believe that these errors minimally impact the results. \textbf{materiality} does not take into account duplicate references to the same file and I believe that most problems with how I handle symbols would not result in adding any new authors or lines to the overall totals. 
+
+  However, the flaws in my work on symbol management and others which I will go over in a moment, indicate that my methodological approach when writing this program is flawed and the results should be treated as highly suspect. I believe they are still interesting and informative even in their less-definitive state. 
+
+  \subsubsection{Counting Errors}
+  The initial "final" version of \textbf{materiality} was double (and more) counting files connected to the target of its analysis. I had written a system that was intended to, for a given symbol, return information only on \textit{the section of the module containing that symbol}. In fact, much of my development time was spent trying build a system that would achieve that granularity. Unfortunately, it does not seem like I succeeded (or I failed to properly collate the results). In any case, modules that were accessed through specific symbols inside the module (as opposed to importing the entire module / file) had the change counts for the entire module
+
+  \subsubsection{Other flaws}
+  There are other signs that I have made mistakes. Though the structure generated by this algorithm should be a true tree if it is constructed properly (import statements must form a tree), trying to navigate the entire structure results in infinite loops. I do not understand why. 
+
+  Were I to do this again, I would build a clean internal representation that smooths the difference between the computers' file structure and a python objects' symbol table, but I did not understand I needed to do this early enough and the current code is a mess. 
+
+  The procedures for associating a particular \Gls{python} file with a particular \Gls{python} likely could fail less often. However, without adding records of when and how they fail that are reported at the end of the process, estimating the impact of an improvement in this area is difficult. I also do not evaluate if import statements are used. Its entirely possible for a file to import a \Gls{python} module that it does not use (I have unused imports in the work I did for this project). These can be detected, but I do not do it.
+
+  Finally, there were cases where overlapping errors collaborated to produce a functional \gls{sa}. In one place I designed the system for processing \textit{import} statements to mark an import as invalid if the \Gls{python} \gls{sa} could not locate a file for it. However, in another place, I ignored that marker and assigned it a file based on the module name the \textit{import} referred to. Each system ignoring the other was an unintentional omission, but in combination they produced a functional system (albeit one that frequently falsely complains it can't find a module).
+
+  \subsection{Foreseeable Improvements}
+  I will also briefly catalog things I think could be improved about this work. This will both sooth my frustrations and mark what directions the \textbf{materiality} \gls{sp}, as it exists today, could be taken in.
+
+  \subsubsection{Deeper Engagement in Git}
+  The current version of \textbf{materiality} engages with modification history recorded in git in a very shallow manner. It crudely counts changes to files without reference to content. It does not detect when a file has been moved. It can't tell the difference between a truly new file and a new file that is created by removing some of the content of an existing file. Any time source code is copied or moved its history is lost. Not all of these scenarios are clearly detectable - text matching can be difficult and uncertain - but an effort could be made.
+
+  \subsubsection{Change Distance}
+  The most obvious improvement by far would be for \textbf{materiality} to characterize the distance of the various impacts in some way. At the moment, if any file can be reached through the tree of imports leading out from the one \textbf{materiality} starts from, its authors and change counts are added to the list without adjusting for the distance. This means tallying work directly on the file of interest and work on, say, a file used by a related library to print error messages would be displayed in an undifferentiated way. The current \gls{sp} tosses all change counts and authors into a single category, which is obviously wrong.
+
+  Bringing a sense of distance, or varying amounts of weight, would also be an opportunity to apply the sociological theories that form the theoretical background for my thinking in this project. Both linking together various \Gls{python} files and attempting to weigh the relative impact of those links recalls \citet{Mackenzie2006-hb}'s work on how relationality structures \glspl{sp}. It also reminds me of \citet{Haraway2016-nc}'s notion of "tentacularity" - the relentlessly interconnected nature of the world and how that wealth of connections to enliven our sense of the possible. It's also clear that the way \textbf{materiality} works now - making no effort to characterize how any particular change is related to the file being analyzed, is the kind of 'god trick' that \citet{Harding1992-od} and \citet{Haraway1988-nh} set out to critique. I have created another view from nowhere.
+
+  I do not know now what the best way to characterize the disparate contributions from changes at different points in the tree of related files. Usage analysis could be a large improvement. Import statements add objects to to the module symbol table and \textbf{materiality} could analyze the usage of those objects. Carrying this practice across the entire import tree would highlight links of action (as opposed to an undifferentiated link). As noted previously, however, such an analysis might be deceptive. There are real limits to how much static analysis of computer programs can predict the behavior of those programs \citet{Kaplan_undated-xy}. As much as the current program is a view from nowhere, I want to be mindful of the possibility of rendering a false view.
+
+  \subsubsection{Ways of Seeing}
+  The current output of the tool is, to put it bluntly, opaque. Quoted below is a sample output from the \textit{adapters} module in the \textit{pydal} module. This is not the final output, but is as close as the \gls{sa} can come to displaying the web of connections. 
+
+  \singlespace
+  % https://www.overleaf.com/learn/latex/code_listing
+  % https://tex.stackexchange.com/questions/171803/change-font-size-of-the-verbatim-environment
+  \begin{Verbatim}[fontsize=\small]
+    </Users/ddrexler/src/python/web2py/gluon/packages/dal/pydal/adapters/ __init__.py>
+    SM[pydal.adapters]-> Module[]
+      Imports:
+        [1]Import <!S>re
+        [2]From <+R>pydal._gae Import gae
+        [3]From <+R>pydal.helpers._internals Import Dispatcher
+        [71]From <+R>pydal.adapters.base Import SQLAdapter,NoSQLAdapter
+        [72]From <+R>pydal.adapters.sqlite Import SQLite
+        [73]From <+R>pydal.adapters.postgres Import Postgre,PostgrePsyco,PostgrePG8000
+        [74]From <+R>pydal.adapters.mysql Import MySQL
+        [75]From <+R>pydal.adapters.mssql Import MSSQL
+        [76]From <+R>pydal.adapters.mongo Import Mongo
+        [77]From <+R>pydal.adapters.db2 Import DB2
+        [78]From <+R>pydal.adapters.firebird Import FireBird
+        [79]From <+R>pydal.adapters.informix Import Informix
+        [80]From <+R>pydal.adapters.ingres Import Ingres
+        [81]From <+R>pydal.adapters.oracle Import Oracle
+        [82]From <+R>pydal.adapters.sap Import SAPDB
+        [83]From <+R>pydal.adapters.teradata Import Teradata
+        [84]From <+R>pydal.adapters.couchdb Import CouchDB
+  \end{Verbatim}
+  \doublespace
+
+  This form was designed to help me understand what the program was and was not finding. The numbers in \verb|[]| are line numbers in the \verb|__init__.py| file. The symbol and letter inside the \verb|<>| symbols indicates the status of the import. \verb|<!S>| signals that this import refers to a system library and will be ignores. Import statements with a \verb|<+R>| mark are relative imports whose referent has been successfully found\footnotemark. 
+
+  \footnotetext{For example, the import on line 2 was originally written "from ..\_gae import gae", the program has checked that this file can be found and changed from a relative path to an absolute path within the \textit{pydal} module.}
+
+  However, many different graphical displays would be possible. The file itself could be laid out and sections of text connected to the tree of python files that influence that texts' behavior. \textbf{materiality} could generate graphical representations of the networks of \Gls{python} modules involved. Instead of focusing on the files themselves, the collaborations between authors could be highlighted. Each file could seen as moving between contributors over time and \textbf{materiality} could render a graph of how the feature being analyzed had been built by humans in specific ways and at specific times in the past.
+
+  \subsection{The Materiality of Validators}
+  In some sense, the tool speaks for itself. It is, as is all \glspl{sa}, materialized intent. There is a level of understanding of \glspl{sp} and artifacts that can only be acquired through interacting with them. However, it's no fun to make something and not show it off.
+
+  \subsubsection{Validators by the Numbers}
+  Below are the results of running \textbf{materiality} on the \Gls{python} file\footnotemark containing the validators that I repeatedly encountered while engaging the \acrshort{eden}. This file is responsible for checking that data inputs are in line with expected formats. The validator with the bug I tried to fix ensures an input it is given matches the format of a phone number. Some other validators defined in the file check that an input is the proper format for latitude, is a number or is a UTC date \& time. Each validator builds off of and is connected to the the Validator object in the web2py project, which provides common operations used in accepting or rejecting user inputs.
+
+  \footnotetext{The path inside \acrshort{eden}'s repository is /modules/s3/s3validators.py}
+
+  \begin{table}[ht]
+  \caption{Result Summary}
+  \label{tab:result-summary}
+  \begin{tabular}{|l|l|}
+  \hline
+  Authors Involved               & 119                                   \\ \hline
+  Files Involved                 & 86                                    \\ \hline
+  Lines of Code                  & 41,226                                \\ \hline
+  Total Change Count to Files    & 170,806                               \\ \hline
+  Longest File Active Lifetime   & 8 years                               \\ \hline
+  Average File Active Lifetime   & Between 4 and 5 years                 \\ \hline
+  \end{tabular}
+\end{table}
+  
+  \begin{itemize}
+    \item The author count includes myself, because I (defiantly) merged my fix to the bug I found in the phone number validator (after changing it to work correctly).
+    \item The count of files show here involved includes the \verb|s3validators.py| file \textbf{materiality} was given. 
+    \item File active lifetime should be understood as the period of active work on that file. For example, if a file was created 6 years ago and last changed 4 years ago it would have an active lifetime of 2 years.
+    \item These data are summaries of a larger dataset. An author-by-author breakdown can be seen in a section at the end of this paper and even more detail is accessible through a Google sheet whose link can be found in the same section.
+  \end{itemize}
+  
+  These results highlight the collaborative nature of software development, especially \acrshort{foss} software development. There are many authors and files that support the various Validator classes \acrshort{eden} has defined. In particular, it's interesting that these files contain just over forty thousand lines of code, but over four times that number of lines have been added or removed from those files. This shows how code changes and evolves over time and highlights how software is not any particular version of the source code or \gls{sa}, but a process and practice that occurs over time \citep{Mackenzie2006-hb}.  
+
+  Diving a little deeper into the data, it's possible to characterize the weight of the impact from the different projects on the set of validators defined in \verb|s3validators.py|:
+
+  \begin{table}[ht]
+  \caption{Percent of Involved Changes By Project}
+  \label{tab:change-locations}
+  \begin{tabular}{|l|c|c|}
+\hline
+\textbf{Project} & \textbf{Location of Connected Changes} & \textbf{Connected Changes As \% of Project} \\ \hline
+Eden                  & 16.1\%                                       & 0.44\%                           \\ \hline
+web2py                & 62.2\%                                       & 3.30\%                           \\ \hline
+pydal                 & 20.7\%                                       & 9.23\%                           \\ \hline
+yatl                  & 1.1\%                                        & 77.75\%                          \\ \hline
+\end{tabular}
+\end{table}
+
+  I think the most interesting thing here is how the work on the shared Validator class from web2py is reflected in this breakdown. The \acrshort{eden} team is able to do less work by relying on the work put into the object(s) they are extending (and the other objects inside web2py that support that foundational work). It would also clearly help if I had some method that accounts for project size - \acrshort{eden} is over four hundred and sixty times larger (\ref{tab:table-2}) than yatl, meaning that 0.44\% of \acrshort{eden} is likely\footnotemark more work than 77.75\% of yatl.
+
+  \footnotetext{The reason I say likely is that I'm not sure how to compare the total number of changes in the entire repository (which include the non-\Gls{python} code) to the language-specific line counts in \ref{tab:table-2}.}
+
+  \subsubsection{What can't be Seen}
+  I'll reflect more on this in my discussion on possible improvements, but I should note here the overwhelming flatness of my results. There is a myopic quality to looking at programming in this way. The act of displaying all the contributors together, without differentiation, is itself a \citet{Haraway1988-nh}-esq god trick. It took a good amount of work to get to this point - more than I'd like to admit and more than a good programmer would need. I believe there is worth in these results as a reflection of the exercise and the exploration, but they are a snapshot from a journey that may never be completed - not a triumphant demonstration of the ideas I've been speaking about.
+
+  \section{Returning at last to Software}
+  I opened this paper and this project by asking how assembly mediates agency in software. The literature is clear, and I agree, that there is a strong connection between \gls{sp} intent and \gls{sa} behavior. The \acrshort{eden} project describes their mission as "sav[ing] lives by providing information management solutions that enable organizations and communities to better prepare for and respond to disasters" and nothing I found in the \acrshort{eden} source code or the \acrshort{eden} \gls{sa} suggests that the impact of \acrshort{eden} follows their ambition \citep{Sahana_Foundation_undated-hl}. The complexities of software development do not change the previously established connection between tool impact and creator intent \citet{Subramaniam2014-wg}. 
+
+  I also found, at every turn, material qualities of software that threaten to escape the ability of creators to detect and tools to prevent. One consequence of this is that software developers are expected to trigger and manage the assembly processes for any \gls{sa} they wish to work on. The experience developers derive from that is key to learning about the components used by the \gls{sp} in the \gls{sa}, but it redoubles the limited view already embodied through \gls{sp} surveillance of \gls{sa} (\textbf{The Limits of Developer Attention}). Any developer who engages with the components (source code, \gls{sa} libraries) and the \glspl{sa} of a \gls{sp} is constantly experiencing suggestions about the nature of the world. Within König's idea that "testing too much detail can add excessive rigor," I see a world view that the correct way to imagine and survival software is attending to a particular set of behavior over all others \citep{Konig2020-yx}.
+
+  The \acrshort{eden} project and the \acrshort{eden} \gls{sa} is not equipped to detect deviations in behavior they are not watching. Once a \gls{sa} is sent out into the world, its behavior is fixed. Problems discovered within it will need to be worked around or the problematic aspect ignored until it is replaced. \citet{Latour1999-ui}'s concept of blackboxes rested on the work of making complexity socially invisible, but that's not exactly what I see here. In both \textbf{What does Working Mean Here?} and \textbf{Software Exists Outside of the Social} I encountered an object whose behavior defied shared social understandings. It was not just that my \acrshort{eden} \gls{sa} 'broke,' but that it broke in a way that was particular and limited way. In the case of the phone number message, the failure fell outside the sight of the \gls{sp}. The other failure was cause by my choices in assembly. Both failures could only be understood by looking inside the assembly process but, critically, not inside the particular \glspl{sa}. Unlike a blackbox, whose contents become socially visible\footnotemark when they fail, \glspl{sa} keep their secrets. I think I need an updated idea. 
+
+  \footnotetext{To elaborate on this theme, Latourian blackboxes do not actually prevent people from seeing what is inside them. He is instead trying to speak to why people \textit{can} operate \textit{as if} the internals of a blackbox are invisible. The fact that blackboxes contain other blackboxes goes to show that everything within a blackbox has a social identity that people can and will recognize and interact with if they are shown it. \glspl{sa} on the other hand, have their internals transformed from an object that some can understand (source code) to something nearly totally opaque to everyone (machine code).}
+
+  \subsection{Composites}
+  Software artifacts are not blackboxes, they are \textbf{\glspl{cmp}}. \Glspl{cmp} are fixed assemblies of more than one component which inherits the material qualities of its components, mediated through the structure which those components are assembled into. Once assembled, a composite can operate without human intervention. Composites are typified by extremely high internal complexity and complex behavior, but once assembled their possible actions are set. Composites cannot be changed, only replaced. Each component of a composite may be an instruction or a datum, but they are generally composites themselves. Generally, each component makes a proportional contribution to the material qualities of the composite it is integrated into, but layers of assembly can place components in unexpected relationships with unforeseen outcomes.
+
+  The identity of a \gls{cmp} derives from its behavior, not its label. The different \glspl{sa} of \acrshort{eden} are not similar because they share the label "eden," they are similar because they are largely constructed from the same components. As \acrshort{eden} evolves and changes over time, its social identity will "stretch" to reflect a diversity of behavior, but that same stretching betrays that multiple objects with different qualities are sharing a single label. Eventually \glspl{cmp} that share many, but not all components will be given separate labels or face a collapse in the usefulness of the label \citet{Bivens2017-tc}. 
+
+  \Glspl{cmp} are immensely useful objects, as they do not require human intervention or labor to carry out their intended purpose. If the required material resource are made available to the composite, it will continue until it exhausts its resources or is stopped. Humans may set them up without any knowledge of their internals and without easy insight into the details of their function. This makes them powerful conduits for systems of control and surveillance. 
+
+  However, due to their complexity, \glspl{cmp}' behavior is unpredictable. How changes made to a component will appear in the behavior the assembled \gls{cmp} is difficult, sometimes impossible\sepfootnote{softwaretoo}, to predict. Multiple components or layers of assembly can overlap in confusing ways\footnotemark. \Gls{cmp} makers respond to this quality by implementing systems of surveillance to observe and verify their own creations. These systems of surveillance often involve \glspl{cmp} with many overlapping components whose purpose is to observe internal behavior and report on internal behavior. Assembled \glspl{cmp} may have similar self-surveillance functions, though like all functions, these qualities run the risk of accidental subversion.
+
+  \footnotetext{See \textbf{Other flaws}.}
+
+  \sepfootnotecontent{softwaretoo}{For software, situations where prediction is impossible are quite common \citep{Kaplan_undated-xy}. There is nothing that requires composites to be software, per-se, however, and any sufficiently complex mechanistic assembly would meet this requirement.}
+
+  \subsection{Composites in Society}
+  Composites are a socially important departure from the way that 
+
+  
+
+% ============================================
+% =   ____ _                                 =
+% =  / ___| | ___  ___ ___  __ _ _ __ _   _  =
+% = | |  _| |/ _ \/ __/ __|/ _` | '__| | | | =
+% = | |_| | | (_) \__ \__ \ (_| | |  | |_| | =
+% =  \____|_|\___/|___/___/\__,_|_|   \__, | =
+% =                                   |___/  =
+% ============================================
+   \singlespacing
+   \printnoidxglossaries
+
+% =================================
+% =  _____     _     _            =
+% = |_   _|_ _| |__ | | ___  ___  =
+% =   | |/ _` | '_ \| |/ _ \/ __| =
+% =   | | (_| | |_) | |  __/\__ \ =
+% =   |_|\__,_|_.__/|_|\___||___/ =
+% =================================                             
+
+   \section{Tables}
    These tables are missing some information that is available in this google sheet: \url{https://docs.google.com/spreadsheets/d/1fi5cNCA1mQgS8gZ7VL7MfalSXNQoD2pM1vC3uH18cNw/edit}. Additionally, the contributor who is identified as 'sherdim' used their real name, but I was unable to get \LaTeX to display their name properly, so I have used their github handle. Their profile can be found here: \url{https://github.com/sherdim}.
 
 \begin{table}[ht]
@@ -681,22 +1072,22 @@
 \begin{tabular}{|l|r|r|}
 \hline
 Name            & Related Changes & Total Changes \\ \hline
-Ashwyn          & 69              & 7,580         \\ \hline
+Ashwyn          & 23              & 7,580         \\ \hline
 Aviral Dasgupta & 88              & 6,147         \\ \hline
-biplovbhandari  & 18              & 2,6692        \\ \hline
+biplovbhandari  & 6               & 26,692        \\ \hline
 Daniel Drexler  & 69              & 10,342        \\ \hline
-Dominic König   & 33,934          & 1,940,890     \\ \hline
-Fran Boon       & 23,604          & 3,816,361     \\ \hline
-Graeme Foster   & 646             & 241,090       \\ \hline
-hitesh96db      & 8               & 13,588        \\ \hline
+Dominic König   & 14,070          & 1,940,890     \\ \hline
+Fran Boon       & 12,314          & 3,816,361     \\ \hline
+Graeme Foster   & 236             & 241,090       \\ \hline
+hitesh96db      & 4               & 13,588        \\ \hline
 James O'Neill   & 4               & 4,038         \\ \hline
-Kunal Hari      & 33              & 8,920         \\ \hline
-Michael Howden  & 755             & 143,771       \\ \hline
-Pratyush Nigam  & 312             & 290           \\ \hline
+Kunal Hari      & 11              & 8,920         \\ \hline
+Michael Howden  & 313             & 143,771       \\ \hline
+Pratyush Nigam  & 104             & 290           \\ \hline
 raj454raj       & 1               & 10,917        \\ \hline
-redsin          & 810             & 25,265        \\ \hline
+redsin          & 278             & 25,265        \\ \hline
 tirgil          & 2               & 3,804         \\ \hline
-VishrutMehta    & 6               & 1,153         \\ \hline
+VishrutMehta    & 2               & 1,153         \\ \hline
 \end{tabular}
 \end{table} 
 
@@ -706,28 +1097,27 @@ VishrutMehta    & 6               & 1,153         \\ \hline
 \begin{tabular}{|l|r|r|}
 \hline
 Name                 & Related Changes & Total Changes \\ \hline
-abastardi            & 189             & 15            \\ \hline
-alan                 & 8               & 11            \\ \hline
-boa-py               & 4               & 2             \\ \hline
-BuhtigithuB          & 9,035           & 5,524         \\ \hline
+abastardi            & 9               & 15            \\ \hline
+alan                 & 2               & 11            \\ \hline
+boa-py               & 2               & 2             \\ \hline
+BuhtigithuB          & 670             & 5,524         \\ \hline
 Cássio Botaro        & 2               & 2             \\ \hline
-Christophe Varoqui   & 42              & 2             \\ \hline
+Christophe Varoqui   & 2               & 2             \\ \hline
 Dan Feeney           & 11              & 11            \\ \hline
-David Orme           & 160             & 30            \\ \hline
-Dominic König        & 15              & 43            \\ \hline
-dz0                  & 12              & 1             \\ \hline
-Emmanuel Goh         & 68              & 4             \\ \hline
-Fran Boon            & 75              & 21            \\ \hline
-Francisco Tomé Costa & 8               & 4             \\ \hline
-gi0baro              & 75,295          & 69,785        \\ \hline
-Giovanni Barillari   & 17,667          & 8,240         \\ \hline
-ilvalle              & 16,027          & 37,158        \\ \hline
-Jack Kuan            & 147             & 7             \\ \hline
+David Orme           & 30             & 30            \\ \hline
+Dominic König        & 13              & 43            \\ \hline
+dz0                  & 1               & 1             \\ \hline
+Emmanuel Goh         & 4               & 4             \\ \hline
+Fran Boon            & 3               & 21            \\ \hline
+Francisco Tomé Costa & 4               & 4             \\ \hline
+gi0baro              & 14,046          & 69,785        \\ \hline
+Giovanni Barillari   & 6,112           & 8,240         \\ \hline
+ilvalle              & 1,968           & 37,158        \\ \hline
+Jack Kuan            & 7               & 7             \\ \hline
 JusticeN             & 15              & 15            \\ \hline
-jvanbraekel          & 381             & 40            \\ \hline
-kvanzuijlen          & 116             & 2             \\ \hline
-Leonel Câmara        & 1667            & 896           \\ \hline
-Name                 & Related Changes & Total Changes \\ \hline
+jvanbraekel          & 40              & 40            \\ \hline
+kvanzuijlen          & 2               & 2             \\ \hline
+Leonel Câmara        & 191             & 896           \\ \hline
 \end{tabular}
 \end{table}
 
@@ -737,28 +1127,26 @@ Name                 & Related Changes & Total Changes \\ \hline
 \begin{tabular}{|l|r|r|}
 \hline
 Name                 & Related Changes & Total Changes \\ \hline
-Martin Doucha        & 9,233           & 3,037         \\ \hline
+Martin Doucha        & 1,992           & 3,037         \\ \hline
 maxcrystal           & 11              & 11            \\ \hline
-Massimo DiPierro     & 22,447          & 903,691       \\ \hline
-Michael Loster       & 4               & 2             \\ \hline
-Michele Comitini     & 541             & 5,975         \\ \hline
-nikakis              & 216             & 18            \\ \hline
-niphlod              & 5,178           & 30,396        \\ \hline
+Massimo DiPierro     & 6,320           & 903,691       \\ \hline
+Michael Loster       & 2               & 2             \\ \hline
+Michele Comitini     & 52              & 5,975         \\ \hline
+nikakis              & 18              & 18            \\ \hline
+niphlod              & 816             & 30,396        \\ \hline
 preactive            & 2               & 2             \\ \hline
-Remco Boerma         & 20              & 5             \\ \hline
+Remco Boerma         & 5               & 5             \\ \hline
 Richard Boß          & 5               & 5             \\ \hline
-rodwatkins           & 56              & 14            \\ \hline
-Stephen Rauch        & 6,166           & 4,993         \\ \hline
-Stephen Tanner       & 11              & 43            \\ \hline
-Tim Nyborg           & 82              & 6             \\ \hline
-Tom Stratton         & 36              & 9             \\ \hline
-Victor Salgado       & 44              & 18            \\ \hline
-Vinyl Darkscratch    & 24              & 49            \\ \hline
-Wanderson Reis       & 53              & 5             \\ \hline
+rodwatkins           & 14              & 14            \\ \hline
+Stephen Rauch        & 2,852           & 4,993         \\ \hline
+Stephen Tanner       & 7               & 43            \\ \hline
+Tim Nyborg           & 6               & 6             \\ \hline
+Tom Stratton         & 9               & 9             \\ \hline
+Victor Salgado       & 12              & 18            \\ \hline
+Vinyl Darkscratch    & 2               & 49            \\ \hline
+Wanderson Reis       & 5               & 5             \\ \hline
 willimoa             & 7               & 64            \\ \hline
-xuyangbocn           & 24              & 2             \\ \hline
-Christophe Varoqui   & 2               & 2             \\ \hline
-dz0                  & 1               & 1             \\ \hline
+xuyangbocn           & 2               & 2             \\ \hline
 \end{tabular}
 \end{table}
 
@@ -769,8 +1157,8 @@ dz0                  & 1               & 1             \\ \hline
 \hline
 Name                           & Related Changes & Total Changes \\ \hline
 Carlos Cesar Caballero Díaz    & 17              & 17            \\ \hline
-Massimo DiPierro               & 2,312           & 2,089         \\ \hline
-PhanterJR                      & 254             & 263           \\ \hline
+Massimo DiPierro               & 1,689           & 2,089         \\ \hline
+PhanterJR                      & 127             & 263           \\ \hline
 \end{tabular}
 \end{table}
 
@@ -780,45 +1168,45 @@ PhanterJR                      & 254             & 263           \\ \hline
 \begin{tabular}{|l|r|r|}
 \hline
 Name                           & Related Changes & Total Changes \\ \hline
-abastardi                      & 37              & 153           \\ \hline
+abastardi                      & 27              & 153           \\ \hline
 Adam Bryzak                    & 2               & 2             \\ \hline
-Alexander Zayats               & 16              & 8             \\ \hline
-alexdba                        & 34              & 17            \\ \hline
-Alfonso de la Guarda Reyes     & 27              & 63            \\ \hline
-Anssi Hannula                  & 20              & 12            \\ \hline
+Alexander Zayats               & 8               & 8             \\ \hline
+alexdba                        & 17              & 17            \\ \hline
+Alfonso de la Guarda Reyes     & 19              & 63            \\ \hline
+Anssi Hannula                  & 10              & 12            \\ \hline
 Batchu Venkat Vishal           & 2               & 2             \\ \hline
-Carlos Cesar Caballero Díaz    & 68              & 3,136         \\ \hline
-Carlos Costa                   & 26              & 236           \\ \hline
+Carlos Cesar Caballero Díaz    & 34              & 3,136         \\ \hline
+Carlos Costa                   & 13              & 236           \\ \hline
 Cássio Botaro                  & 22              & 207           \\ \hline
 cccaballero                    & 10              & 138           \\ \hline
 Chen Rotem Levy                & 8               & 309           \\ \hline
-Chris DeGroot                  & 8               & 4             \\ \hline
+Chris DeGroot                  & 4               & 4             \\ \hline
 Chris Garcia                   & 12              & 34            \\ \hline
-clach04                        & 90              & 45            \\ \hline
-Daniel Libonati                & 4               & 9             \\ \hline
-Denis Rykov                    & 8               & 4             \\ \hline
+clach04                        & 45              & 45            \\ \hline
+Daniel Libonati                & 2               & 9             \\ \hline
+Denis Rykov                    & 4               & 4             \\ \hline
 Dinis                          & 4               & 470           \\ \hline
-Dominic König                  & 4               & 10            \\ \hline
+Dominic König                  & 2               & 10            \\ \hline
 Donald McClymont               & 7               & 7             \\ \hline
-Erik Montes                    & 4               & 147           \\ \hline
-Fran Boon                      & 20              & 28            \\ \hline
-geomapdev                      & 306             & 223           \\ \hline
-gi0baro                        & 29,055          & 38,807        \\ \hline
-Giovanni Barillari             & 105             & 346           \\ \hline
+Erik Montes                    & 2               & 147           \\ \hline
+Fran Boon                      & 11              & 28            \\ \hline
+geomapdev                      & 153             & 223           \\ \hline
+gi0baro                        & 12,022          & 38,807        \\ \hline
+Giovanni Barillari             & 65              & 346           \\ \hline
 hectord                        & 6               & 6             \\ \hline
-ilvalle                        & 3,857           & 65,421        \\ \hline
-Jack Kuan                      & 16              & 24            \\ \hline
-Jan Beilicke                   & 26              & 13            \\ \hline
-Jan M. Knaup                   & 24              & 12            \\ \hline
-Jaripekkaf                     & 112             & 56            \\ \hline
-Jeremie Dokime                 & 18              & 54            \\ \hline
+ilvalle                        & 1,019           & 65,421        \\ \hline
+Jack Kuan                      & 8               & 24            \\ \hline
+Jan Beilicke                   & 13              & 13            \\ \hline
+Jan M. Knaup                   & 12              & 12            \\ \hline
+Jaripekkaf                     & 56              & 56            \\ \hline
+Jeremie Dokime                 & 14              & 54            \\ \hline
 Joel Rathgaber                 & 22              & 22            \\ \hline
-Jonathan Bohren                & 59              & 59            \\ \hline
-Jonathan Vasek                 & 4               & 2             \\ \hline
-Jose C                         & 2               & 1             \\ \hline
-jvanbraekel                    & 124             & 108           \\ \hline
-kelson                         & 40              & 306           \\ \hline
-Kiran Subbaraman               & 98              & 99            \\ \hline
+Jonathan Bohren                & 57              & 59            \\ \hline
+Jonathan Vasek                 & 2               & 2             \\ \hline
+Jose C                         & 1               & 1             \\ \hline
+jvanbraekel                    & 62              & 108           \\ \hline
+kelson                         & 35              & 306           \\ \hline
+Kiran Subbaraman               & 88              & 99            \\ \hline
 Koen van Zuijlen               & 4               & 8             \\ \hline
 Kristján Valur Jónsson         & 2               & 2             \\ \hline
 \end{tabular}
@@ -831,46 +1219,43 @@ Kristján Valur Jónsson         & 2               & 2             \\ \hline
 \hline
 Name                           & Related Changes & Total Changes \\ \hline
 Kurt Grutzmacher               & 352             & 2,378         \\ \hline
-Leonel Câmara                  & 1,444           & 14,051        \\ \hline
+Leonel Câmara                  & 1,236           & 14,051        \\ \hline
 Lisandro                       & 8               & 14            \\ \hline
 Luca de Alfaro                 & 2               & 2             \\ \hline
-Martin Doucha                  & 92              & 99            \\ \hline
-Massimo DiPierro               & 146,548         & 825,014       \\ \hline
-Mathieu Clabaut                & 48              & 88            \\ \hline
-mcabo                          & 56              & 28            \\ \hline
-Michele Comitini               & 2215            & 6034          \\ \hline
+Martin Doucha                  & 51              & 99            \\ \hline
+Massimo DiPierro               & 76,420          & 825,014       \\ \hline
+Mathieu Clabaut                & 24              & 88            \\ \hline
+mcabo                          & 28              & 28            \\ \hline
+Michele Comitini               & 1,284           & 6034          \\ \hline
 mictee                         & 33              & 71            \\ \hline
-Mirko Galimberti               & 22              & 52            \\ \hline
-mpranjic                       & 12              & 36            \\ \hline
-Nik Klever                     & 10              & 45            \\ \hline
-niphlod                        & 10,189          & 45,996        \\ \hline
-Oleg                           & 82              & 43            \\ \hline
-Omar Trinidad Gutiérrez Méndez & 14              & 321           \\ \hline
-omniavx                        & 4               & 2             \\ \hline
-Oscar Fonts                    & 32              & 585           \\ \hline
-Oscar Rodriguez                & 132             & 66            \\ \hline
-Paolo Caruccio                 & 12              & 475           \\ \hline
-Prasad Muley                   & 46              & 23            \\ \hline
+Mirko Galimberti               & 11              & 52            \\ \hline
+mpranjic                       & 6               & 36            \\ \hline
+Nik Klever                     & 7               & 45            \\ \hline
+niphlod                        & 6,304           & 45,996        \\ \hline
+Oleg                           & 41              & 43            \\ \hline
+Omar Trinidad Gutiérrez Méndez & 7               & 321           \\ \hline
+omniavx                        & 2               & 2             \\ \hline
+Oscar Fonts                    & 16              & 585           \\ \hline
+Oscar Rodriguez                & 66              & 66            \\ \hline
+Paolo Caruccio                 & 6               & 475           \\ \hline
+Prasad Muley                   & 23              & 23            \\ \hline
 Radu Ioan Fericean             & 30              & 66            \\ \hline
-Ricardo Pedroso                & 216             & 263           \\ \hline
-Richard Vézina                 & 9,605           & 17,379        \\ \hline
+Ricardo Pedroso                & 108             & 263           \\ \hline
+Richard Vézina                 & 5,135           & 17,379        \\ \hline
 samuel bonilla                 & 4               & 93            \\ \hline
 Scimonster                     & 4               & 6             \\ \hline
 Seth Kinast                    & 10              & 18            \\ \hline
-spametki                       & 946             & 3,404         \\ \hline
-Stefan Pochmann                & 120             & 114           \\ \hline
+spametki                       & 473             & 3,404         \\ \hline
+Stefan Pochmann                & 114             & 114           \\ \hline
 tiago.bar                      & 2               & 4             \\ \hline
-tim                            & 4               & 2             \\ \hline
-Tim Nyborg                     & 84              & 109           \\ \hline
-Tim Richardson                 & 444             & 337           \\ \hline
-viniciusban                    & 34              & 261           \\ \hline
-Vinyl Darkscratch              & 410             & 121,159       \\ \hline
+tim                            & 2               & 2             \\ \hline
+Tim Nyborg                     & 43              & 109           \\ \hline
+Tim Richardson                 & 222             & 337           \\ \hline
+viniciusban                    & 18              & 261           \\ \hline
+Vinyl Darkscratch              & 150             & 121,159       \\ \hline
 winniehell                     & 5               & 5             \\ \hline
-zvolsky                        & 22              & 1,543         \\ \hline
+zvolsky                        & 11              & 1,543         \\ \hline
 sherdim                        & 2               & 14            \\ \hline
-Luca de Alfaro                 & 2               & 2             \\ \hline
-Jonathan Vasek                 & 2               & 2             \\ \hline
-Jose C                         & 1               & 1             \\ \hline
 \end{tabular}
 \end{table}
    \setlength{\parindent}{4em}
